@@ -7,23 +7,26 @@
 <meta name="description" content="Rubén Omar Núñez: encargado de marketing y diseñador gráfico en KREYN. Elige una habilidad y mira cómo se hizo cada proyecto.">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=20261005b">
-<link rel="stylesheet" href="inicio.css?v=20261005b">
+<link rel="stylesheet" href="inicio.css?v=20261005r">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body class="arcade">
 <nav><div class="wrap"><a class="me" href="index.html">R.O.N.</a><a href="index.html" aria-current="page">Inicio</a><a href="#proyectos">Proyectos</a><a href="sobre-mi.html">Sobre mí</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></nav>
 
 <section class="select" aria-label="Habilidades">
-  <div class="sel-top"><span class="p1">P1 · Rubén Omar Núñez</span><h1>Elige tu habilidad</h1><span class="timer" id="timer" aria-hidden="true">99</span></div>
+  <div class="sel-top"><h1>Elige tu habilidad</h1></div>
   <div class="stage">
-    <div class="portrait"><div class="bigname" id="bigName" aria-hidden="true"></div><div class="logo-big" id="logoBig"></div></div>
+    <div class="portrait"><div class="bigname" id="bigName" aria-hidden="true"></div>
+      <figure class="sample" id="sample"><div class="smedia" id="sMedia"></div><div class="badge" id="logoBig"></div><figcaption id="sCap"></figcaption>
+        <div class="snav" id="sNav" hidden><button id="sPrev" aria-label="Muestra anterior">‹</button><span id="sCount"></span><button id="sNext" aria-label="Siguiente muestra">›</button></div></figure></div>
     <div class="card" aria-live="polite">
       <p class="kicker cond" id="fClass"></p>
       <h2 id="fName"></h2>
       <p class="tagline" id="fTag"></p>
+      <p class="credit" id="sCredit" hidden></p>
+      <a class="slink" id="sLink" target="_blank" rel="noopener" hidden></a>
       <h3>Movimientos especiales</h3>
       <ol class="moves" id="fMoves"></ol>
-      <div class="used" id="fUsed"></div>
     </div>
   </div>
   <div class="roster-wrap">
@@ -32,18 +35,26 @@
   </div>
 </section>
 
-<section class="projects" id="proyectos">
-  <header class="proj-head"><h2>Proyectos</h2><p>Cómo se hizo cada uno, paso a paso.</p></header>
-  <div id="projList"></div>
-  <section class="archive" id="archivo">
-    <h3>Archivo escolar</h3>
-    <p>Proyectos de la carrera · UDN 2014 – 2017</p>
-    <div class="strip" id="strip"></div>
-  </section>
+<section class="projects" id="proyectos" aria-label="Proyectos">
+  <div class="pj-tabs" id="pjTabs" role="tablist" aria-label="Proyectos"></div>
+  <div class="pj-stage">
+    <div class="pj-info">
+      <p class="cond pj-kicker" id="pjKicker"></p>
+      <h2 id="pjTitle"></h2>
+      <p class="pj-sum" id="pjSum"></p>
+      <div class="pj-meta"><div class="pj-tools" id="pjTools"></div><div class="pj-stats" id="pjStats"></div></div>
+      <div class="pj-step" id="pjStep" aria-live="polite"></div>
+      <div class="pj-nav"><button id="pjPrev" aria-label="Anterior">‹</button><span id="pjCount"></span><button id="pjNext" aria-label="Siguiente">›</button></div>
+      <div class="pj-links" id="pjLinks"></div>
+    </div>
+    <div class="pj-media" id="pjMedia"></div>
+  </div>
+  <div class="pj-bars" id="pjBars"></div>
+  <div class="pj-curtain" id="pjCurtain" aria-hidden="true"><b></b><span></span></div>
 </section>
 
 <footer><div class="wrap">© 2026 Rubén Omar Núñez · <a href="contacto.html">Contacto</a></div></footer>
 <dialog id="lb" aria-label="Imagen"><img alt=""><p></p><div class="lbn"><button id="pv">Anterior</button><button id="nx">Siguiente</button><span id="ct"></span><button id="cl">Cerrar</button></div></dialog>
-<script src="inicio.js?v=20261005c"></script>
+<script src="inicio.js?v=20261005r"></script>
 </body>
 </html>
