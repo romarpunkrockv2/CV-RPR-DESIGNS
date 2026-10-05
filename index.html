@@ -4,54 +4,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rubén Omar Núñez — Diseño, video, 3D y web</title>
-<meta name="description" content="Rubén Omar Núñez: encargado de marketing y diseñador gráfico en KREYN. Elige una habilidad y mira cómo se hizo cada proyecto.">
+<meta name="description" content="Rubén Omar Núñez, diseñador gráfico: música, videojuegos, cine y tecnología, y el trabajo que sale de ahí.">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=20261005b">
-<link rel="stylesheet" href="inicio.css?v=20261006d">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="inicio.css?v=20261007b">
 </head>
 <body class="arcade">
-<nav><div class="wrap"><a class="me" href="index.html">R.O.N.</a><a href="#habilidades" data-v="habilidades" aria-current="page">Habilidades</a><a href="#proyectos" data-v="proyectos">Proyectos</a><a href="galeria.html">Galería</a><a href="sobre-mi.html">Sobre mí</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></nav>
+<nav><div class="wrap"><a class="me" href="index.html">R.O.N.</a><a href="index.html" aria-current="page">Inicio</a><a href="programas.html">Programas</a><a href="proyectos.html">Proyectos</a><a href="galeria.html">Galería</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></nav>
 
-<section class="view select" id="habilidades" aria-label="Habilidades">
-  <div class="bg" id="sMedia"></div>
-  <button class="close" id="sClose" aria-label="Volver al selector">✕ Volver</button>
-  <div class="side">
-    <p class="kicker cond" id="fClass"></p>
-    <p class="scap" id="sCap"></p>
-    <button class="ver" id="sVer"></button>
-    <span class="snav" id="sNav" hidden><button id="sPrev" aria-label="Muestra anterior">‹</button><span id="sCount"></span><button id="sNext" aria-label="Siguiente muestra">›</button></span>
-    <p class="credit" id="sCredit" hidden></p>
-    <a class="slink" id="sLink" target="_blank" rel="noopener" hidden></a>
-  </div>
-  <div class="fighter" id="logoBig" aria-hidden="true"></div>
-  <div class="card" aria-live="polite">
-    <h2 id="fName"></h2>
-    <p class="tagline" id="fTag"></p>
-    <ol class="moves" id="fMoves"></ol>
-  </div>
-  <div class="roster" id="roster" role="listbox" aria-label="Programas"></div>
-</section>
+<main class="yo">
+  <header class="yo-head">
+    <p class="kicker cond">Diseñador gráfico · Encargado de marketing en KREYN</p>
+    <h1>Rubén Omar Núñez</h1>
+    <h2>Sobre mí</h2>
+  </header>
 
-<section class="view projects" id="proyectos" aria-label="Proyectos" hidden>
-  <div class="pj-tabs" id="pjTabs" role="tablist" aria-label="Proyectos"></div>
-  <div class="pj-stage">
-    <div class="pj-info">
-      <p class="cond pj-kicker" id="pjKicker"></p>
-      <h2 id="pjTitle"></h2>
-      <p class="pj-sum" id="pjSum"></p>
-      <div class="pj-meta"><div class="pj-tools" id="pjTools"></div><div class="pj-stats" id="pjStats"></div></div>
-      <div class="pj-step" id="pjStep" aria-live="polite"></div>
-      <div class="pj-nav"><button id="pjPrev" aria-label="Anterior">‹</button><span id="pjCount"></span><button id="pjNext" aria-label="Siguiente">›</button></div>
-      <div class="pj-links" id="pjLinks"></div>
-    </div>
-    <div class="pj-media" id="pjMedia"></div>
-  </div>
-  <div class="pj-bars" id="pjBars"></div>
-  <div class="pj-curtain" id="pjCurtain" aria-hidden="true"><b></b><span></span></div>
-</section>
-
-<dialog id="lb" aria-label="Imagen"><img alt=""><p></p><div class="lbn"><button id="pv">Anterior</button><button id="nx">Siguiente</button><span id="ct"></span><button id="cl">Cerrar</button></div></dialog>
-<script src="inicio.js?v=20261006d"></script>
+  <!-- Cada párrafo con su imagen. Las imágenes son provisionales: ver README.md -->
+  <section class="yo-row" style="--c:#E4002B">
+    <img src="media/sobre-mi/musica.svg" alt="Música" loading="lazy">
+    <div><h3>Música</h3><p>Fuera del diseño, gran parte de mi tiempo gira alrededor de la música, los videojuegos, el cine y la tecnología. La música es una de mis mayores aficiones, especialmente el rock y sus diferentes variantes, y disfruto descubrir bandas, conciertos y nuevas propuestas.</p></div>
+  </section>
+  <section class="yo-row" style="--c:#8B6CFF">
+    <img src="media/sobre-mi/videojuegos.svg" alt="Videojuegos" loading="lazy">
+    <div><h3>Videojuegos</h3><p>También soy un apasionado de los videojuegos y de todo lo relacionado con la cultura que los rodea. Me interesa tanto jugarlos como explorar cómo están hechos, su dirección artística, diseño de escenarios y todos los elementos que hay detrás de ellos.</p></div>
+  </section>
+  <section class="yo-row" style="--c:#31A8FF">
+    <img src="media/sobre-mi/tecnologia.svg" alt="Tecnología" loading="lazy">
+    <div><h3>Tecnología</h3><p>La tecnología es otra de mis grandes curiosidades. Me gusta experimentar con diferentes dispositivos, programas y herramientas, entender cómo funcionan y encontrar nuevas formas de utilizarlos.</p></div>
+  </section>
+  <section class="yo-row" style="--c:#F1E32C">
+    <img src="media/sobre-mi/aprender.svg" alt="Aprender por mi cuenta" loading="lazy">
+    <div><h3>Aprender por mi cuenta</h3><p>En general, disfruto mucho aprender por mi cuenta y meterme en temas que despiertan mi curiosidad. Me gusta pasar de una afición a otra, experimentar y convertir algunas de esas ideas en proyectos propios.</p></div>
+  </section>
+  <section class="yo-row" style="--c:#C4FF2E">
+    <img src="media/sobre-mi/portafolio.svg" alt="Este portafolio" loading="lazy">
+    <div><h3>Este portafolio</h3><p>Este portafolio reúne principalmente mi trabajo como diseñador, pero también representa una parte de las cosas que me gustan, me inspiran y despiertan mi curiosidad.</p>
+      <p class="yo-go"><a href="programas.html">Ver programas</a><a href="proyectos.html">Ver proyectos</a></p></div>
+  </section>
+</main>
 </body>
 </html>

@@ -3,10 +3,6 @@
 // i = [imágenes] (clic = visor), video + poster, o link + poster (abre la página en vivo en otra pestaña).
 var PIEZAS = [
   { g: 'KREYN', c: '#F1E32C', t: '21 aniversario de Industrias Dueñas', d: 'Video para redes editado en CapCut.', video: 'media/muestras/capcut-aniversario.mp4', poster: 'media/muestras/capcut-aniversario.jpg' },
-  { g: 'KREYN', c: '#2F6BFF', t: 'RD50 de AGM en 3D', d: 'El modelo animado en el navegador: abre cada característica de la grúa.', link: 'https://industriasduenas.com/agm/', poster: 'media/muestras/agm-visor.jpg' },
-  { g: 'KREYN', c: '#2BB34A', t: 'CJ se vuelve gruero', d: 'Animación en Blender para redes: CJ y su grúa en Los Santos.', i: ['media/gta-2.jpg', 'media/gta-1.jpg', 'media/gta-3.jpg'] },
-  { g: 'KREYN', c: '#F1E32C', t: 'App de producción KREYN', d: 'La app con la que trabaja la planta. Yo la diseñé; la IA escribió el código.', i: ['media/pwa-equipos.jpg', 'media/pwa-detalle.jpg', 'media/pwa-celular.jpg'] },
-  { g: 'KREYN', c: '#FF9100', t: 'Catálogo EKANN', d: 'Catálogo de accesorios con buscador, hecho con IA.', link: 'https://industriasduenas.com/ekann/catalogo-accesorios.html', poster: 'media/ekann-catalogo.jpg' },
   { g: 'Escuela', c: '#E4002B', t: 'Atlético Tapatío', d: 'Identidad de un equipo de fútbol: uniforme, logo y nombre.', i: ['atletico-jugador.webp', 'atletico-escudo.webp', 'atletico-equipo.webp'] },
   { g: 'Escuela', c: '#C4FF2E', t: 'Portada CD · Mute', d: 'Prototipo de CD para la banda canadiense de punk rock Mute.', i: ['cd-mockup.webp', 'cd-portada.webp', 'cd-camino.webp'] },
   { g: 'Escuela', c: '#D9A441', t: 'Tequila “El Bandido”', d: 'Presentación del producto y naming.', i: ['tequila-botella.webp', 'tequila-etiqueta.webp'] },
@@ -21,7 +17,7 @@ var PIEZAS = [
 var $ = function (s) { return document.querySelector(s); };
 var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
-var GRUPOS = ['Todo', 'KREYN', 'Escuela'], NOMBRE = { KREYN: 'Trabajo · KREYN', Escuela: 'Escuela · UDN 2014–2017' };
+var GRUPOS = ['Todo', 'KREYN', 'Escuela'], NOMBRE = { KREYN: 'Trabajo', Escuela: 'Escuela · UDN 2014–2017' };
 $('#filtros').innerHTML = GRUPOS.map(function (g, k) { return '<button role="tab" aria-selected="' + !k + '" data-g="' + g + '">' + esc(NOMBRE[g] || g) + '</button>'; }).join('');
 $('#filtros').onclick = function (e) {
   var b = e.target.closest('button'); if (!b) return;

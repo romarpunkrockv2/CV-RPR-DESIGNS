@@ -1,4 +1,4 @@
-// inicio.js — Inicio: selector de habilidades (estilo juego de peleas) + proyectos paso a paso.
+// inicio.js — datos y lógica de Programas (programas.html) y Proyectos (proyectos.html).
 // Para agregar un programa: un objeto en FIGHTERS. Para un proyecto: un objeto en PROJECTS
 // (cada paso puede llevar media: { img } | { video } | { live }).
 
@@ -66,18 +66,17 @@ var FIGHTERS = [
     moves: [['↓↘→ P', 'Videojuego', 'Kreyn Road: la grúa OD7000 esquivando patrullas, con tabla de récords. También en Android.'],
             ['→↓↘ K', 'Sprites y assets propios', 'La grúa, las patrullas, el logo y las pantallas del juego.'],
             ['↓↓ P', 'Catálogos y visores 3D', 'Catálogo 2027, catálogo EKANN y las grúas en 3D en el navegador.']],
-    samples: [{ live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C' }] },
+    samples: [{ live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C', link: ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk'] }] },
   { id: 'ia', name: 'IA', ab: '✦', bg: '#1B1240', fg: '#B9A6FF', c: '#8B6CFF', clase: 'Copiloto',
     tag: 'Visores 3D de las grúas KREYN en el navegador: tú eliges el color de cada pieza. Yo armé los modelos y el diseño; la IA escribió el código.',
     moves: [['', 'Colores al gusto', 'Cada pieza (pluma, carrocería, cabina…) se pinta por separado con una paleta.'],
             ['', 'Gira, acerca y explora', 'El modelo completo con luz real, en computadora y celular.'],
-            ['', 'Ligero', 'Modelos optimizados para que carguen rápido en el sitio.'],
+            ['', 'Ligero', 'Cada modelo pasa de 92 MB a menos de 7 MB para que cargue rápido hasta en celular. Ya son 28 visores publicados.'],
             ['', 'Más con IA', 'La app de producción de KREYN y el catálogo EKANN: mira Proyectos.']],
     samples: [{ live: 'https://industriasduenas.com/3d/alumax.html', src: 'media/visor-alumax.jpg', label: 'Abrir el visor y cambiar colores', cap: 'ALUMAX · visor 3D para elegir colores (en vivo)', c: '#F1E32C' }] },
 ];
 
 // ── Proyectos ───────────────────────────────────────────────────────────────
-var LIVE3D = 'https://industriasduenas.com/3d/alumax.html';
 var PROJECTS = [
   { id: 'pwa', color: '#F1E32C', kicker: 'KREYN · App interna', title: 'Sistema de producción', tools: ['web', 'ia'],
     sum: 'La app con la que trabaja la planta: órdenes de producción, inventarios, almacén con lector QR, recursos humanos, cotizaciones y más. Se instala en celulares y computadoras.',
@@ -88,16 +87,6 @@ var PROJECTS = [
       { k: 'Paso 3', t: 'Construir con IA', d: 'Le explico a la IA cómo debe funcionar cada pantalla y cada regla; ella escribe el código y yo lo reviso, lo pruebo y pido correcciones hasta que funciona.', media: { img: 'media/pwa-detalle.jpg', cap: 'Módulo Detalles Producción/Diseño' } },
       { k: 'Paso 4', t: 'Probar en el celular', d: 'Todo se prueba en celular y computadora: cámara, fotos, avisos y permisos por puesto.', media: { img: 'media/pwa-celular.jpg', phone: true } }
     ] },
-  { id: 'visores', color: '#E87D0D', kicker: 'KREYN · Sitio web', title: 'Visores 3D', tools: ['bl', 'web', 'ia'],
-    sum: 'Las grúas KREYN en 3D dentro del navegador: el cliente gira el equipo, cambia colores pieza por pieza y guarda una imagen.',
-    stats: [['28', 'visores publicados'], ['92 → 7', 'MB por modelo, ya optimizado']],
-    steps: [
-      { k: 'Paso 1', t: 'Modelar en Blender', d: 'Cada grúa se arma en Blender con sus piezas separadas por material, para que en la web se pueda pintar cada una por separado.' },
-      { k: 'Paso 2', t: 'Optimizar para la web', d: 'Un modelo de 92 MB queda en menos de 7 MB comprimiendo texturas y geometría, sin perder detalle, para que cargue rápido hasta en celular.' },
-      { k: 'Paso 3', t: 'Visor interactivo', d: 'Selector de piezas, paleta de colores, zoom, guardar imagen y versiones del equipo (por ejemplo con y sin S.R.L.).', media: { img: 'media/visor-od7000.jpg', cap: 'OD7000' } },
-      { k: 'Pruébalo', t: 'Pinta una grúa', d: 'Elige una pieza, cámbiale el color y gira el equipo.', media: { live: LIVE3D, poster: 'media/visor-alumax.jpg', label: 'Cargar visor 3D', note: 'unos 5 MB', mobileNewTab: true } }
-    ],
-    links: [['Abrir el visor en pantalla completa ↗', LIVE3D]] },
   { id: 'cj', color: '#2BB34A', kicker: 'KREYN · Animación para redes', title: 'CJ se vuelve gruero', tools: ['bl'],
     sum: 'Una animación 3D para las redes de KREYN: terminando la historia de GTA San Andreas, CJ deja las pandillas, se vuelve gruero y graba su primer vlog para presentar su nueva grúa KREYN.',
     steps: [
@@ -122,16 +111,9 @@ var PROJECTS = [
       { k: 'Paso 1', t: 'Catálogo con filtros', d: 'Barra de marcas con sus logotipos, categorías con contador, buscador y cotización directa.', media: { img: 'media/ekann-catalogo.jpg' } },
       { k: 'Paso 2', t: 'Panel de administración', d: 'Editor de productos y promociones, y una hoja de precios tipo Excel con dólar y costos, con acceso según el puesto de cada usuario.' }
     ],
-    links: [['Ver el catálogo ↗', 'https://industriasduenas.com/ekann/catalogo-accesorios.html']] },
-  { id: 'juego', color: '#F1E32C', kicker: 'KREYN · Videojuego', title: 'Kreyn Road', tools: ['web', 'ia'],
-    sum: 'Un arcade protagonizado por la grúa OD7000: esquiva patrullas, junta puntos y entra a la tabla de récords. Se juega en el navegador y en Android.',
-    steps: [
-      { k: 'Juégalo', t: 'Arranca la grúa', d: 'Flechas o W/S para moverte. En celular, con los botones de la pantalla.', media: { live: 'https://industriasduenas.com/game/', poster: 'media/juego-inicio.jpg', label: 'Jugar', note: 'con sonido' } }
-    ],
-    links: [['Jugar en pantalla completa ↗', 'https://industriasduenas.com/game/'], ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk']] }
+    links: [['Ver el catálogo ↗', 'https://industriasduenas.com/ekann/catalogo-accesorios.html']] }
 ];
 
-// Proyectos escolares (UDN 2014–2017)
 
 // ── Utilidades ──────────────────────────────────────────────────────────────
 var $ = function (s) { return document.querySelector(s); };
@@ -157,21 +139,15 @@ function playVideo(v) {
   document.addEventListener(ev, function () {
     if (sonido) return;
     sonido = true;
-    document.querySelectorAll('#sMedia video, #pjMedia video').forEach(function (v) { v.muted = false; });
+    var v = document.querySelector('#sMedia video'); if (v) v.muted = false; // en Programas: el video de la muestra
   }, true);
 });
 
-// ── Selector ────────────────────────────────────────────────────────────────
-var roster = $('#roster'), cur = -1;
-FIGHTERS.forEach(function (f, i) {
-  var b = document.createElement('button');
-  b.className = 'slot'; b.setAttribute('role', 'option'); b.setAttribute('aria-selected', 'false'); b.setAttribute('aria-label', f.name);
-  b.innerHTML = '<span class="in"><span class="mini">' + logo(f) + '</span><span class="nm">' + esc(f.id === 'web' ? 'Código' : f.name.split(' ')[0]) + '</span></span>';
-  b.addEventListener('mouseenter', function () { if (!CEL.matches) pick(i); });
-  b.addEventListener('focus', function () { pick(i); });
-  b.addEventListener('click', function () { pick(i); lock(b); });
-  roster.appendChild(b);
-});
+
+// ── Programas (programas.html): pantalla de selección ───────────────────────
+// La muestra es el fondo y se reproduce sola (video, YouTube o la página en vivo); el sitio toma su color (--c).
+// "Pantalla completa" quita los paneles para verla entera.
+var roster = $('#roster'), cur = -1, baTimer = 0, sel = $('#programas');
 function pick(i) {
   if (i === cur) return;
   cur = i;
@@ -181,192 +157,104 @@ function pick(i) {
   $('#fClass').textContent = 'Clase · ' + f.clase;
   $('#fName').textContent = f.name;
   $('#fTag').textContent = f.tag;
-  $('#fMoves').innerHTML = f.moves.map(function (m) { return '<li><span class="combo">' + esc(m[0]) + '</span><b>' + esc(m[1]) + '</b><span>' + esc(m[2]) + '</span></li>'; }).join('');
-  si = 0;
-  showSample(true);
+  $('#fMoves').innerHTML = f.moves.map(function (m) { return '<li><b>' + esc(m[1]) + '</b><span>' + esc(m[2]) + '</span></li>'; }).join('');
+  showSample();
 }
-var si = 0, baTimer = 0; // muestra visible del programa elegido · alternado del antes/después
-var sel = $('#habilidades');
-// La muestra es el fondo de la pantalla (el sitio toma sus colores) y el logo del programa es el "personaje".
-// "Ver" la pone al frente completa (sin recortar), con controles; los demos en vivo y YouTube se cargan ahí.
-function showSample(enter) {
-  var f = FIGHTERS[cur], sm = f.samples[si], n = f.samples.length;
+function showSample() {
+  var f = FIGHTERS[cur], sm = f.samples[0];
   clearInterval(baTimer);
   sel.classList.remove('viewing');
   document.body.style.setProperty('--c', sm.c || f.c);
+  var frame = function (src) { return '<iframe src="' + esc(src) + '" title="' + esc(sm.cap) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; };
   $('#sMedia').innerHTML = sm.before
     ? (function (lb) {
         return '<div class="ba"><img src="' + esc(sm.before) + '" alt="' + esc(lb[0] + ': ' + sm.cap) + '">' +
           '<img class="after" src="' + esc(sm.src) + '" alt="' + esc(lb[1] + ': ' + sm.cap) + '">' +
           '<div class="ba-tabs"><button data-v="0">' + esc(lb[0]) + '</button><button data-v="1">' + esc(lb[1]) + '</button></div></div>';
       })(sm.labels || ['Antes', 'Después'])
-    : sm.video
-    ? '<video src="' + esc(sm.video) + '" poster="' + esc(sm.src) + '" muted loop playsinline></video>'
+    : sm.live ? frame(sm.live)
+    : sm.youtube ? frame('https://www.youtube-nocookie.com/embed/' + sm.youtube + '?autoplay=1&mute=1&loop=1&playlist=' + sm.youtube + '&rel=0&playsinline=1')
+    : sm.video ? '<video src="' + esc(sm.video) + '" poster="' + esc(sm.src) + '" muted loop playsinline autoplay></video>'
     : '<img src="' + esc(sm.src) + '" alt="' + esc(sm.cap) + '">';
-  $('#sVer').textContent = '▶ ' + (sm.label || (sm.youtube || sm.video ? 'Ver video' : 'Ver muestra'));
   var cr = $('#sCredit'); cr.hidden = !sm.credit; cr.textContent = sm.credit || '';
   var sl = $('#sLink'); sl.hidden = !sm.link; if (sm.link) { sl.textContent = sm.link[0] + ' ↗'; sl.href = sm.link[1]; }
   playVideo($('#sMedia video'));
   var ba = $('#sMedia .ba');
   if (ba) {
-    // alterna solo cada 2.5 s; al tocar un botón se queda en el que se eligió
+    // alterna cada 2.5 s; al tocar un botón se queda en el que se eligió
     var setBA = function (v) { ba.classList.toggle('show-after', !!v); ba.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.v === +v); }); };
     var v = 0; setBA(0);
     baTimer = setInterval(function () { v = 1 - v; setBA(v); }, 2500);
     ba.querySelectorAll('button').forEach(function (b) { b.onclick = function () { clearInterval(baTimer); setBA(+b.dataset.v); }; });
   }
   $('#sCap').textContent = sm.cap;
-  var nav = $('#sNav'); nav.hidden = n < 2; $('#sCount').textContent = (si + 1) + ' / ' + n;
-  var hero = $('#logoBig');
-  if (enter) { hero.classList.remove('enter'); void hero.offsetWidth; hero.classList.add('enter'); }
 }
-$('#sVer').onclick = function () {
-  var sm = FIGHTERS[cur].samples[si], box = $('#sMedia');
-  sel.classList.add('viewing');
-  var src = sm.live || (sm.youtube && 'https://www.youtube-nocookie.com/embed/' + sm.youtube + '?autoplay=1&rel=0');
-  if (src) box.insertAdjacentHTML('beforeend', '<iframe src="' + esc(src) + '" title="' + esc(sm.cap) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>');
-  var vd = box.querySelector('video'); if (vd) vd.controls = true;
-  var im = box.querySelector(':scope > img');
-  if (im && sm.full) { im.style.cursor = 'zoom-in'; im.onclick = function () { openLb([sm.full], sm.cap + (sm.credit ? ' — ' + sm.credit : '')); }; }
-  $('#sClose').focus();
-};
-function closeView() { if (sel.classList.contains('viewing')) showSample(); }
-$('#sClose').onclick = closeView;
-document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !document.querySelector('dialog[open]')) closeView(); });
-function lock(b) { b.classList.remove('locked'); void b.offsetWidth; b.classList.add('locked'); }
-pick(0);
-FIGHTERS.forEach(function (f) { new Image().src = f.samples[0].src; });
-
-// ── Habilidades | Proyectos: el menú de arriba alterna entre las dos vistas, cada una a pantalla completa ──
-function showView(id) {
-  document.querySelectorAll('nav a[data-v]').forEach(function (a) {
-    var on = a.dataset.v === id;
-    if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
-    document.getElementById(a.dataset.v).hidden = !on;
+if (roster) {
+  FIGHTERS.forEach(function (f, i) {
+    var b = document.createElement('button');
+    b.className = 'slot'; b.setAttribute('role', 'option'); b.setAttribute('aria-selected', 'false'); b.setAttribute('aria-label', f.name);
+    b.innerHTML = '<span class="mini">' + logo(f) + '</span><span class="nm">' + esc(f.id === 'web' ? 'Código' : f.name.split(' ')[0]) + '</span>';
+    b.addEventListener('click', function () { pick(i); });
+    b.addEventListener('focus', function () { pick(i); });
+    roster.appendChild(b);
   });
-  // al salir de una vista se detienen sus videos y demos en vivo
-  document.querySelectorAll('.view[hidden] video').forEach(function (v) { v.pause(); });
-  if (id === 'habilidades') { playVideo($('#sMedia video')); if ($('#sMedia iframe')) showSample(); }
-  else { var v = $('#pjMedia video'); if (v) v.play().catch(function () {}); if ($('#sMedia iframe')) showSample(); }
-  document.body.style.setProperty('--c', id === 'proyectos' ? PROJECTS[pj].color : (FIGHTERS[cur].samples[si].c || FIGHTERS[cur].c));
-  scrollTo(0, 0);
-}
-addEventListener('hashchange', function () { showView(location.hash === '#proyectos' ? 'proyectos' : 'habilidades'); });
-$('#sPrev').onclick = function () { var n = FIGHTERS[cur].samples.length; si = (si - 1 + n) % n; showSample(); };
-$('#sNext').onclick = function () { var n = FIGHTERS[cur].samples.length; si = (si + 1) % n; showSample(); };
-
-
-// ── Proyectos: slider (un proyecto y un paso a la vez) ──────────────────────
-// Pestañas = proyectos · barras de abajo = pasos · ‹ › / deslizar / teclado avanzan.
-// Al terminar los pasos de un proyecto, "siguiente" pasa al proyecto que sigue.
-
-var pj = 0, st = 0, busy = false;
-var tabs = $('#pjTabs'), mediaBox = $('#pjMedia'), stepBox = $('#pjStep'), bars = $('#pjBars');
-tabs.innerHTML = PROJECTS.map(function (p, i) {
-  return '<button role="tab" style="--pc:' + p.color + '" data-i="' + i + '"><span>' + String(i + 1).padStart(2, '0') + '</span>' + esc(p.title) + '</button>';
-}).join('');
-tabs.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) goProject(+b.dataset.i, 0); });
-
-function mediaHtml(m, p, s) {
-  if (m.live) return '<div class="live" data-src="' + esc(m.live) + '"' + (m.mobileNewTab ? ' data-newtab="1"' : '') + '>' +
-    '<img class="poster" src="' + esc(m.poster) + '" alt=""><button class="play"><i>▶</i>' + esc(m.label) + '<small>' + esc(m.note || '') + '</small></button></div>';
-  if (m.video) return '<div class="frame' + (m.phone ? ' phone' : '') + '"><video muted loop playsinline' + (m.controls ? ' controls' : '') +
-    ' src="' + esc(m.video) + '" poster="' + esc(m.poster || '') + '"></video></div>';
-  return '<button class="frame zoom' + (m.phone ? ' phone' : '') + '" data-imgs="' + esc((m.gallery || [m.img]).join('|')) + '" data-txt="' + esc(s.t + ' — ' + s.d) + '">' +
-    '<img src="' + esc(m.img) + '" alt="' + esc(m.cap || s.t) + '">' + (m.cap ? '<span class="cap">' + esc(m.cap) + '</span>' : '') +
-    (m.gallery && m.gallery.length > 1 ? '<span class="count">' + m.gallery.length + ' imágenes</span>' : '') + '</button>';
-}
-// Paso sin captura: tarjeta gráfica con el número y título del paso
-function cardHtml(p, s) {
-  return '<div class="frame card-step" style="--pc:' + p.color + '"><span class="big">' + esc(s.k) + '</span><span class="ttl">' + esc(s.t) + '</span></div>';
-}
-
-function render(dir) {
-  var p = PROJECTS[pj], s = p.steps[st];
-  document.getElementById('proyectos').style.setProperty('--pc', p.color);
-  if (!document.getElementById('proyectos').hidden) document.body.style.setProperty('--c', p.color);
-  tabs.querySelectorAll('button').forEach(function (b, i) {
-    b.setAttribute('aria-selected', i === pj);
-    if (i === pj) tabs.scrollTo({ left: b.offsetLeft - (tabs.clientWidth - b.offsetWidth) / 2, behavior: 'smooth' }); // scrollIntoView movía toda la página
-  });
-  $('#pjKicker').textContent = p.kicker;
-  $('#pjTitle').textContent = p.title;
-  $('#pjSum').textContent = p.sum;
-  $('#pjTools').innerHTML = p.tools.map(function (id) { var f = byId(FIGHTERS, id); return '<span title="' + esc(f.name) + '">' + logo(f) + '</span>'; }).join('');
-  $('#pjStats').innerHTML = (p.stats || []).map(function (x) { return '<div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('');
-  stepBox.innerHTML = '<span class="k">' + esc(s.k) + '</span><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p>';
-  mediaBox.innerHTML = s.media ? mediaHtml(s.media, p, s) : cardHtml(p, s);
-  $('#pjLinks').innerHTML = (p.links || []).map(function (l) { return '<a href="' + esc(l[1]) + '" target="_blank" rel="noopener"' + (/\.apk$/.test(l[1]) ? ' download' : '') + '>' + esc(l[0]) + '</a>'; }).join('');
-  $('#pjCount').textContent = (st + 1) + ' / ' + p.steps.length;
-  bars.innerHTML = p.steps.map(function (_, i) { return '<button aria-label="Paso ' + (i + 1) + '" class="' + (i < st ? 'done' : i === st ? 'on' : '') + '" data-i="' + i + '"></button>'; }).join('');
-  [mediaBox, stepBox].forEach(function (el) { el.classList.remove('from-l', 'from-r'); void el.offsetWidth; if (dir) el.classList.add(dir > 0 ? 'from-r' : 'from-l'); });
-  playVideo(mediaBox.querySelector('video'));
-  wireMedia();
-}
-bars.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { var i = +b.dataset.i; if (i !== st) { var d = i > st ? 1 : -1; st = i; render(d); } } });
-
-// Cambio de proyecto: cortina de "nivel" con el número y el nombre
-var curtain = $('#pjCurtain');
-function goProject(i, step, dir) {
-  if (busy || i === pj && step === st) return;
-  var p = PROJECTS[i];
-  if (i === pj || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { pj = i; st = step; render(dir || 0); return; }
-  busy = true;
-  curtain.style.setProperty('--pc', p.color);
-  curtain.querySelector('b').textContent = 'Nivel ' + String(i + 1).padStart(2, '0');
-  curtain.querySelector('span').textContent = p.title;
-  curtain.classList.remove('run'); void curtain.offsetWidth; curtain.classList.add('run');
-  setTimeout(function () { pj = i; st = step; render(0); }, 380);
-  setTimeout(function () { busy = false; }, 900);
-}
-function next() {
-  var p = PROJECTS[pj];
-  if (st < p.steps.length - 1) { st++; render(1); }
-  else goProject((pj + 1) % PROJECTS.length, 0, 1);
-}
-function prev() {
-  if (st > 0) { st--; render(-1); }
-  else { var i = (pj - 1 + PROJECTS.length) % PROJECTS.length; goProject(i, PROJECTS[i].steps.length - 1, -1); }
-}
-$('#pjNext').onclick = next;
-$('#pjPrev').onclick = prev;
-
-// Deslizar con el dedo sobre la imagen
-var sx = null, sy = 0;
-mediaBox.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
-mediaBox.addEventListener('touchend', function (e) {
-  if (sx === null) return;
-  var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
-  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5 && !mediaBox.querySelector('iframe')) (dx < 0 ? next : prev)();
-});
-
-// Demos en vivo (visor 3D / juego): se cargan al presionar; al cambiar de paso se descargan solas (render reemplaza el HTML)
-function wireMedia() {
-  var play = mediaBox.querySelector('.live .play');
-  if (play) play.onclick = function () {
-    var box = play.parentNode;
-    if (box.dataset.newtab && CEL.matches) { window.open(box.dataset.src, '_blank', 'noopener'); return; }
-    var f = document.createElement('iframe');
-    f.src = box.dataset.src; f.allow = 'fullscreen; autoplay'; f.allowFullscreen = true; f.title = play.textContent;
-    box.innerHTML = ''; box.appendChild(f);
+  $('#sVer').onclick = function () {
+    var sm = FIGHTERS[cur].samples[0];
+    sel.classList.add('viewing');
+    var vd = $('#sMedia video'); if (vd) vd.controls = true;
+    var im = $('#sMedia > img');
+    if (im && sm.full) { im.style.cursor = 'zoom-in'; im.onclick = function () { openLb([sm.full], sm.cap + (sm.credit ? ' — ' + sm.credit : '')); }; }
+    $('#sClose').focus();
   };
-  var z = mediaBox.querySelector('.zoom');
-  if (z) z.onclick = function () { openLb(z.dataset.imgs.split('|'), z.dataset.txt); };
+  // al volver no se recarga la muestra (el video o el juego siguen donde iban)
+  var closeView = function () {
+    sel.classList.remove('viewing');
+    var vd = $('#sMedia video'); if (vd) vd.controls = false;
+  };
+  $('#sClose').onclick = closeView;
+  document.addEventListener('keydown', function (e) {
+    if (document.querySelector('dialog[open]') || /INPUT|TEXTAREA/.test(document.activeElement.tagName)) return;
+    if (e.key === 'Escape') closeView();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      roster.children[(cur + (e.key === 'ArrowRight' ? 1 : -1) + FIGHTERS.length) % FIGHTERS.length].focus();
+    }
+  });
+  pick(0);
 }
 
-// Teclado: ← → mueve el selector o el slider, según cuál esté a la vista
-document.addEventListener('keydown', function (e) {
-  if (document.querySelector('dialog[open]') || (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft')) return;
-  if (/INPUT|TEXTAREA/.test(document.activeElement.tagName)) return;
-  if (!$('#habilidades').hidden) {
-    e.preventDefault();
-    var n = (cur + (e.key === 'ArrowRight' ? 1 : -1) + FIGHTERS.length) % FIGHTERS.length;
-    roster.children[n].focus();
-  } else { e.preventDefault(); (e.key === 'ArrowRight' ? next : prev)(); }
-});
-
-render(0);
-showView(location.hash === '#proyectos' ? 'proyectos' : 'habilidades');
+// ── Proyectos (proyectos.html): pestañas arriba; el proyecto elegido se ve completo, paso por paso ──
+var pjOne = $('#pjOne');
+function stepMedia(m, s) {
+  if (m.video) return '<div class="frame' + (m.phone ? ' phone' : '') + '"><video src="' + esc(m.video) + '" poster="' + esc(m.poster || '') + '" muted loop playsinline autoplay controls></video></div>';
+  return '<button class="frame zoom' + (m.phone ? ' phone' : '') + '" data-img="' + esc(m.img) + '" data-txt="' + esc(s.t + ' — ' + s.d) + '">' +
+    '<img src="' + esc(m.img) + '" alt="' + esc(m.cap || s.t) + '" loading="lazy">' + (m.cap ? '<span class="cap">' + esc(m.cap) + '</span>' : '') + '</button>';
+}
+function showProject(id) {
+  var p = byId(PROJECTS, id) || PROJECTS[0];
+  document.body.style.setProperty('--c', p.color);
+  $('#pjTabs').querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.id === p.id); });
+  pjOne.innerHTML =
+    '<header class="pj-head"><p class="kicker cond">' + esc(p.kicker) + '</p><h1>' + esc(p.title) + '</h1><p class="pj-sum">' + esc(p.sum) + '</p>' +
+      '<div class="pj-meta"><div class="pj-tools">' + p.tools.map(function (t) { var f = byId(FIGHTERS, t); return '<span title="' + esc(f.name) + '">' + logo(f) + '</span>'; }).join('') + '</div>' +
+      '<div class="pj-stats">' + (p.stats || []).map(function (x) { return '<div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div></div>' +
+      '<div class="pj-links">' + (p.links || []).map(function (l) { return '<a href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + esc(l[0]) + '</a>'; }).join('') + '</div></header>' +
+    '<ol class="pj-steps">' + p.steps.map(function (s) {
+      return '<li class="pj-st' + (s.media ? '' : ' solo') + '">' + (s.media ? stepMedia(s.media, s) : '') +
+        '<div class="txt"><span class="k">' + esc(s.k) + '</span><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div></li>';
+    }).join('') + '</ol>';
+  pjOne.querySelectorAll('.zoom').forEach(function (z) { z.onclick = function () { openLb([z.dataset.img], z.dataset.txt); }; });
+}
+if (pjOne) {
+  $('#pjTabs').innerHTML = PROJECTS.map(function (p) {
+    return '<button role="tab" style="--pc:' + p.color + '" data-id="' + p.id + '">' + esc(p.title) + '</button>';
+  }).join('');
+  $('#pjTabs').onclick = function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    history.replaceState(null, '', '#' + b.dataset.id); showProject(b.dataset.id); scrollTo(0, 0);
+  };
+  showProject(location.hash.slice(1));
+}
 
 // ── Visor de imágenes ───────────────────────────────────────────────────────
 var lb = $('#lb'), lbImgs = [], lbIdx = 0, lbTxt = '';
@@ -378,8 +266,10 @@ function showLb() {
   $('#pv').hidden = $('#nx').hidden = lbImgs.length < 2;
 }
 function stepLb(d) { lbIdx = (lbIdx + d + lbImgs.length) % lbImgs.length; showLb(); }
-$('#pv').onclick = function () { stepLb(-1); };
-$('#nx').onclick = function () { stepLb(1); };
-$('#cl').onclick = function () { lb.close(); };
-lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
-lb.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') stepLb(1); if (e.key === 'ArrowLeft') stepLb(-1); });
+if (lb) {
+  $('#pv').onclick = function () { stepLb(-1); };
+  $('#nx').onclick = function () { stepLb(1); };
+  $('#cl').onclick = function () { lb.close(); };
+  lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+  lb.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') stepLb(1); if (e.key === 'ArrowLeft') stepLb(-1); });
+}

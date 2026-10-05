@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Programas — Rubén Omar Núñez</title>
+<meta name="description" content="Los programas que usa Rubén Omar Núñez y un trabajo hecho con cada uno.">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20261005b">
+<link rel="stylesheet" href="inicio.css?v=20261006e">
+</head>
+<body class="arcade">
+<nav><div class="wrap"><a class="me" href="index.html">R.O.N.</a><a href="index.html">Inicio</a><a href="programas.html" aria-current="page">Programas</a><a href="proyectos.html">Proyectos</a><a href="galeria.html">Galería</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></nav>
+
+<section class="view select" id="programas" aria-label="Programas">
+  <div class="bg" id="sMedia"></div>
+  <button class="close" id="sClose" aria-label="Volver al selector">✕ Volver</button>
+  <div class="side">
+    <span class="plogo" id="logoBig" aria-hidden="true"></span>
+    <p class="kicker cond" id="fClass"></p>
+    <p class="scap" id="sCap"></p>
+    <button class="ver" id="sVer">⤢ Pantalla completa</button>
+    <p class="credit" id="sCredit" hidden></p>
+    <a class="slink" id="sLink" target="_blank" rel="noopener" hidden></a>
+  </div>
+  <div class="card" aria-live="polite">
+    <h2 id="fName"></h2>
+    <p class="tagline" id="fTag"></p>
+    <ol class="moves" id="fMoves"></ol>
+  </div>
+  <div class="roster" id="roster" role="listbox" aria-label="Programas"></div>
+</section>
+
+<dialog id="lb" aria-label="Imagen"><img alt=""><p></p><div class="lbn"><button id="pv">Anterior</button><button id="nx">Siguiente</button><span id="ct"></span><button id="cl">Cerrar</button></div></dialog>
+<script src="inicio.js?v=20261006e"></script>
+</body>
+</html>

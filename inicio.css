@@ -11,8 +11,7 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .cond{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
 
 /* ══ VISTAS: Habilidades | Proyectos (el menú de arriba las alterna; cada una ocupa la pantalla) ══ */
-.view{height:calc(100svh - 50px);min-height:560px;padding-top:18px}
-.view[hidden]{display:none}
+.view{height:calc(100svh - 50px);min-height:560px}
 
 /* ══ SELECTOR (pantalla de selección de personaje) ══
    Fondo = la muestra (imagen o video) · al centro, el logo del programa en grande (el "personaje")
@@ -22,6 +21,7 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
   display:grid;grid-template-columns:minmax(220px,24%) 1fr minmax(300px,30%);grid-template-rows:1fr auto;gap:16px clamp(16px,2.5vw,36px)}
 .select .bg{position:absolute;inset:0;z-index:-2;background:#000}
 .select .bg>img,.select .bg>video,.select .bg>.ba,.select .bg>iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.select .bg iframe{background:#000}
 .select .bg img,.select .bg video{object-fit:cover;filter:brightness(.62) saturate(1.15);transform:scale(1.04);transition:filter .4s,transform .4s}
 /* velo: oscurece los costados (texto) y abajo (fila), y tiñe todo con el color de la muestra */
 .select::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;transition:opacity .3s,background .4s;
@@ -36,12 +36,8 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .ba-tabs button{border:0;background:#2A2A33;color:#fff;font:800 13px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:7px 11px;cursor:pointer}
 .ba-tabs button[aria-pressed="true"]{background:var(--c);color:#000}
 
-/* el "personaje": logo del programa en grande, con brillo del color de la muestra */
-.fighter{grid-column:2;grid-row:1;align-self:center;justify-self:center;width:min(40vh,340px);aspect-ratio:1;
-  filter:drop-shadow(0 0 40px color-mix(in srgb,var(--c) 70%,transparent)) drop-shadow(0 24px 30px rgba(0,0,0,.7));animation:float 5s ease-in-out infinite;transition:opacity .3s}
-.fighter.enter{animation:slam .45s cubic-bezier(.2,1.4,.4,1),float 5s ease-in-out .45s infinite}
-@keyframes float{50%{transform:translateY(-12px)}}
-@keyframes slam{from{transform:scale(.6);opacity:0}}
+/* logo del programa: a la izquierda, junto al texto (el centro queda libre para la muestra) */
+.plogo{width:clamp(84px,9vw,128px);aspect-ratio:1;display:block;filter:drop-shadow(0 0 26px color-mix(in srgb,var(--c) 60%,transparent)) drop-shadow(0 12px 20px rgba(0,0,0,.7))}
 
 .side{grid-column:1;grid-row:1;align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:14px;transition:opacity .3s}
 .side .kicker{margin:0;color:var(--c)}
@@ -87,112 +83,52 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .select.viewing .bg img,.select.viewing .bg video{object-fit:contain;filter:none;transform:none}
 .select.viewing .ba-tabs{display:flex}
 .select.viewing .bg iframe{z-index:1;background:#fff}
-.select.viewing :is(.fighter,.side,.card,.roster){opacity:0;pointer-events:none}
+.select.viewing :is(.side,.card,.roster){opacity:0;pointer-events:none}
 
 /* logos de los programas (tiles) */
 .tile{width:100%;height:100%;display:block}
 
-/* ══ PROYECTOS: slider de una pantalla ══
-   --pc = color del proyecto activo (lo pone inicio.js). */
-.projects{--pc:#F1E32C;position:relative;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;isolation:isolate}
-.projects::before{content:"";position:absolute;inset:0;z-index:-1;transition:background .5s;
-  background:radial-gradient(55% 70% at 78% 50%,color-mix(in srgb,var(--pc) 16%,transparent),transparent 70%),var(--bg)}
-.pj-tabs{display:flex;gap:8px;padding:16px 24px 0;overflow-x:auto;scrollbar-width:none;justify-content:center}
+/* ══ PROYECTOS (proyectos.html): pestañas arriba; el proyecto elegido completo, sin slider ══
+   --c = color del proyecto activo (lo pone inicio.js). */
+.pjp{max-width:1300px;margin:0 auto;padding:22px clamp(16px,3vw,40px) 60px}
+.pj-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
 .pj-tabs::-webkit-scrollbar{display:none}
-.pj-tabs button{flex:none;display:flex;align-items:center;gap:8px;background:#15151C;border:2px solid #2C2C36;color:#C9C9D2;padding:9px 14px;cursor:pointer;
-  font:800 14px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;transition:background .2s,border-color .2s,color .2s}
-.pj-tabs button span{color:var(--pc);font-family:"Anton",sans-serif;font-weight:400;font-size:15px}
+.pj-tabs button{flex:none;background:#15151C;border:2px solid #2C2C36;color:#C9C9D2;padding:10px 16px;cursor:pointer;
+  font:800 15px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;transition:background .2s,border-color .2s,color .2s}
 .pj-tabs button[aria-selected="true"]{background:var(--pc);border-color:var(--pc);color:#000}
-.pj-tabs button[aria-selected="true"] span{color:#000}
 @media (hover:hover){.pj-tabs button:hover{border-color:var(--pc)}}
-
-.pj-stage{display:grid;grid-template-columns:minmax(320px,.9fr) 1.5fr;gap:clamp(20px,3vw,48px);align-items:center;padding:14px clamp(20px,4vw,56px);min-height:0}
-.pj-info{min-height:0;max-height:100%;overflow:auto;scrollbar-width:none;padding-right:4px}
-.pj-info::-webkit-scrollbar{display:none}
-.pj-kicker{margin:0;color:var(--pc);font-size:14px}
-.pj-info h2{font:400 clamp(34px,4.6vw,64px)/.92 "Anton",sans-serif;text-transform:uppercase;margin:4px 0 10px}
-.pj-sum{margin:0;color:#B9B9C2;font-size:15px;line-height:1.55;max-width:52ch}
-.pj-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin:14px 0 0}
+.pj-head{margin:30px 0 34px;max-width:900px}
+.pj-head .kicker{margin:0;color:var(--c)}
+.pj-head h1{font:400 clamp(40px,6vw,80px)/.95 "Anton",sans-serif;text-transform:uppercase;margin:6px 0 14px}
+.pj-sum{margin:0;color:#C9C9D2;font-size:18px;line-height:1.55;max-width:65ch}
+.pj-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 30px;margin-top:18px}
 .pj-tools{display:flex;gap:6px}
-.pj-tools span{width:30px;height:30px;display:block}
-.pj-stats{display:flex;gap:22px}
-.pj-stats b{display:block;font:400 26px/1 "Anton",sans-serif;color:var(--pc)}
-.pj-stats span{font-size:12px;color:var(--dim)}
-.pj-step{margin-top:22px;border-left:4px solid var(--pc);padding:4px 0 4px 18px}
-.pj-step .k{font:800 14px/1 "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--pc)}
-.pj-step h3{font:400 clamp(24px,2.6vw,36px)/1 "Anton",sans-serif;text-transform:uppercase;margin:6px 0 8px}
-.pj-step p{margin:0;color:#DADAE0;max-width:52ch}
-.pj-nav{display:flex;align-items:center;gap:14px;margin-top:20px}
-.pj-nav button{width:52px;height:52px;border:0;background:var(--pc);color:#000;font:400 30px/1 "Anton",sans-serif;cursor:pointer;transition:transform .12s}
-.pj-nav button:active{transform:scale(.92)}
-.pj-nav span{font:400 20px/1 "Anton",sans-serif;color:var(--dim);min-width:56px;text-align:center}
-.pj-links{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:14px}
-.pj-links a{color:var(--dim);font-size:14px;font-weight:500}
-@media (hover:hover){.pj-links a:hover{color:var(--w)}}
-
-.pj-media{height:100%;min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
-.frame{position:relative;max-width:100%;max-height:100%;border-radius:16px;overflow:hidden;background:#0E0E13;border:1px solid #2A2A33;box-shadow:0 30px 70px rgba(0,0,0,.6);padding:0}
-.frame img,.frame video{display:block;max-width:100%;max-height:calc(100svh - 230px);width:auto;height:auto;object-fit:contain}
+.pj-tools span{width:34px;height:34px;display:block}
+.pj-stats{display:flex;gap:26px}
+.pj-stats b{display:block;font:400 30px/1 "Anton",sans-serif;color:var(--c)}
+.pj-stats span{font-size:13px;color:var(--dim)}
+.pj-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pj-links:empty{display:none}
+.pj-links a{background:var(--c);color:#000;text-decoration:none;font:800 15px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;padding:11px 15px}
+/* pasos: cada uno con su imagen o video a un lado (se alternan) */
+.pj-steps{list-style:none;margin:0;padding:0;display:grid;gap:40px}
+.pj-st{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(20px,3vw,44px);align-items:center}
+.pj-st:nth-child(even) .frame{order:2}
+.pj-st.solo{grid-template-columns:1fr;max-width:760px}
+.pj-st .txt{border-left:4px solid var(--c);padding:4px 0 4px 18px}
+.pj-st .k{font:800 14px/1 "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.pj-st h3{font:400 clamp(26px,2.8vw,38px)/1 "Anton",sans-serif;text-transform:uppercase;margin:6px 0 10px}
+.pj-st p{margin:0;color:#DADAE0;max-width:58ch}
+.frame{position:relative;justify-self:center;max-width:100%;border-radius:14px;overflow:hidden;background:#0E0E13;border:1px solid #2A2A33;box-shadow:0 24px 60px rgba(0,0,0,.55);padding:0}
+.frame img,.frame video{display:block;max-width:100%;max-height:72svh;width:auto;height:auto}
 .frame.phone{border-radius:28px;border:7px solid #1C1C22}
-.frame.phone img,.frame.phone video{max-height:calc(100svh - 240px)}
 button.frame{cursor:zoom-in;font:inherit;color:inherit}
-.frame .cap,.frame .count{position:absolute;bottom:12px;background:rgba(0,0,0,.78);color:#fff;font:700 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:4px}
-.frame .cap{left:12px}.frame .count{right:12px;background:var(--pc);color:#000}
-.card-step{width:min(100%,760px);aspect-ratio:16/10;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,3vw,40px);
-  background:radial-gradient(80% 90% at 85% 15%,color-mix(in srgb,var(--pc) 45%,transparent),transparent 65%),#101016}
-.card-step .big{background:none;padding:0;transform:none;word-break:normal;font:400 clamp(60px,9vw,130px)/.85 "Anton",sans-serif;text-transform:uppercase;color:transparent;-webkit-text-stroke:2px var(--pc)}
-.card-step .ttl{font:400 clamp(26px,3vw,44px)/1 "Anton",sans-serif;text-transform:uppercase;margin-top:10px}
-.live{width:100%;height:100%;max-height:calc(100svh - 200px);border-radius:16px;overflow:hidden;position:relative;background:#0B0B0F;border:1px solid #26262E}
-.live iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.live .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
-.live .play{position:absolute;inset:0;width:100%;border:0;background:none;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-  font:400 clamp(24px,3vw,38px)/1 "Anton",sans-serif;text-transform:uppercase;text-shadow:3px 3px 0 #000}
-.live .play i{font-style:normal;width:88px;height:88px;border-radius:50%;background:var(--pc);color:#000;display:grid;place-items:center;font-size:34px;text-shadow:none}
-.live .play small{font:600 14px/1 "Barlow",sans-serif;text-transform:none;text-shadow:none;color:#ddd}
-
-/* barras de pasos (tipo historias) */
-.pj-bars{display:flex;gap:6px;padding:0 clamp(20px,4vw,56px) 18px}
-.pj-bars button{flex:1;height:6px;border:0;padding:0;background:#2A2A33;cursor:pointer;border-radius:3px;transition:background .3s}
-.pj-bars button.done{background:color-mix(in srgb,var(--pc) 55%,#2A2A33)}
-.pj-bars button.on{background:var(--pc)}
-
-/* transición entre pasos */
-.from-r{animation:fromR .45s cubic-bezier(.2,.8,.2,1)}
-.from-l{animation:fromL .45s cubic-bezier(.2,.8,.2,1)}
-@keyframes fromR{from{opacity:0;transform:translateX(50px)}}
-@keyframes fromL{from{opacity:0;transform:translateX(-50px)}}
-/* cortina de "nivel" entre proyectos */
-.pj-curtain{position:absolute;inset:0;z-index:5;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-  background:var(--pc);color:#000;clip-path:inset(0 100% 0 0)}
-.pj-curtain b{font:400 clamp(22px,3vw,34px)/1 "Anton",sans-serif;text-transform:uppercase;letter-spacing:.06em}
-.pj-curtain span{font:400 clamp(44px,8vw,110px)/.9 "Anton",sans-serif;text-transform:uppercase;text-align:center;padding:0 20px}
-.pj-curtain.run{animation:curtain .9s cubic-bezier(.7,0,.3,1)}
-@keyframes curtain{0%{clip-path:inset(0 100% 0 0)}40%,55%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 100%)}}
-
-/* pantallas bajitas (laptop 1366×768): todo más compacto para que el paso quepa sin scroll */
-@media (min-width:901px) and (max-height:820px){
-  .pj-info h2{font-size:clamp(30px,3.6vw,46px)}
-  .pj-sum{font-size:14px;-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
-  .pj-meta{margin-top:8px}.pj-stats b{font-size:22px}
-  .pj-step{margin-top:12px}.pj-step h3{font-size:26px}.pj-step p{font-size:15px;line-height:1.5}
-  .pj-nav{margin-top:12px}.pj-nav button{width:44px;height:44px;font-size:24px}
-}
+.frame .cap{position:absolute;left:12px;bottom:12px;background:#000;color:#fff;font:700 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:6px 9px}
 @media (max-width:900px){
-  .projects{height:auto;min-height:0;display:block;padding-bottom:10px}
-  .pj-tabs{justify-content:flex-start;padding:14px 14px 4px}
-  .pj-stage{grid-template-columns:1fr;padding:10px 14px;gap:16px}
-  .pj-media{order:-1;height:auto}
-  .frame img,.frame video{max-height:56svh}
-  .frame.phone img,.frame.phone video{max-height:60svh}
-  .live{height:240px;max-height:none}
-  .pj-info{overflow:visible;max-height:none}
-  .pj-info h2{font-size:34px}
-  .pj-sum{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14px}
-  .pj-step{margin-top:14px}
-  .pj-bars{padding:6px 14px 12px}
-  .card-step{aspect-ratio:16/11}
+  .pj-st{grid-template-columns:1fr}
+  .pj-st:nth-child(even) .frame{order:0}
+  .frame img,.frame video{max-height:64svh}
 }
-@media (prefers-reduced-motion:reduce){.from-r,.from-l,.pj-curtain.run{animation:none}}
 
 dialog#lb{border:1px solid #333;border-radius:16px;background:#0E0E12;color:var(--w);padding:14px;max-width:min(96vw,1300px);width:100%}
 dialog#lb::backdrop{background:rgba(0,0,0,.9)}
@@ -210,16 +146,16 @@ dialog#lb::backdrop{background:rgba(0,0,0,.9)}
   .select{display:flex;flex-direction:column;gap:14px;padding:0 14px 24px}
   .select .bg{bottom:auto;height:58svh}
   .select::after{bottom:auto;height:58svh;background:linear-gradient(transparent 45%,var(--bg)),radial-gradient(60% 50% at 50% 45%,color-mix(in srgb,var(--c) 30%,transparent),transparent 75%),color-mix(in srgb,var(--c) 14%,transparent)}
-  .fighter{order:-1;width:min(36vw,170px);height:min(36vw,170px);margin:26px auto 0;flex:none}
+  .side{padding-top:22px}
+  .plogo{width:72px}
   .roster{order:1}.card{order:2}
   .side{gap:10px}
   .roster{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
   .slot{width:auto}.slot .mini{width:36px;height:36px}.slot .nm{font-size:10px}
   .select.viewing{min-height:70svh}
   .select.viewing .bg{height:70svh}
-  .select.viewing :is(.fighter,.side,.card,.roster){display:none}
+  .select.viewing :is(.side,.card,.roster){display:none}
 }
-@media (prefers-reduced-motion:reduce){.fighter,.fighter.enter{animation:none}}
 
 /* ══ GALERÍA (galeria.html) ══ */
 .gal{max-width:1300px;margin:0 auto;padding:34px clamp(16px,3vw,40px) 60px}
@@ -240,3 +176,21 @@ dialog#lb::backdrop{background:rgba(0,0,0,.9)}
 .pieza .live-link b{position:absolute;left:10px;bottom:10px;background:#000;font:800 13px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.08em;padding:7px 10px}
 .pieza h2{font:400 24px/1.1 "Anton",sans-serif;text-transform:uppercase;margin:12px 0 4px}
 .pieza p{margin:0;color:#A9A9B2;font-size:15px;line-height:1.5}
+
+/* ══ INICIO / SOBRE MÍ (index.html): un párrafo por renglón, cada uno con su imagen (se alternan lados) ══ */
+.yo{max-width:1200px;margin:0 auto;padding:40px clamp(16px,3vw,40px) 70px}
+.yo-head{margin-bottom:40px}
+.yo-head .kicker{margin:0;color:var(--p1)}
+.yo-head h1{font:400 clamp(44px,7vw,96px)/.95 "Anton",sans-serif;text-transform:uppercase;margin:6px 0 0}
+.yo-head h2{font:800 20px/1 "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:14px 0 0}
+.yo-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,4vw,56px);align-items:center;margin:0 0 48px}
+.yo-row:nth-of-type(even) img{order:2}
+.yo-row img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:12px;border-top:4px solid var(--c)}
+.yo-row h3{font:400 clamp(28px,3vw,40px)/1 "Anton",sans-serif;text-transform:uppercase;margin:0 0 12px;color:var(--c)}
+.yo-row p{margin:0;color:#D6D6DC;font-size:18px;line-height:1.65;max-width:56ch}
+.yo-go{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px!important}
+.yo-go a{background:var(--c);color:#000;text-decoration:none;font:800 15px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.05em;padding:12px 16px}
+@media (max-width:900px){
+  .yo-row{grid-template-columns:1fr;gap:16px}
+  .yo-row:nth-of-type(even) img{order:0}
+}
