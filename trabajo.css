@@ -1,0 +1,155 @@
+/* trabajo.css — identidad ATREVIDA (Habilidades + Proyectos).
+   Código de color: verde ácido = lo que hago yo · violeta = lo que hace la IA. */
+body.bold{--k:#060606;--k2:#101010;--k3:#1B1B1B;--w:#F2F2EE;--dim:#8B8B86;--yo:#C4FF2E;--ia:#8B6CFF;
+  background:var(--k);color:var(--w);font:400 17px/1.6 "Space Grotesk",system-ui,sans-serif;overflow-x:hidden}
+.bold nav{background:rgba(6,6,6,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #222}
+.bold nav a{font:500 14px/1 "JetBrains Mono",monospace;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.bold nav a.me{font:800 18px/1 "Unbounded",sans-serif;color:var(--yo);letter-spacing:0}
+.bold nav a[aria-current="page"]{color:var(--w);text-decoration:none;box-shadow:inset 0 -2px 0 var(--yo)}
+@media (hover:hover){.bold nav a:hover{color:var(--w)}}
+.bold h1,.bold h2,.bold h3{font-family:"Unbounded",sans-serif;font-weight:800;line-height:.95;letter-spacing:-.02em}
+.bold footer{border-top:1px solid #222;color:var(--dim)}
+.mono{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.yo{color:var(--yo)}.ia{color:var(--ia)}
+
+/* ── Hero ── */
+.t-hero{padding:72px 0 0;position:relative}
+.t-hero h1{font-size:clamp(54px,12.5vw,176px);text-transform:uppercase}
+.t-hero h1 span{display:block}
+.t-hero h1 .out{color:transparent;-webkit-text-stroke:2px var(--w)}
+.t-hero h1 .ac{color:var(--yo)}
+.t-hero h1 sup{font-size:.28em;color:var(--ia);vertical-align:top;margin-left:.08em;-webkit-text-stroke:0}
+.t-hero .note{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:end;margin-top:28px}
+.t-hero .note p{max-width:44ch;margin:0;font-size:19px}
+.t-hero .note b{color:var(--ia);font-weight:500}
+.marquee{margin-top:56px;border-block:1px solid #222;overflow:hidden;white-space:nowrap;background:var(--k2)}
+.marquee div{display:inline-block;padding:16px 0;font:700 clamp(18px,2.6vw,28px)/1 "Unbounded",sans-serif;animation:mq 32s linear infinite}
+.marquee i{font-style:normal;color:var(--yo);margin:0 22px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ── Secciones ── */
+.t-sec{padding:110px 0 0}
+.t-sec>.wrap>header{display:grid;grid-template-columns:auto 1fr;gap:6px 26px;align-items:end;margin-bottom:44px}
+.t-sec .num{font:800 clamp(56px,9vw,120px)/.8 "Unbounded",sans-serif;color:transparent;-webkit-text-stroke:1.5px #3A3A3A;grid-row:span 2}
+.t-sec h2{font-size:clamp(30px,5.4vw,64px);text-transform:uppercase}
+.t-sec header .mono{grid-column:2}
+
+/* ── Caso PWA ── */
+.case{background:var(--k2);border:1px solid #222;border-radius:28px;padding:clamp(24px,4vw,52px);position:relative;overflow:hidden}
+.case::before{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,255,46,.18),transparent 65%);pointer-events:none}
+.case h3{font-size:clamp(26px,3.6vw,44px);max-width:20ch;text-transform:none;font-weight:700;letter-spacing:-.01em;line-height:1.05}
+.case .lead{font-size:19px;max-width:62ch;color:#D8D8D2;margin:18px 0 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:40px 0}
+.stat{border-top:2px solid var(--yo);padding-top:12px}
+.stat b{display:block;font:800 clamp(34px,4.6vw,58px)/1 "Unbounded",sans-serif}
+.stat span{font-size:14px;color:var(--dim)}
+.stat.ia{border-color:var(--ia)}.stat.ia b{color:var(--ia)}
+.mods{display:flex;flex-wrap:wrap;gap:10px}
+.mod{position:relative;border:1px solid #333;border-radius:999px;padding:9px 16px;font:500 14px/1 "Space Grotesk",sans-serif;background:var(--k);cursor:default;transition:background .2s,color .2s,border-color .2s}
+.mod small{display:none;color:var(--k);font-size:12px;margin-top:5px} /* oculto sin ocupar ancho; aparece al pasar el cursor o tocar */
+@media (hover:hover){.mod:hover{background:var(--yo);color:var(--k);border-color:var(--yo)}.mod:hover small{display:block}}
+.mod:focus{background:var(--yo);color:var(--k);border-color:var(--yo);outline:0}.mod:focus small{display:block}
+
+/* Yo + IA */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.side{border-radius:22px;padding:26px}
+.side.me{background:var(--yo);color:var(--k)}
+.side.ai{background:var(--ia);color:#fff}
+.side h4{font:800 22px/1 "Unbounded",sans-serif;margin:0 0 14px;text-transform:uppercase}
+.side ul{margin:0;padding-left:18px}
+.side li{margin:6px 0}
+.honest{margin:22px 0 0;color:var(--dim);max-width:70ch;font-size:15px}
+
+/* ── Otros proyectos actuales: filas grandes ── */
+.rows{border-top:1px solid #2A2A2A}
+.row{display:grid;grid-template-columns:70px 1fr auto;gap:10px 28px;align-items:baseline;padding:28px 0;border-bottom:1px solid #2A2A2A;position:relative}
+.row .n{font:500 14px/1 "JetBrains Mono",monospace;color:var(--dim)}
+.row h3{font-size:clamp(22px,3.4vw,40px);font-weight:700;text-transform:none;letter-spacing:-.01em;transition:color .2s,transform .3s}
+.row p{grid-column:2;margin:6px 0 0;color:#C9C9C3;max-width:62ch}
+.tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.tags span{font:500 12px/1 "JetBrains Mono",monospace;border:1px solid #3A3A3A;border-radius:999px;padding:6px 10px;color:var(--dim);white-space:nowrap}
+.tags span.ia{border-color:var(--ia);color:var(--ia)}
+@media (hover:hover){.row:hover h3{color:var(--yo);transform:translateX(10px)}}
+
+/* ── Herramientas: línea de producción ── */
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;counter-reset:st}
+.pipe::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:linear-gradient(90deg,var(--yo) 0 78%,var(--ia) 92%)}
+.stage{padding:0 14px 0 0;position:relative;counter-increment:st}
+.stage .dot{width:56px;height:56px;border-radius:50%;background:var(--k);border:2px solid var(--yo);display:grid;place-items:center;
+  font:800 18px/1 "Unbounded",sans-serif;color:var(--yo);position:relative;z-index:1}
+.stage.ai .dot{border-color:var(--ia);color:var(--ia)}
+.stage h3{font-size:19px;margin:20px 0 14px;text-transform:uppercase}
+.tool{border-left:2px solid #2A2A2A;padding:4px 0 4px 12px;margin-bottom:14px}
+.tool b{display:flex;align-items:center;gap:8px;font:600 16px/1.2 "Space Grotesk",sans-serif}
+.tool b i{font:700 11px/1 "JetBrains Mono",monospace;font-style:normal;width:26px;height:26px;display:grid;place-items:center;border-radius:6px;flex:none}
+.tool span{display:block;font-size:14px;color:var(--dim);margin-top:4px;line-height:1.45}
+
+/* ── Pruébalo: visor 3D y juego, se cargan al presionar ── */
+.live{display:grid;gap:26px}
+.lv-card{background:var(--k2);border:1px solid #222;border-radius:28px;padding:clamp(20px,3.4vw,40px)}
+.lv-head{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:end;margin-bottom:22px}
+.lv-head h3{font-size:clamp(28px,4vw,48px);text-transform:uppercase;margin:6px 0 10px}
+.lv-head p:not(.mono){margin:0;max-width:52ch;color:#C9C9C3}
+.lv-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.lv-tabs button{background:var(--k);color:var(--w);border:1px solid #333;border-radius:999px;padding:10px 16px;font:600 13px/1 "JetBrains Mono",monospace;cursor:pointer}
+.lv-tabs button[aria-pressed="true"]{background:var(--yo);color:var(--k);border-color:var(--yo)}
+.lv-frame{position:relative;height:min(78vh,680px);min-height:620px;border-radius:20px;overflow:hidden;background:
+  radial-gradient(circle at 70% 30%,rgba(196,255,46,.14),transparent 55%),repeating-linear-gradient(90deg,#141414 0 1px,transparent 1px 48px),repeating-linear-gradient(0deg,#141414 0 1px,transparent 1px 48px),#0B0B0B}
+.lv-frame.game{background:#F1E32C;min-height:560px}
+.lv-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lv-load{position:absolute;inset:0;width:100%;border:0;background:none;color:var(--w);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  font:800 clamp(20px,3vw,30px)/1 "Unbounded",sans-serif;text-transform:uppercase}
+.lv-load span{width:84px;height:84px;border-radius:50%;background:var(--yo);color:var(--k);display:grid;place-items:center;font-size:30px;transition:transform .2s}
+.lv-load small{font:500 13px/1 "JetBrains Mono",monospace;text-transform:none;color:var(--dim)}
+.game .lv-load{color:#111}.game .lv-load small{color:#4A4410}.game .lv-load span{background:#111;color:#F1E32C}
+.lv-load img{max-width:min(70%,420px);height:auto;margin-bottom:8px}
+@media (hover:hover){.lv-load:hover span{transform:scale(1.08)}}
+.lv-links{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:14px}
+.lv-links a{font:500 14px/1.4 "Space Grotesk",sans-serif;color:var(--dim)}
+@media (hover:hover){.lv-links a:hover{color:var(--yo)}}
+
+/* ── Archivo escolar: tira horizontal ── */
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,32%);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;
+  scrollbar-color:var(--yo) #1A1A1A}
+.shot{scroll-snap-align:start;background:none;border:0;padding:0;color:inherit;text-align:left;cursor:pointer;font:inherit}
+.shot .img{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--k3)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.85) contrast(1.05);transition:filter .35s,transform .5s}
+@media (hover:hover){.shot:hover img{filter:none;transform:scale(1.04)}}
+.shot:focus-visible img{filter:none}
+.shot h3{font-size:18px;font-weight:700;text-transform:none;letter-spacing:0;margin-top:14px}
+.shot span{font-size:13px;color:var(--dim)}
+.strip-hint{margin-top:10px}
+
+dialog#lb{border:1px solid #333;border-radius:20px;background:var(--k2);color:var(--w);padding:16px;max-width:min(94vw,1000px);width:100%}
+dialog#lb::backdrop{background:rgba(0,0,0,.9)}
+#lb img{display:block;max-width:100%;max-height:74vh;margin:0 auto;object-fit:contain;border-radius:10px}
+#lb p{margin:12px 0 0}
+.lbn{display:flex;gap:10px;margin-top:12px;align-items:center}
+.lbn button{background:var(--yo);color:var(--k);border:0;border-radius:999px;padding:9px 18px;font:600 14px/1 "Space Grotesk",sans-serif;cursor:pointer}
+.lbn #cl{background:var(--k3);color:var(--w)}
+.lbn span{margin-left:auto;color:var(--dim)}
+
+.t-end{padding:120px 0 110px;text-align:center}
+.t-end h2{font-size:clamp(34px,7vw,90px);text-transform:uppercase}
+.t-end a{display:inline-block;margin-top:28px;background:var(--yo);color:var(--k);text-decoration:none;font:700 16px/1 "Unbounded",sans-serif;padding:18px 28px;border-radius:999px}
+
+/* aparición al hacer scroll (solo si hay JS y movimiento permitido) */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .pipe{grid-template-columns:1fr;gap:6px}
+  .pipe::before{left:27px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,var(--yo) 0 78%,var(--ia) 92%)}
+  .stage{display:grid;grid-template-columns:56px 1fr;gap:0 16px;padding:0 0 18px}
+  .stage h3{margin:16px 0 10px}
+  .stage .tools{grid-column:2}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr}
+  .row{grid-template-columns:44px 1fr}
+  .tags{grid-column:2;justify-content:flex-start}
+  .strip{grid-auto-columns:78%}
+  .lv-frame{height:300px;min-height:0} /* en celular el visor se abre aparte: aquí solo va el botón */
+  .lv-frame.game{height:78vh;min-height:480px}
+}
+@media (prefers-reduced-motion:reduce){.marquee div{animation:none}.js .rv{opacity:1;transform:none}}

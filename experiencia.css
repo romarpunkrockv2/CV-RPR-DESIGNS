@@ -1,0 +1,56 @@
+/* experiencia.css — identidad FORMAL: papel claro, serif editorial, sin ruido ni rotaciones.
+   Se imprime limpio como CV (botón "Imprimir / guardar PDF"). */
+body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;background:var(--paper2);color:var(--ink2);
+  font:400 16px/1.7 "Inter",system-ui,sans-serif}
+.formal nav{background:var(--paper2);border-bottom:1px solid var(--rule)}
+.formal nav a{font:500 14px/1 "Inter",sans-serif;color:var(--soft);letter-spacing:.02em}
+.formal nav a.me{font:600 20px/1 "Fraunces",Georgia,serif;color:var(--ink2);letter-spacing:0}
+.formal nav a[aria-current="page"]{color:var(--ink2);text-decoration:none;box-shadow:inset 0 -2px 0 var(--acid)}
+@media (hover:hover){.formal nav a:hover{color:var(--ink2)}}
+.formal h1,.formal h2,.formal h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.15}
+.formal footer{border-top:1px solid var(--rule);color:var(--soft)}
+
+.cv{max-width:920px;padding-top:64px;padding-bottom:96px}
+.cv-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;border-bottom:2px solid var(--ink2);padding-bottom:28px}
+.cv-head h1{font-size:clamp(38px,6vw,60px);font-weight:500;letter-spacing:-.01em}
+.cv-head .role{margin:10px 0 0;color:var(--soft);font-size:18px}
+.cv-head .contact{text-align:right;font-size:14px;color:var(--soft);line-height:1.8}
+.cv-head .contact a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule)}
+.summary{font:400 20px/1.6 "Fraunces",Georgia,serif;margin:32px 0 8px;max-width:62ch}
+.print{margin-top:18px;background:none;border:1px solid var(--ink2);color:var(--ink2);font:500 14px/1 "Inter",sans-serif;padding:11px 18px;cursor:pointer;border-radius:2px}
+@media (hover:hover){.print:hover{background:var(--ink2);color:var(--paper2)}}
+
+.block{margin-top:56px}
+.block>h2{font-size:13px;font-family:"Inter",sans-serif;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);
+  border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:8px}
+.job{display:grid;grid-template-columns:190px 1fr;gap:28px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.job:last-child{border-bottom:0}
+.job time{font-size:14px;color:var(--soft);padding-top:4px}
+.job h3{font-size:22px}
+.job .co{color:var(--soft);margin:2px 0 8px}
+.job p{margin:0;max-width:62ch}
+.job ul{margin:10px 0 0;padding-left:18px;max-width:64ch}
+.job li{margin:4px 0}
+.job li::marker{color:#6C8F00}
+.job.current{position:relative}
+.job.current h3::after{content:"Actual";font:600 11px/1 "Inter",sans-serif;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--acid);color:#141414;padding:5px 8px;border-radius:2px;margin-left:10px;vertical-align:4px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 40px;margin-top:18px}
+.cols h3{font-size:17px;margin-bottom:4px}
+.cols p{margin:0;color:var(--soft);font-size:15px}
+
+@media (max-width:720px){
+  .cv{padding-top:40px}
+  .cv-head{grid-template-columns:1fr}
+  .cv-head .contact{text-align:left}
+  .job{grid-template-columns:1fr;gap:4px}
+}
+@media print{
+  nav,footer,.print{display:none!important}
+  body.formal{background:#fff;font-size:11pt}
+  .cv{padding:0;max-width:none}
+  .block{margin-top:22px;break-inside:auto}
+  .job{break-inside:avoid;padding:10px 0}
+  .job.current h3::after{border:1px solid #141414}
+  a{text-decoration:none}
+}
