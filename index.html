@@ -7,36 +7,33 @@
 <meta name="description" content="Rubén Omar Núñez: encargado de marketing y diseñador gráfico en KREYN. Elige una habilidad y mira cómo se hizo cada proyecto.">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=20261005b">
-<link rel="stylesheet" href="inicio.css?v=20261006a">
+<link rel="stylesheet" href="inicio.css?v=20261006d">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body class="arcade">
-<nav><div class="wrap"><a class="me" href="index.html">R.O.N.</a><a href="#habilidades" aria-current="page">Inicio</a><a href="#proyectos">Proyectos</a><a href="sobre-mi.html">Sobre mí</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></nav>
+<nav><div class="wrap"><a class="me" href="index.html">R.O.N.</a><a href="#habilidades" data-v="habilidades" aria-current="page">Habilidades</a><a href="#proyectos" data-v="proyectos">Proyectos</a><a href="galeria.html">Galería</a><a href="sobre-mi.html">Sobre mí</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></nav>
 
-<div class="vtabs" role="tablist" aria-label="Secciones">
-  <button role="tab" id="tab-hab" data-v="habilidades" aria-selected="true">Habilidades</button>
-  <button role="tab" id="tab-pro" data-v="proyectos" aria-selected="false">Proyectos</button>
-</div>
-
-<section class="view select" id="habilidades" aria-labelledby="tab-hab">
-  <div class="stage">
-    <figure class="sample" id="sample">
-      <div class="smedia" id="sMedia"></div>
-      <figcaption><span id="sCap"></span>
-        <span class="snav" id="sNav" hidden><button id="sPrev" aria-label="Muestra anterior">‹</button><span id="sCount"></span><button id="sNext" aria-label="Siguiente muestra">›</button></span></figcaption>
-    </figure>
-    <div class="card" aria-live="polite">
-      <div class="card-head"><span class="badge" id="logoBig"></span><div><p class="kicker cond" id="fClass"></p><h2 id="fName"></h2></div></div>
-      <p class="tagline" id="fTag"></p>
-      <p class="credit" id="sCredit" hidden></p>
-      <a class="slink" id="sLink" target="_blank" rel="noopener" hidden></a>
-      <ol class="moves" id="fMoves"></ol>
-    </div>
+<section class="view select" id="habilidades" aria-label="Habilidades">
+  <div class="bg" id="sMedia"></div>
+  <button class="close" id="sClose" aria-label="Volver al selector">✕ Volver</button>
+  <div class="side">
+    <p class="kicker cond" id="fClass"></p>
+    <p class="scap" id="sCap"></p>
+    <button class="ver" id="sVer"></button>
+    <span class="snav" id="sNav" hidden><button id="sPrev" aria-label="Muestra anterior">‹</button><span id="sCount"></span><button id="sNext" aria-label="Siguiente muestra">›</button></span>
+    <p class="credit" id="sCredit" hidden></p>
+    <a class="slink" id="sLink" target="_blank" rel="noopener" hidden></a>
+  </div>
+  <div class="fighter" id="logoBig" aria-hidden="true"></div>
+  <div class="card" aria-live="polite">
+    <h2 id="fName"></h2>
+    <p class="tagline" id="fTag"></p>
+    <ol class="moves" id="fMoves"></ol>
   </div>
   <div class="roster" id="roster" role="listbox" aria-label="Programas"></div>
 </section>
 
-<section class="view projects" id="proyectos" aria-labelledby="tab-pro" hidden>
+<section class="view projects" id="proyectos" aria-label="Proyectos" hidden>
   <div class="pj-tabs" id="pjTabs" role="tablist" aria-label="Proyectos"></div>
   <div class="pj-stage">
     <div class="pj-info">
@@ -55,6 +52,6 @@
 </section>
 
 <dialog id="lb" aria-label="Imagen"><img alt=""><p></p><div class="lbn"><button id="pv">Anterior</button><button id="nx">Siguiente</button><span id="ct"></span><button id="cl">Cerrar</button></div></dialog>
-<script src="inicio.js?v=20261006a"></script>
+<script src="inicio.js?v=20261006d"></script>
 </body>
 </html>
