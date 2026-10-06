@@ -18,6 +18,20 @@ que lo llama con el número de `?v=` actualizado.
 
 `sobre-mi.html`, `habilidades.html` y `trabajo.html` solo redirigen a las páginas nuevas (para enlaces viejos).
 
+## Regla de diseño: cada página con un estilo único
+
+Cada página lleva un **diseño gráfico propio y distinto** al de las demás, para mostrar la variedad
+de estilos que me gustan. No se repite la estética entre páginas ni se usa un diseño genérico.
+
+| Página | Estilo |
+|---|---|
+| Inicio | Grunge (pendiente, ver abajo) |
+| Programas | Pantalla de selección de videojuego de peleas |
+| Proyectos | Por definir: hoy comparte la base oscura de Programas |
+| Galería | Por definir: hoy comparte la base oscura de Programas |
+| Experiencia | CV formal / editorial |
+| Contacto | Por definir: hoy usa el grunge base |
+
 ## Dónde se edita cada cosa
 
 - **Programas y sus muestras:** `inicio.js` → `FIGHTERS` (una muestra por programa en `samples`).
@@ -41,6 +55,15 @@ Ahora son dibujos provisionales en `media/sobre-mi/`. Reemplazar por fotos reale
 | Este portafolio | `portafolio.svg` | Una foto tuya trabajando o un collage de trabajos |
 
 Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
+
+### Inicio con diseño grunge
+- [ ] Rediseñar Inicio (`index.html`) con estética **grunge** propia, no genérica
+      (papel roto, cinta, textura, tipografías Rubik Dirt / Special Elite como en `style.css`),
+      y con **una sola paleta**: nada de un color distinto por párrafo.
+      El texto de los 5 párrafos ya es el definitivo; solo cambia el diseño.
+
+### Estilos únicos por página
+- [ ] Darle a Proyectos, Galería y Contacto su propio estilo (hoy se parecen a otras páginas).
 
 ### Otros
 - [ ] Foto tuya para Inicio (opcional).

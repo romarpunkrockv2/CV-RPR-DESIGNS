@@ -164,7 +164,7 @@ function showSample() {
   var f = FIGHTERS[cur], sm = f.samples[0];
   clearInterval(baTimer);
   sel.classList.remove('viewing');
-  document.body.style.setProperty('--c', sm.c || f.c);
+  document.body.style.setProperty('--c', f.c); // el color del programa, no el de la muestra
   var frame = function (src) { return '<iframe src="' + esc(src) + '" title="' + esc(sm.cap) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; };
   $('#sMedia').innerHTML = sm.before
     ? (function (lb) {
