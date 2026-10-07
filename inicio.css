@@ -15,18 +15,20 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 
 /* ══ SELECTOR (pantalla de selección de personaje) ══
    Fondo = la muestra (imagen o video) · al centro, el logo del programa en grande (el "personaje")
-   · a la izquierda la muestra y sus botones · a la derecha la ficha · abajo la fila de programas.
+   · a la derecha un solo panel (.panel): arriba logo + título + botón (.side), abajo la ficha (.card) · abajo la fila de programas.
    --c = color de la muestra visible (si no trae uno, el del programa). */
 .select{position:relative;isolation:isolate;overflow:hidden;padding:24px clamp(16px,3vw,44px) 16px;
-  display:grid;grid-template-columns:minmax(220px,24%) 1fr minmax(300px,30%);grid-template-rows:1fr auto;gap:16px clamp(16px,2.5vw,36px)}
+  display:grid;grid-template-columns:1fr minmax(240px,21%);grid-template-rows:1fr auto;gap:16px clamp(16px,2.5vw,36px)}
+.panel{grid-column:2;grid-row:1;align-self:center;max-height:100%;overflow:auto;scrollbar-width:none;display:flex;flex-direction:column;gap:12px}
+.panel::-webkit-scrollbar{display:none}
 .select .bg{position:absolute;inset:0;z-index:-2;background:#000}
 .select .bg>img,.select .bg>video,.select .bg>.ba,.select .bg>iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .select .bg iframe{background:#000}
 .select .bg img,.select .bg video{object-fit:cover}
 /* velo: oscurece los costados (texto) y abajo (fila), y tiñe todo con el color de la muestra */
 .select::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;transition:opacity .3s,background .4s;
-  background:linear-gradient(90deg,rgba(0,0,0,.72),transparent 32%,transparent 62%,rgba(0,0,0,.78)),
-    linear-gradient(transparent 58%,rgba(0,0,0,.92))
+  background:linear-gradient(90deg,rgba(0,0,0,.36),transparent 32%,transparent 62%,rgba(0,0,0,.39)),
+    linear-gradient(transparent 58%,rgba(0,0,0,.46))
 }
 .ba img{position:absolute;inset:0;width:100%;height:100%;transition:opacity .6s}
 .ba img.after{opacity:0}
@@ -36,33 +38,33 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .ba-tabs button[aria-pressed="true"]{background:var(--c);color:#000}
 
 /* logo del programa: a la izquierda, junto al texto (el centro queda libre para la muestra) */
-.plogo{width:clamp(84px,9vw,128px);aspect-ratio:1;display:block;filter:drop-shadow(0 10px 18px rgba(0,0,0,.7))}
+.plogo{width:clamp(42px,4.5vw,64px);aspect-ratio:1;display:block;filter:drop-shadow(0 10px 18px rgba(0,0,0,.7))}
 
-.side{grid-column:1;grid-row:1;align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:14px;transition:opacity .3s}
-.side .kicker{margin:0;color:var(--c)}
-.scap{margin:0;font:400 clamp(26px,2.6vw,40px)/1.05 "Anton",sans-serif;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.8)}
-.ver{border:0;background:var(--c);color:#000;cursor:pointer;padding:12px 18px;font:800 16px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em}
+.side{display:flex;flex-direction:column;align-items:flex-start;gap:7px;transition:opacity .3s}
+.side .kicker{margin:0;color:var(--c);font-size:12px}
+.scap{margin:0;font:400 clamp(15px,1.3vw,20px)/1.1 "Anton",sans-serif;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.ver{border:0;background:var(--c);color:#000;cursor:pointer;padding:6px 9px;font:800 12px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em}
 @media (hover:hover){.ver:hover{background:var(--w)}}
 .snav{display:flex;align-items:center;gap:6px}
 .snav[hidden]{display:none}
 .snav button{width:36px;height:32px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font:400 22px/1 "Anton",sans-serif;cursor:pointer}
 .snav span{color:#CFCFD6;font:700 14px/1 "Barlow Condensed",sans-serif;min-width:40px;text-align:center}
-.side .credit{margin:0;font-size:13px;color:#B9B9C2;max-width:34ch}
+.side .credit{margin:0;font-size:12px;color:#B9B9C2;max-width:34ch}
 .side .credit[hidden],.slink[hidden]{display:none}
 .slink{color:var(--w);font:700 14px/1.3 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;text-decoration:underline;text-decoration-color:var(--c);text-underline-offset:4px}
 
 /* ficha (como el panel de estadísticas del juego) */
-.card{grid-column:3;grid-row:1;align-self:center;max-height:100%;overflow:auto;scrollbar-width:none;transition:opacity .3s;
+.card{flex:none;transition:opacity .3s;
   background:rgba(4,8,12,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14)}
 .card::-webkit-scrollbar{display:none}
-.card h2{font:400 clamp(28px,2.6vw,40px)/1 "Anton",sans-serif;text-transform:uppercase;margin:0;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.14)}
-.card .tagline{margin:0;padding:12px 18px;color:#DADAE0;font-size:15px;line-height:1.5;border-bottom:1px solid rgba(255,255,255,.14)}
+.card h2{font:400 clamp(15px,1.3vw,20px)/1 "Anton",sans-serif;text-transform:uppercase;margin:0;padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.14)}
+.card .tagline{margin:0;padding:6px 9px;color:#DADAE0;font-size:13px;line-height:1.45;border-bottom:1px solid rgba(255,255,255,.14)}
 .moves{list-style:none;margin:0;padding:0}
-.moves li{padding:9px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.moves li{padding:5px 9px;border-bottom:1px solid rgba(255,255,255,.08)}
 .moves li:last-child{border-bottom:0}
 .moves .combo{display:none}
-.moves b{display:block;font:800 16px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.03em;color:var(--c)}
-.moves span{color:#C2C2CA;font-size:14px;line-height:1.4}
+.moves b{display:block;font:800 13px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.03em;color:var(--c)}
+.moves span{color:#C2C2CA;font-size:12px;line-height:1.35}
 
 /* fila de programas: el elegido a color, los demás en gris (como en los juegos) */
 .roster{grid-column:1 / -1;grid-row:2;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;transition:opacity .3s}
@@ -82,7 +84,7 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .select.viewing .bg img,.select.viewing .bg video{object-fit:contain;filter:none;transform:none}
 .select.viewing .ba-tabs{display:flex}
 .select.viewing .bg iframe{z-index:1;background:#fff}
-.select.viewing :is(.side,.card,.roster){opacity:0;pointer-events:none}
+.select.viewing :is(.panel,.roster){opacity:0;pointer-events:none}
 
 /* logos de los programas (tiles) */
 .tile{width:100%;height:100%;display:block}
@@ -143,6 +145,7 @@ dialog#lb::backdrop{background:rgba(0,0,0,.9)}
   /* celular: arriba la muestra de fondo con el logo encima → botones → fila de programas → ficha */
   .view{height:auto;min-height:0}
   .select{display:flex;flex-direction:column;gap:14px;padding:0 14px 24px}
+  .panel{display:contents}
   .select .bg{bottom:auto;height:58svh}
   .select::after{bottom:auto;height:58svh;background:linear-gradient(transparent 45%,var(--bg))}
   .side{padding-top:22px}
