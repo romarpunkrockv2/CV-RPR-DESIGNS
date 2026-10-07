@@ -5,7 +5,7 @@
   --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scrollbar-gutter:stable} /* reserva el espacio del scroll: la barra no se mueve entre páginas con y sin scroll */
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Special Elite","Courier New",monospace;position:relative;padding-bottom:env(safe-area-inset-bottom,0px)}
 body.grunge::after{content:"";position:fixed;inset:0;background:var(--grain);opacity:.09;pointer-events:none;z-index:9}
 h1,h2,h3{font-family:"Rubik Dirt","Impact",sans-serif;font-weight:400;margin:0;line-height:.95}
@@ -14,12 +14,18 @@ img{max-width:100%}
 :focus-visible{outline:3px dashed var(--acid);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-/* ── Nav compartido (cada página lo recolorea) ── */
-nav{position:sticky;top:0;z-index:20;background:#000;border-bottom:2px solid var(--acid);padding-top:env(safe-area-inset-top,0px)}
-nav .wrap{display:flex;gap:22px;align-items:center;padding-top:12px;padding-bottom:12px;overflow-x:auto;scrollbar-width:none}
+/* ── Nav compartido ──
+   LAYOUT igual en todas las páginas (el de Inicio): alto fijo --nav-h, ancho 1320 px, logo a la izquierda, enlaces a la derecha.
+   Cada página solo cambia el DISEÑO (colores, letra, subrayado, borde); no tocar alto/ancho/padding en sus CSS. */
+:root{--nav-h:60px}
+nav{position:sticky;top:0;z-index:20;background:#000;border-bottom:2px solid var(--acid);padding-top:env(safe-area-inset-top,0px);
+  box-sizing:border-box;height:calc(var(--nav-h) + env(safe-area-inset-top,0px))} /* el borde va DENTRO del alto: mide igual con borde de 1, 2 o 3 px */
+nav .wrap{display:flex;gap:22px;align-items:center;height:100%;max-width:1320px;padding:0 clamp(16px,3vw,40px);overflow-x:auto;scrollbar-width:none}
 nav .wrap::-webkit-scrollbar{display:none}
 nav a{text-decoration:none;white-space:nowrap;font:400 15px/1 "Special Elite","Courier New",monospace}
+nav a,.arcade nav a,.formal nav a,.zine nav a{font-size:15px} /* mismo tamaño en todas: cada una conserva su letra */
 nav a.me{font:400 20px/1 "Rubik Dirt","Impact",sans-serif;color:var(--acid);margin-right:auto}
+nav a.me{flex:none}
 nav a.me img{display:block;height:34px;width:auto}
 nav a[aria-current="page"]{color:var(--acid);text-decoration:underline wavy}
 @media (hover:hover){nav a:hover{color:var(--acid)}}

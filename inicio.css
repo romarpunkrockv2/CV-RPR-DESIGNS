@@ -11,7 +11,7 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .cond{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
 
 /* ══ VISTAS: Habilidades | Proyectos (el menú de arriba las alterna; cada una ocupa la pantalla) ══ */
-.view{height:calc(100svh - 50px);min-height:560px}
+.view{height:calc(100svh - var(--nav-h));min-height:560px}
 
 /* ══ SELECTOR (pantalla de selección de personaje) ══
    Fondo = la muestra (imagen o video) · al centro, el logo del programa en grande (el "personaje")
@@ -191,8 +191,7 @@ body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--
 body.zine::before{content:"";position:fixed;inset:0;z-index:-1;background:url("media/fondo.jpg") center/cover no-repeat;opacity:.45}
 @media (prefers-reduced-motion:reduce){.bg-video{display:none}}
 body.zine::after{content:"";position:fixed;inset:0;background:var(--grain);opacity:.06;pointer-events:none;z-index:9}
-.zine nav{background:var(--bg);border-bottom:3px solid var(--paper)}
-.zine nav .wrap{max-width:1320px;padding-left:clamp(16px,3vw,40px);padding-right:clamp(16px,3vw,40px)}
+.zine nav{background:var(--bg);border-bottom:2px solid var(--paper)}
 .zine nav a{color:var(--paper)}
 .zine nav a[aria-current="page"]{color:var(--acc)}
 @media (hover:hover){.zine nav a:hover{color:var(--acc)}}
