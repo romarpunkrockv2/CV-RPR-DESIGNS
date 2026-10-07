@@ -8,7 +8,7 @@
 <meta name="description" content="RPR Designs, portafolio de diseño gráfico: música, videojuegos, cine y tecnología, y el trabajo que sale de ahí.">
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=20261007">
-<link rel="stylesheet" href="inicio.css?v=20261007n">
+<link rel="stylesheet" href="inicio.css?v=20261007s">
 </head>
 <body class="zine">
 <nav><div class="wrap"><a class="me" href="index.html"><img src="media/rpr-designs-sm.png?v=2" alt="RPR Designs" width="40" height="38"></a><a href="index.html" aria-current="page">Inicio</a><a href="programas.html">Programas</a><a href="proyectos.html">Proyectos</a><a href="galeria.html">Galería</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></nav>
@@ -16,11 +16,10 @@
 <main class="yo">
   <header class="yo-head">
     <div class="yo-name">
-      <h1><img src="media/rpr-designs.png?v=2" alt="RPR Designs" width="800" height="768"></h1>
-      <h2 class="ransom" aria-label="Sobre mí"><span>S</span><span>O</span><span>B</span><span>R</span><span>E</span><span class="sp"></span><span>M</span><span>Í</span></h2>
+      <h1 class="ransom" aria-label="Sobre mí"><span>S</span><span>O</span><span>B</span><span>R</span><span>E</span><span class="sp"></span><span>M</span><span>Í</span></h1>
     </div>
-    <!-- Tu foto (informal): media/romar-warpedtour.jpeg, horizontal 4:3 -->
-    <figure class="yo-foto"><img src="media/romar-warpedtour.jpeg" alt="Yo en el Warped Tour, Ciudad de México"><figcaption>Warped Tour, CDMX</figcaption></figure>
+    <!-- Tu foto (informal): media/romar-warpedtour.jpeg, horizontal 4:3. Fotos "arrancadas": figure.roto > span.papel > img -->
+    <figure class="yo-foto roto r1"><span class="papel"><img src="media/romar-warpedtour.jpeg" alt="Yo en el Warped Tour, Ciudad de México"></span><figcaption>Warped Tour, CDMX</figcaption></figure>
     <!-- Descripción personal (texto tuyo, 2026-10-07) -->
     <div class="yo-intro">
       <p class="lead">Me considero una persona curiosa, creativa e independiente. Me gusta aprender, entender cómo funcionan las cosas y no quedarme con la primera respuesta cuando algo realmente me interesa. Se me facilita aprender por mi cuenta; soy bastante autodidacta y disfruto investigar, experimentar y aprender haciendo.</p>
@@ -28,27 +27,27 @@
     </div>
   </header>
 
-  <p class="yo-sep"><span>Lo que me mueve</span></p>
+  <h2 class="ransom yo-sep" aria-label="Aficiones"><span>A</span><span>F</span><span>I</span><span>C</span><span>I</span><span>O</span><span>N</span><span>E</span><span>S</span></h2>
 
   <!-- Cada párrafo con su imagen. Las imágenes son provisionales: ver README.md -->
   <section class="yo-row">
-    <img src="media/sobre-mi/musica.svg" alt="Música" loading="lazy">
+    <figure class="roto"><span class="papel"><img src="media/sobre-mi/musica.svg" alt="Música" loading="lazy"></span></figure>
     <div><h3>Música</h3><p>Fuera del diseño, gran parte de mi tiempo gira alrededor de la música, los videojuegos, el cine y la tecnología. La música es una de mis mayores aficiones, especialmente el rock y sus diferentes variantes, y disfruto descubrir bandas, conciertos y nuevas propuestas.</p></div>
   </section>
   <section class="yo-row">
-    <img src="media/sobre-mi/videojuegos.svg" alt="Videojuegos" loading="lazy">
+    <figure class="roto"><span class="papel"><img src="media/sobre-mi/videojuegos.svg" alt="Videojuegos" loading="lazy"></span></figure>
     <div><h3>Videojuegos</h3><p>También soy un apasionado de los videojuegos y de todo lo relacionado con la cultura que los rodea. Me interesa tanto jugarlos como explorar cómo están hechos, su dirección artística, diseño de escenarios y todos los elementos que hay detrás de ellos.</p></div>
   </section>
   <section class="yo-row">
-    <img src="media/sobre-mi/tecnologia.svg" alt="Tecnología" loading="lazy">
+    <figure class="roto"><span class="papel"><img src="media/sobre-mi/tecnologia.svg" alt="Tecnología" loading="lazy"></span></figure>
     <div><h3>Tecnología</h3><p>La tecnología es otra de mis grandes curiosidades. Me gusta experimentar con diferentes dispositivos, programas y herramientas, entender cómo funcionan y encontrar nuevas formas de utilizarlos.</p></div>
   </section>
   <section class="yo-row">
-    <img src="media/sobre-mi/aprender.svg" alt="Aprender por mi cuenta" loading="lazy">
+    <figure class="roto"><span class="papel"><img src="media/sobre-mi/aprender.svg" alt="Aprender por mi cuenta" loading="lazy"></span></figure>
     <div><h3>Aprender por mi cuenta</h3><p>En general, disfruto mucho aprender por mi cuenta y meterme en temas que despiertan mi curiosidad. Me gusta pasar de una afición a otra, experimentar y convertir algunas de esas ideas en proyectos propios.</p></div>
   </section>
   <section class="yo-row">
-    <img src="media/sobre-mi/portafolio.svg" alt="Este portafolio" loading="lazy">
+    <figure class="roto"><span class="papel"><img src="media/sobre-mi/portafolio.svg" alt="Este portafolio" loading="lazy"></span></figure>
     <div><h3>Este portafolio</h3><p>Este portafolio reúne principalmente mi trabajo como diseñador, pero también representa una parte de las cosas que me gustan, me inspiran y despiertan mi curiosidad.</p>
       <p class="yo-go"><a href="programas.html">Ver programas</a><a href="proyectos.html">Ver proyectos</a></p></div>
   </section>
