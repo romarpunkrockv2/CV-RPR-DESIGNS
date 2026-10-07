@@ -67,7 +67,7 @@ Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
 - [x] Descripción personal (`.yo-intro` en `index.html`): texto tuyo. No mencionar el puesto actual: eso va en Experiencia.
 
 ### Fotos tuyas
-- [x] **Inicio (informal):** `media/sobre-mi/yo.jpeg` (Warped Tour CDMX, horizontal 4:3). Polaroid `.yo-foto` en `index.html`;
+- [x] **Inicio (informal):** `media/romar-warpedtour.jpeg` (Warped Tour CDMX, horizontal 4:3). Polaroid `.yo-foto` en `index.html`;
       se ve en B/N tipo fotocopia y a color al pasar el mouse.
 - [ ] **Experiencia (formal):** foto profesional para el CV formal (aún sin espacio en `experiencia.html`).
 
