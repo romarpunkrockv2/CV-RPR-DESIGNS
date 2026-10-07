@@ -12,7 +12,7 @@ que lo llama con el número de `?v=` actualizado.
 
 | Página | Archivo | Qué tiene |
 |---|---|---|
-| Inicio | `index.html` | Sobre mí: un párrafo por tema, cada uno con su imagen |
+| Inicio | `index.html` | Sobre mí: logo, descripción personal y un párrafo por hobby con su imagen |
 | Programas | `programas.html` | Selector tipo videojuego: una muestra por programa (de fondo, se reproduce sola) |
 | Proyectos | `proyectos.html` | Cada proyecto completo, paso por paso |
 | Galería | `galeria.html` | Trabajos extra y el archivo de la carrera (UDN 2014–2017) |
@@ -62,6 +62,9 @@ Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
 
 ### Estilos únicos por página
 - [ ] Darle a Proyectos, Galería y Contacto su propio estilo (hoy se parecen a otras páginas).
+
+### Descripción de Inicio
+- [x] Descripción personal (`.yo-intro` en `index.html`): texto tuyo. No mencionar el puesto actual: eso va en Experiencia.
 
 ### Fotos tuyas
 - [x] **Inicio (informal):** `media/sobre-mi/yo.jpeg` (Warped Tour CDMX, horizontal 4:3). Polaroid `.yo-foto` en `index.html`;
