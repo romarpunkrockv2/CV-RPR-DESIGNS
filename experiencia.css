@@ -2,7 +2,7 @@
    Se imprime limpio como CV (botón "Imprimir / guardar PDF"). */
 body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;background:var(--paper2);color:var(--ink2);
   font:400 16px/1.7 "Inter",system-ui,sans-serif}
-.formal nav{background:var(--paper2);border-bottom:1px solid var(--rule)}
+.formal nav{background:var(--paper2);border-bottom:2px solid var(--ink2)} /* raya como la de Inicio; en negro porque el papel es claro */
 .formal nav a{font:500 14px/1 "Inter",sans-serif;color:var(--soft);letter-spacing:.02em}
 .formal nav a.me{font:600 20px/1 "Fraunces",Georgia,serif;color:var(--ink2);letter-spacing:0}
 .formal nav a.me img{filter:brightness(0)} /* logo en negro: la mitad blanca no se vería sobre papel claro */

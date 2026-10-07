@@ -15,10 +15,11 @@ img{max-width:100%}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
 /* ── Nav compartido ──
-   LAYOUT igual en todas las páginas (el de Inicio): alto fijo --nav-h, ancho 1320 px, logo a la izquierda, enlaces a la derecha.
+   LAYOUT igual en todas las páginas (el de Inicio): alto fijo --nav-h, ancho 1320 px, logo a la izquierda, enlaces a la derecha,
+   raya inferior de 2 px (blanca en páginas oscuras, negra en Experiencia).
    Cada página solo cambia el DISEÑO (colores, letra, subrayado, borde); no tocar alto/ancho/padding en sus CSS. */
 :root{--nav-h:60px}
-nav{position:sticky;top:0;z-index:20;background:#000;border-bottom:2px solid var(--acid);padding-top:env(safe-area-inset-top,0px);
+nav{position:sticky;top:0;z-index:20;background:#000;border-bottom:2px solid var(--ink);padding-top:env(safe-area-inset-top,0px);
   box-sizing:border-box;height:calc(var(--nav-h) + env(safe-area-inset-top,0px))} /* el borde va DENTRO del alto: mide igual con borde de 1, 2 o 3 px */
 nav .wrap{display:flex;gap:22px;align-items:center;height:100%;max-width:1320px;padding:0 clamp(16px,3vw,40px);overflow-x:auto;scrollbar-width:none}
 nav .wrap::-webkit-scrollbar{display:none}
