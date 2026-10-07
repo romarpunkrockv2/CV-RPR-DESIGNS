@@ -20,6 +20,7 @@ nav .wrap{display:flex;gap:22px;align-items:center;padding-top:12px;padding-bott
 nav .wrap::-webkit-scrollbar{display:none}
 nav a{text-decoration:none;white-space:nowrap;font:400 15px/1 "Special Elite","Courier New",monospace}
 nav a.me{font:400 20px/1 "Rubik Dirt","Impact",sans-serif;color:var(--acid);margin-right:auto}
+nav a.me img{display:block;height:34px;width:auto}
 nav a[aria-current="page"]{color:var(--acid);text-decoration:underline wavy}
 @media (hover:hover){nav a:hover{color:var(--acid)}}
 footer{border-top:3px solid var(--ink);padding:18px 0;color:var(--mute);font-size:14px}

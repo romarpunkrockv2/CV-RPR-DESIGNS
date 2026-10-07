@@ -5,6 +5,7 @@ body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;backgr
 .formal nav{background:var(--paper2);border-bottom:1px solid var(--rule)}
 .formal nav a{font:500 14px/1 "Inter",sans-serif;color:var(--soft);letter-spacing:.02em}
 .formal nav a.me{font:600 20px/1 "Fraunces",Georgia,serif;color:var(--ink2);letter-spacing:0}
+.formal nav a.me img{filter:brightness(0)} /* logo en negro: la mitad blanca no se vería sobre papel claro */
 .formal nav a[aria-current="page"]{color:var(--ink2);text-decoration:none;box-shadow:inset 0 -2px 0 var(--acid)}
 @media (hover:hover){.formal nav a:hover{color:var(--ink2)}}
 .formal h1,.formal h2,.formal h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.15}

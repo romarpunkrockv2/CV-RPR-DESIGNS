@@ -176,20 +176,59 @@ dialog#lb::backdrop{background:rgba(0,0,0,.9)}
 .pieza h2{font:400 24px/1.1 "Anton",sans-serif;text-transform:uppercase;margin:12px 0 4px}
 .pieza p{margin:0;color:#A9A9B2;font-size:15px;line-height:1.5}
 
-/* ══ INICIO / SOBRE MÍ (index.html): un párrafo por renglón, cada uno con su imagen (se alternan lados) ══ */
-.yo{max-width:1200px;margin:0 auto;padding:40px clamp(16px,3vw,40px) 70px}
-.yo-head{margin-bottom:40px}
-.yo-head .kicker{margin:0;color:var(--p1)}
-.yo-head h1{font:400 clamp(44px,7vw,96px)/.95 "Anton",sans-serif;text-transform:uppercase;margin:6px 0 0}
-.yo-head h2{font:800 20px/1 "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:14px 0 0}
-.yo-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,4vw,56px);align-items:center;margin:0 0 48px}
+/* ══ INICIO / SOBRE MÍ (index.html): FANZINE PUNK fotocopiado ══
+   Una sola paleta: negro + papel + verde del logo (#B5D452; la variable se llama --red por historia). Hojas rotas pegadas con cinta, fotos tipo fotocopia (B/N, color al pasar el mouse),
+   anotaciones a mano (Permanent Marker). Usa la base de style.css (grano, nav, Rubik Dirt / Special Elite). */
+body.zine{--bg:#0E0D0B;--paper:#E9E3D2;--ink:#161412;--red:#B5D452;--acid:var(--red);--mute:#8A857A;
+  background:var(--bg);color:var(--paper);overflow-x:hidden}
+body.zine::after{content:"";position:fixed;inset:0;background:var(--grain);opacity:.12;pointer-events:none;z-index:9}
+.zine nav{background:var(--bg);border-bottom:3px solid var(--paper)}
+.zine nav a{color:var(--paper)}
+.zine nav a.me{color:var(--red)}
+.zine nav a[aria-current="page"]{color:var(--red)}
+@media (hover:hover){.zine nav a:hover{color:var(--red)}}
+
+.yo{max-width:1100px;margin:0 auto;padding:48px clamp(16px,3vw,40px) 90px}
+
+/* cabecera: nombre recortado + polaroid */
+.yo-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,5vw,64px);align-items:center;margin-bottom:84px}
+.yo .tape{background:var(--red);color:var(--ink);font-size:16px;transform:rotate(-1.5deg)}
+.yo-head h1{margin:26px 0 14px;transform:rotate(-2deg)}
+.yo-head h1 img{display:block;width:min(100%,440px);height:auto;filter:drop-shadow(8px 9px 0 rgba(0,0,0,.6))}
+.yo-head h2 span{display:inline-block;font:400 clamp(30px,4vw,44px)/1 "Permanent Marker",cursive;color:var(--red);transform:rotate(-4deg);
+  border-bottom:4px solid var(--red);padding-bottom:2px}
+.yo-foto{margin:0;justify-self:center;width:min(100%,480px);background:var(--paper);padding:14px 14px 0;transform:rotate(3deg);
+  box-shadow:10px 12px 0 rgba(0,0,0,.6);position:relative}
+.yo-foto::before{content:"";position:absolute;top:-16px;left:50%;width:120px;height:32px;margin-left:-60px;background:rgba(233,227,210,.55);transform:rotate(-5deg)}
+.yo-foto img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(1) contrast(1.25);transition:filter .4s}
+.yo-foto figcaption{font:400 22px/1 "Permanent Marker",cursive;color:var(--ink);text-align:center;padding:14px 0 16px}
+
+/* cada párrafo: hoja rota + foto pegada, chuecas y alternadas */
+.yo-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(20px,4vw,48px);align-items:center;margin:0 0 70px}
 .yo-row:nth-of-type(even) img{order:2}
-.yo-row img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:12px;border-top:4px solid var(--c)}
-.yo-row h3{font:400 clamp(28px,3vw,40px)/1 "Anton",sans-serif;text-transform:uppercase;margin:0 0 12px;color:var(--c)}
-.yo-row p{margin:0;color:#D6D6DC;font-size:18px;line-height:1.65;max-width:56ch}
-.yo-go{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px!important}
-.yo-go a{background:var(--c);color:#000;text-decoration:none;font:800 15px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.05em;padding:12px 16px}
+.yo-row img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:10px solid var(--paper);box-shadow:8px 9px 0 rgba(0,0,0,.6);
+  filter:grayscale(1) contrast(1.25);transform:rotate(-2deg);transition:filter .4s,transform .3s}
+.yo-row:nth-of-type(even) img{transform:rotate(2deg)}
+.yo-row>div{background:var(--paper);color:var(--ink);padding:34px clamp(22px,3vw,40px) 36px;position:relative;transform:rotate(1deg);
+  clip-path:polygon(0 4%,7% 0,15% 3%,27% 0,38% 2%,51% 0,64% 3%,76% 0,89% 2%,100% 0,99% 50%,100% 96%,91% 100%,79% 97%,65% 100%,52% 98%,37% 100%,24% 97%,11% 100%,0 96%,1% 50%)}
+.yo-row:nth-of-type(even)>div{transform:rotate(-1deg)}
+.yo-row>div::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.25;mix-blend-mode:multiply;pointer-events:none}
+.yo-row h3{display:inline-block;font-size:clamp(32px,3.6vw,46px);margin:0 0 16px;text-transform:uppercase;
+  background:linear-gradient(transparent 68%,rgba(181,212,82,.9) 68%,rgba(181,212,82,.9) 94%,transparent 94%)}
+.yo-row p{margin:0;font-size:17.5px;line-height:1.7;max-width:56ch}
+@media (hover:hover){
+  .yo-row:hover img,.yo-foto:hover img{filter:none}
+  .yo-row:hover img{transform:rotate(0)}
+}
+
+.yo-go{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px!important}
+.yo-go a{background:var(--ink);color:var(--paper);text-decoration:none;padding:12px 18px;transform:rotate(-1deg);box-shadow:4px 4px 0 var(--red);transition:transform .12s,box-shadow .12s}
+.yo-go a+a{transform:rotate(1deg)}
+@media (hover:hover){.yo-go a:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--red)}}
+
 @media (max-width:900px){
-  .yo-row{grid-template-columns:1fr;gap:16px}
+  .yo-head{grid-template-columns:1fr;margin-bottom:56px}
+  .yo-foto{width:min(92%,420px)}
+  .yo-row{grid-template-columns:1fr;gap:22px;margin-bottom:54px}
   .yo-row:nth-of-type(even) img{order:0}
 }

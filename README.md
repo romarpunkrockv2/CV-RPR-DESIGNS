@@ -1,4 +1,7 @@
-# CV · Rubén Omar Núñez
+# RPR Designs · portafolio
+
+Marca del sitio: logo `media/rpr-designs.png` (menú, Inicio y favicon). El nombre completo
+(Rubén Omar Núñez Plascencia) va **solo** en Experiencia.
 
 Sitio publicado en GitHub Pages: <https://romarpunkrockv2.github.io/CV-RPR-DESIGNS/>
 Se sube arrastrando los archivos (o carpetas) en GitHub → *Add file → Upload files*.
@@ -25,7 +28,7 @@ de estilos que me gustan. No se repite la estética entre páginas ni se usa un 
 
 | Página | Estilo |
 |---|---|
-| Inicio | Grunge (pendiente, ver abajo) |
+| Inicio | Fanzine punk fotocopiado: hojas rotas con cinta, fotos B/N (color al pasar el mouse), negro + papel + rojo |
 | Programas | Pantalla de selección de videojuego de peleas |
 | Proyectos | Por definir: hoy comparte la base oscura de Programas |
 | Galería | Por definir: hoy comparte la base oscura de Programas |
@@ -56,16 +59,15 @@ Ahora son dibujos provisionales en `media/sobre-mi/`. Reemplazar por fotos reale
 
 Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
 
-### Inicio con diseño grunge
-- [ ] Rediseñar Inicio (`index.html`) con estética **grunge** propia, no genérica
-      (papel roto, cinta, textura, tipografías Rubik Dirt / Special Elite como en `style.css`),
-      y con **una sola paleta**: nada de un color distinto por párrafo.
-      El texto de los 5 párrafos ya es el definitivo; solo cambia el diseño.
 
 ### Estilos únicos por página
 - [ ] Darle a Proyectos, Galería y Contacto su propio estilo (hoy se parecen a otras páginas).
 
+### Fotos tuyas
+- [x] **Inicio (informal):** `media/sobre-mi/yo.jpeg` (Warped Tour CDMX, horizontal 4:3). Polaroid `.yo-foto` en `index.html`;
+      se ve en B/N tipo fotocopia y a color al pasar el mouse.
+- [ ] **Experiencia (formal):** foto profesional para el CV formal (aún sin espacio en `experiencia.html`).
+
 ### Otros
-- [ ] Foto tuya para Inicio (opcional).
 - [ ] Muestras extra que quieras agregar a la Galería (`galeria.js`).
 - [ ] Revisar el texto de cada programa en Programas (`tag` y `moves` en `FIGHTERS`).
