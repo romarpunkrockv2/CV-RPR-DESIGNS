@@ -3,77 +3,90 @@
 // (cada paso puede llevar media: { img } | { video } | { live }).
 
 // ── Programas ("peleadores") ────────────────────────────────────────────────
+// nivel = Básico | Intermedio | Avanzado (barra de la ficha); sabe = lo que sé del programa;
+// moves = para qué lo uso ([título, texto]); desc (en la muestra) = qué se está viendo.
 // ab = letras del logo; path = logo en SVG (24×24); c = color del programa en el escenario;
 // samples = muestras de trabajos hechos con ese programa (la 1a se ve al elegirlo; ‹ › pasa a las demás):
 // imagen, video + portada, youtube (id) + portada, o antes y después (before = antes, src = después;
 // labels = letreros de los botones, por defecto Antes/Después; ar = proporción del recuadro, por defecto 16/9).
 // Opcional en cualquier muestra: full = imagen grande que se abre al hacer clic; credit = créditos (salen en la tarjeta);
+// vertical = true en un video vertical: se ve completo, con su portada difuminada rellenando los lados;
 // link = [texto, url] botón en la tarjeta que abre otra página; c = color de la muestra (el sitio adopta el color del contenido);
 // live = url de una página real que se carga al presionar (src = portada, label = texto del botón).
 // Los archivos van en media/muestras/.
 var FIGHTERS = [
   { id: 'ps', name: 'Photoshop', ab: 'Ps', bg: '#001E36', fg: '#31A8FF', c: '#31A8FF', clase: 'Imagen',
-    tag: 'Mi herramienta de todos los días: fotos, promociones y piezas para redes.',
-    moves: [['↓↘→ P', 'Fotomontaje', 'Composiciones con varias fotos para campañas y redes.'],
-            ['→↓↘ K', 'Retoque de producto', 'Limpieza y ajuste de fotos de grúas y accesorios.'],
-            ['↓↓ P', 'Promos automáticas', 'Un script que arma las promociones de accesorios con el banco de imágenes.'],
-            ['← → P', 'Piezas para redes', 'Publicaciones, historias y anuncios.']],
-    samples: [{ before: 'media/muestras/ps-od7000-antes.jpg', src: 'media/muestras/ps-od7000-despues.jpg', cap: 'OD7000 · de la fábrica a la carretera', c: '#F1E32C' }] },
+    nivel: 'Intermedio',
+    sabe: 'Manejo capas, máscaras, selecciones y ajustes de color para fotomontaje y retoque. Preparo archivos para web e impresión y automatizo tareas repetitivas con scripts.',
+    moves: [['Fotomontaje', 'Composiciones con varias fotos para campañas y redes.'],
+            ['Retoque de producto', 'Limpieza y ajuste de fotos de grúas y accesorios.'],
+            ['Piezas para redes', 'Publicaciones, historias y anuncios.'],
+            ['Promociones automáticas', 'Un script arma las promociones de accesorios con el banco de imágenes.']],
+    samples: [{ desc: 'La foto original de la OD7000 en la fábrica y el fotomontaje que la lleva a la carretera. Cambia sola entre antes y después.', before: 'media/muestras/ps-od7000-antes.jpg', src: 'media/muestras/ps-od7000-despues.jpg', cap: 'OD7000 · de la fábrica a la carretera', c: '#F1E32C' }] },
   { id: 'ai', name: 'Illustrator', ab: 'Ai', bg: '#330000', fg: '#FF9A00', c: '#FF9A00', clase: 'Vector',
-    tag: 'Logotipos, etiquetas y todo lo que tiene que verse nítido en cualquier tamaño.',
-    moves: [['↓↘→ P', 'Rotulación de grúas', 'La gráfica completa de cada unidad, lista para imprimir y colocar.'],
-            ['→↓↘ K', 'Logotipos', 'Diseño de marcas y escudos.'],
-            ['↓↓ P', 'Vectorizado', 'Números, nombres y logos listos para corte e impresión.'],
-            ['← → K', 'Etiquetas y formatos', 'Material impreso de la marca.']],
-    samples: [{ before: 'media/muestras/ai-rd30-diseno.jpg', src: 'media/muestras/ai-rd30-real.jpg', labels: ['Diseño', 'Terminada'], ar: '1600/1182', cap: 'RD30 · rotulación AGM, del diseño a la grúa', c: '#2F6BFF' }] },
+    nivel: 'Intermedio',
+    sabe: 'Trabajo con la pluma, formas, tipografía y color para construir logotipos y gráficos vectoriales. Preparo los archivos a escala real para impresión y corte.',
+    moves: [['Rotulación de grúas', 'La gráfica completa de cada unidad, lista para imprimir y colocar.'],
+            ['Logotipos', 'Diseño de marcas y escudos.'],
+            ['Vectorizado', 'Números, nombres y logos listos para corte e impresión.'],
+            ['Etiquetas y formatos', 'Material impreso de la marca.']],
+    samples: [{ desc: 'La rotulación AGM de una RD30: el diseño en Illustrator y la grúa terminada con la gráfica ya colocada.', before: 'media/muestras/ai-rd30-diseno.jpg', src: 'media/muestras/ai-rd30-real.jpg', labels: ['Diseño', 'Terminada'], ar: '1600/1182', cap: 'RD30 · rotulación AGM, del diseño a la grúa', c: '#2F6BFF' }] },
   { id: 'id', name: 'InDesign', ab: 'Id', bg: '#49021F', fg: '#FF3366', c: '#FF3366', clase: 'Editorial',
-    tag: 'Catálogos, revistas y documentos de varias páginas.',
-    moves: [['↓↘→ P', 'Catálogos', 'Catálogos de equipos con fotos, especificaciones y diseño de la marca.'],
-            ['→↓↘ K', 'Revistas', 'Maquetación editorial, como la revista de Bird Attack Records.'],
-            ['↓↓ P', 'Fichas y folletos', 'Fichas técnicas y material impreso listo para imprenta.']],
-    samples: [{ src: 'media/muestras/id-infografia-rd50.jpg', full: 'media/muestras/id-infografia-rd50-grande.jpg', cap: 'Infografía RD50 Low Profile S.R.L. S.P. · AGM', c: '#2F6BFF',
+    nivel: 'Intermedio',
+    sabe: 'Maqueto documentos de varias páginas con páginas maestras, estilos de párrafo y retículas. Exporto archivos listos para imprenta y para pantalla.',
+    moves: [['Catálogos', 'Catálogos de equipos con fotos, especificaciones y diseño de la marca.'],
+            ['Revistas', 'Maquetación editorial, como la revista de Bird Attack Records.'],
+            ['Fichas y folletos', 'Fichas técnicas y material impreso listo para imprenta.']],
+    samples: [{ desc: 'Infografía de la RD50 Low Profile para AGM: renders y dibujos técnicos acomodados en una sola pieza con las especificaciones del equipo.', src: 'media/muestras/id-infografia-rd50.jpg', full: 'media/muestras/id-infografia-rd50-grande.jpg', cap: 'Infografía RD50 Low Profile S.R.L. S.P. · AGM', c: '#2F6BFF',
                 credit: 'Renders en Blender: yo · Dibujos técnicos: equipo de Diseño de Industrias Dueñas – KREYN',
                 link: ['Ver el mismo modelo animado en 3D', 'https://industriasduenas.com/agm/'] }] },
   { id: 'ae', name: 'After Effects', ab: 'Ae', bg: '#00005B', fg: '#9999FF', c: '#9999FF', clase: 'Movimiento',
-    tag: 'Animación y efectos para video.',
-    moves: [['↓↘→ P', 'Animación', 'Textos, logotipos y elementos en movimiento.'],
-            ['← → K', 'Efectos', 'Composición y técnicas de desplazamiento, como en el trailer de Resident Evil.']],
-    samples: [{ video: 'media/muestras/ae-bob-esponja.mp4', src: 'media/muestras/ae-bob-esponja.jpg', cap: 'Viernes de humor · grúa KREYN en Fondo de Bikini', c: '#FFE135' }] },
+    nivel: 'Intermedio',
+    sabe: 'Animo textos, logotipos y elementos con fotogramas clave y composiciones. Integro elementos en video y aplico efectos para piezas cortas.',
+    moves: [['Animación', 'Textos, logotipos y elementos en movimiento.'],
+            ['Efectos y composición', 'Integrar elementos en video, como en el trailer de Resident Evil.']],
+    samples: [{ desc: 'Video de humor para los viernes: una grúa KREYN integrada en Fondo de Bikini.', video: 'media/muestras/ae-bob-esponja.mp4', src: 'media/muestras/ae-bob-esponja.jpg', cap: 'Viernes de humor · grúa KREYN en Fondo de Bikini', c: '#FFE135' }] },
   { id: 'pr', name: 'Premiere Pro', ab: 'Pr', bg: '#00005B', fg: '#EA77FF', c: '#EA77FF', clase: 'Video',
-    tag: 'Edición de video de principio a fin.',
-    moves: [['↓↘→ P', 'Edición', 'Cortes, ritmo, música y color.'],
-            ['→↓↘ K', 'Video para redes', 'Versiones para cada formato y plataforma.']],
-    samples: [{ youtube: 'y9U-Y60E44k', src: 'https://i.ytimg.com/vi/y9U-Y60E44k/maxresdefault.jpg', cap: 'RD40 RTR · proceso de fabricación', c: '#F1E32C' }] },
-  { id: 'cc', name: 'CapCut', ab: 'Cc', bg: '#000000', fg: '#FFFFFF', c: '#E8E8E8', clase: 'Video rápido',
-    tag: 'Para cuando el video tiene que salir hoy.',
-    moves: [['↓↓ P', 'Reels y TikToks', 'Edición rápida en formato vertical.'],
-            ['← → P', 'Subtítulos y textos', 'Videos que se entienden sin sonido.']],
-    samples: [{ video: 'media/muestras/capcut.mp4', src: 'media/muestras/capcut.jpg', cap: 'OD20 DS · video para TikTok', c: '#F1E32C' }] },
+    nivel: 'Intermedio',
+    sabe: 'Edito video de principio a fin: corte, ritmo, música, corrección de color básica y exportación para cada plataforma.',
+    moves: [['Edición', 'Cortes, ritmo, música y color.'],
+            ['Video para redes', 'Versiones para cada formato y plataforma.']],
+    samples: [{ desc: 'Video del proceso de fabricación de la RD40 RTR, publicado en YouTube.', youtube: 'y9U-Y60E44k', src: 'https://i.ytimg.com/vi/y9U-Y60E44k/maxresdefault.jpg', cap: 'RD40 RTR · proceso de fabricación', c: '#F1E32C' }] },
+  { id: 'cc', name: 'CapCut', ab: 'Cc', bg: '#000000', fg: '#FFFFFF', c: '#E8E8E8', clase: 'Video para redes',
+    nivel: 'Intermedio',
+    sabe: 'Hago edición completa: corte, ritmo, música, textos, transiciones y color, con subtítulos automáticos y plantillas cuando el video tiene que salir rápido.',
+    moves: [['Edición completa', 'Videos de principio a fin, en vertical u horizontal.'],
+            ['Reels y TikToks', 'Videos verticales para redes.'],
+            ['Subtítulos y textos', 'Videos que se entienden sin sonido.']],
+    samples: [{ desc: 'Video vertical de la OD20 DS para TikTok.', vertical: true, video: 'media/muestras/capcut.mp4', src: 'media/muestras/capcut.jpg', cap: 'OD20 DS · video para TikTok', c: '#F1E32C' }] },
   { id: 'bl', name: 'Blender', path: 'M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626', bg: '#E87D0D', fg: '#FFFFFF', c: '#E87D0D', clase: '3D',
-    tag: 'Modelos y animación 3D de los equipos KREYN.',
-    moves: [['↓↘→ P', 'Modelado', 'Las grúas armadas pieza por pieza, cada una con su material.'],
-            ['→↓↘ K', 'Animación 3D', 'Movimiento de cámara y piezas.'],
-            ['↓↓ P', 'Exportar a la web', 'Modelos listos y ligeros para verse en el navegador.']],
-    samples: [{ video: 'media/muestras/blender-navidad.mp4', src: 'media/muestras/blender-navidad.jpg', cap: 'Animación navideña de Industrias Dueñas', c: '#D62828' }] },
+    nivel: 'Intermedio',
+    sabe: 'Modelo, aplico materiales, animo cámara y objetos, rendereo con Eevee y Cycles, y exporto modelos ligeros para la web.',
+    moves: [['Modelado', 'Las grúas armadas pieza por pieza, cada una con su material.'],
+            ['Animación 3D', 'Movimiento de cámara y piezas.'],
+            ['Exportar a la web', 'Modelos listos y ligeros para verse en el navegador.']],
+    samples: [{ desc: 'Animación navideña en 3D para Industrias Dueñas.', video: 'media/muestras/blender-navidad.mp4', src: 'media/muestras/blender-navidad.jpg', cap: 'Animación navideña de Industrias Dueñas', c: '#D62828' }] },
   { id: 'wp', name: 'WordPress', path: 'M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0', bg: '#21759B', fg: '#FFFFFF', c: '#3BA5D8', clase: 'Web',
-    tag: 'Todo el sitio de la empresa lo imaginé y lo diseñé yo.',
-    moves: [['↓↘→ P', 'Sitio de KREYN', 'Diseño completo: portada, líneas de equipos, galería, catálogo y contacto.'],
-            ['→↓↘ K', 'Bloques a la medida', 'Catálogo y visores 3D integrados en las páginas.'],
-            ['↓↓ P', 'Contenido al día', 'Equipos nuevos, fotos y actualizaciones.']],
-    samples: [{ live: 'https://industriasduenas.com/', src: 'media/sitio-web.jpg', label: 'Abrir el sitio', cap: 'industriasduenas.com · diseñado por mí (en vivo)', c: '#F1E32C' }] },
+    nivel: 'Intermedio',
+    sabe: 'Armo y administro sitios: páginas, plantillas, menús y bloques. Integro contenido a la medida, como catálogos y visores 3D.',
+    moves: [['Sitios web', 'Diseño completo: portada, líneas de equipos, galería, catálogo y contacto.'],
+            ['Bloques a la medida', 'Catálogos y visores 3D integrados en las páginas.'],
+            ['Contenido al día', 'Equipos nuevos, fotos y actualizaciones.']],
+    samples: [{ desc: 'El sitio industriasduenas.com en vivo. Lo diseñé completo, de la portada a las líneas de equipos y el contacto.', live: 'https://industriasduenas.com/', src: 'media/sitio-web.jpg', label: 'Abrir el sitio', cap: 'industriasduenas.com · diseñado por mí (en vivo)', c: '#F1E32C' }] },
   { id: 'web', name: 'HTML · CSS · JS', ab: '</>', bg: '#121212', fg: '#C4FF2E', c: '#C4FF2E', clase: 'Código',
-    tag: 'Kreyn Road: un juego web con sprites y assets hechos por mí.',
-    moves: [['↓↘→ P', 'Videojuego', 'Kreyn Road: la grúa OD7000 esquivando patrullas, con tabla de récords. También en Android.'],
-            ['→↓↘ K', 'Sprites y assets propios', 'La grúa, las patrullas, el logo y las pantallas del juego.'],
-            ['↓↓ P', 'Catálogos y visores 3D', 'Catálogo 2027, catálogo EKANN y las grúas en 3D en el navegador.']],
-    samples: [{ live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C', link: ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk'] }] },
+    nivel: 'Intermedio',
+    sabe: 'Entiendo la estructura de una página, maqueto con CSS y escribo lógica en JavaScript. Con eso armo y ajusto páginas, catálogos y juegos para el navegador.',
+    moves: [['Juegos web', 'Juegos que corren en el navegador y en Android.'],
+            ['Sprites y assets', 'Personajes, vehículos, logos y pantallas para el juego.'],
+            ['Catálogos y visores 3D', 'Catálogo 2027, catálogo EKANN y las grúas en 3D en el navegador.']],
+    samples: [{ desc: 'Kreyn Road, un juego web: la grúa OD7000 esquiva patrullas y hay tabla de récords. Los sprites y assets son míos. Se juega aquí mismo y hay versión para Android.', live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C', link: ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk'] }] },
   { id: 'ia', name: 'IA', ab: '✦', bg: '#1B1240', fg: '#B9A6FF', c: '#8B6CFF', clase: 'Copiloto',
-    tag: 'Visores 3D de las grúas KREYN en el navegador: tú eliges el color de cada pieza. Yo armé los modelos y el diseño; la IA escribió el código.',
-    moves: [['', 'Colores al gusto', 'Cada pieza (pluma, carrocería, cabina…) se pinta por separado con una paleta.'],
-            ['', 'Gira, acerca y explora', 'El modelo completo con luz real, en computadora y celular.'],
-            ['', 'Ligero', 'Cada modelo pasa de 92 MB a menos de 7 MB para que cargue rápido hasta en celular. Ya son 28 visores publicados.'],
-            ['', 'Más con IA', 'La app de producción de KREYN y el catálogo EKANN: mira Proyectos.']],
-    samples: [{ live: 'https://industriasduenas.com/3d/alumax.html', src: 'media/visor-alumax.jpg', label: 'Abrir el visor y cambiar colores', cap: 'ALUMAX · visor 3D para elegir colores (en vivo)', c: '#F1E32C' }] },
+    nivel: 'Intermedio',
+    sabe: 'Uso la IA como copiloto para programar: le explico qué debe hacer cada pantalla, reviso lo que escribe, lo pruebo y pido correcciones hasta que funciona.',
+    moves: [['Visores 3D', 'Las grúas en el navegador, con colores a elegir por pieza.'],
+            ['Apps internas', 'La app de producción de KREYN (mira Proyectos).'],
+            ['Catálogos web', 'El catálogo EKANN con su panel de precios.']],
+    samples: [{ desc: 'Visor 3D de la ALUMAX: eliges el color de cada pieza (pluma, carrocería, cabina…) y giras el modelo. Yo armé el modelo y el diseño; la IA escribió el código.', live: 'https://industriasduenas.com/3d/alumax.html', src: 'media/visor-alumax.jpg', label: 'Abrir el visor y cambiar colores', cap: 'ALUMAX · visor 3D para elegir colores (en vivo)', c: '#F1E32C' }] },
 ];
 
 // ── Proyectos ───────────────────────────────────────────────────────────────
@@ -156,8 +169,12 @@ function pick(i) {
   $('#logoBig').innerHTML = logo(f);
   $('#fClass').textContent = 'Clase · ' + f.clase;
   $('#fName').textContent = f.name;
-  $('#fTag').textContent = f.tag;
-  $('#fMoves').innerHTML = f.moves.map(function (m) { return '<li><b>' + esc(m[1]) + '</b><span>' + esc(m[2]) + '</span></li>'; }).join('');
+  var lv = { 'Básico': 3, 'Intermedio': 6, 'Avanzado': 9 }[f.nivel] || 6;
+  $('#fLevel').innerHTML = '<span class="lv-t">Nivel</span><span class="lv-bar" aria-hidden="true">' +
+    Array.apply(null, Array(10)).map(function (_, k) { return '<i' + (k < lv ? ' class="on"' : '') + '></i>'; }).join('') +
+    '</span><span class="lv-n">' + esc(f.nivel) + '</span>';
+  $('#fTag').textContent = f.sabe;
+  $('#fMoves').innerHTML = f.moves.map(function (m) { return '<li><b>' + esc(m[0]) + '</b><span>' + esc(m[1]) + '</span></li>'; }).join('');
   showSample();
 }
 function showSample() {
@@ -174,7 +191,8 @@ function showSample() {
       })(sm.labels || ['Antes', 'Después'])
     : sm.live ? frame(sm.live)
     : sm.youtube ? frame('https://www.youtube-nocookie.com/embed/' + sm.youtube + '?autoplay=1&mute=1&loop=1&playlist=' + sm.youtube + '&rel=0&playsinline=1')
-    : sm.video ? '<video src="' + esc(sm.video) + '" poster="' + esc(sm.src) + '" muted loop playsinline autoplay></video>'
+    : sm.video ? (sm.vertical ? '<div class="vfit"><div class="vblur" style="background-image:url(' + esc(sm.src) + ')"></div>' : '') +
+        '<video src="' + esc(sm.video) + '" poster="' + esc(sm.src) + '" muted loop playsinline autoplay></video>' + (sm.vertical ? '</div>' : '')
     : '<img src="' + esc(sm.src) + '" alt="' + esc(sm.cap) + '">';
   var cr = $('#sCredit'); cr.hidden = !sm.credit; cr.textContent = sm.credit || '';
   var sl = $('#sLink'); sl.hidden = !sm.link; if (sm.link) { sl.textContent = sm.link[0] + ' ↗'; sl.href = sm.link[1]; }
@@ -188,6 +206,7 @@ function showSample() {
     ba.querySelectorAll('button').forEach(function (b) { b.onclick = function () { clearInterval(baTimer); setBA(+b.dataset.v); }; });
   }
   $('#sCap').textContent = sm.cap;
+  $('#sDesc').textContent = sm.desc || '';
 }
 if (roster) {
   FIGHTERS.forEach(function (f, i) {
@@ -215,9 +234,9 @@ if (roster) {
   document.addEventListener('keydown', function (e) {
     if (document.querySelector('dialog[open]') || /INPUT|TEXTAREA/.test(document.activeElement.tagName)) return;
     if (e.key === 'Escape') closeView();
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+    if (/^Arrow(Right|Left|Down|Up)$/.test(e.key)) {   // la fila es vertical en escritorio: también ↑ ↓
       e.preventDefault();
-      roster.children[(cur + (e.key === 'ArrowRight' ? 1 : -1) + FIGHTERS.length) % FIGHTERS.length].focus();
+      roster.children[(cur + (/Right|Down/.test(e.key) ? 1 : -1) + FIGHTERS.length) % FIGHTERS.length].focus();
     }
   });
   pick(0);

@@ -24,6 +24,10 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .select .bg{position:absolute;inset:0;z-index:-2;background:#000}
 .select .bg>img,.select .bg>video,.select .bg>.ba,.select .bg>iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .select .bg iframe{background:#000}
+/* video vertical: completo al centro, con su portada difuminada rellenando los lados */
+.select .bg>.vfit{position:absolute;inset:0;overflow:hidden}
+.vfit .vblur{position:absolute;inset:-60px;background:center/cover no-repeat;filter:blur(40px) brightness(.55) saturate(1.2)}
+.select .bg .vfit video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .select .bg img,.select .bg video{object-fit:cover}
 /* velo: oscurece los costados (texto) y abajo (fila), y tiñe todo con el color de la muestra */
 .select::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;transition:opacity .3s,background .4s;
@@ -60,11 +64,22 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .card h2{font:400 clamp(15px,1.3vw,20px)/1 "Anton",sans-serif;text-transform:uppercase;margin:0;padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.14)}
 .card .tagline{margin:0;padding:6px 9px;color:#DADAE0;font-size:13px;line-height:1.45;border-bottom:1px solid rgba(255,255,255,.14)}
 .moves{list-style:none;margin:0;padding:0}
+/* nivel (barra tipo videojuego), subtítulos de la ficha y descripción de la muestra */
+.level{display:flex;align-items:center;gap:8px;padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.14)}
+.lv-t,.lv-n{font:800 12px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em}
+.lv-t{color:#C2C2CA}.lv-n{color:var(--c)}
+.lv-bar{flex:1;display:flex;gap:2px}
+.lv-bar i{flex:1;height:9px;background:rgba(255,255,255,.14);transform:skewX(-18deg)}
+.lv-bar i.on{background:var(--c);box-shadow:0 0 6px var(--c)}
+.sub-t{margin:0;padding:7px 9px 0;font:800 11px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.1em;color:#8E8E99}
+.card .sub-t+.tagline{border-bottom:1px solid rgba(255,255,255,.14)}
+.sdesc{margin:0;max-width:34ch;font-size:13px;line-height:1.45;color:#E4E4EA;text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.sdesc:empty{display:none}
 .moves li{padding:5px 9px;border-bottom:1px solid rgba(255,255,255,.08)}
 .moves li:last-child{border-bottom:0}
 .moves .combo{display:none}
 .moves b{display:block;font:800 13px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.03em;color:var(--c)}
-.moves span{color:#C2C2CA;font-size:12px;line-height:1.35}
+.moves span{display:block;color:#C2C2CA;font-size:12px;line-height:1.35}
 
 /* fila de programas: el elegido a color, los demás en gris (como en los juegos) */
 .roster{grid-column:1 / -1;grid-row:2;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;transition:opacity .3s}
@@ -75,6 +90,18 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .slot .nm{font:800 12px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--w)}
 .slot[aria-selected="true"]{filter:none;opacity:1;transform:translateY(-4px);border-color:var(--c)}
 @media (hover:hover){.slot:hover{opacity:.85}}
+/* escritorio: la fila de programas pasa a una columna vertical a la izquierda */
+@media (min-width:901px){
+  .select{grid-template-columns:auto 1fr minmax(240px,21%);grid-template-rows:1fr}
+  .panel{grid-column:3}
+  .roster{grid-column:1;grid-row:1;flex-direction:column;flex-wrap:nowrap;justify-content:center;align-self:center;
+    max-height:100%;overflow-y:auto;scrollbar-width:none;gap:2px}
+  .roster::-webkit-scrollbar{display:none}
+  .slot{flex-direction:row;width:auto;padding:5px 12px 5px 8px;gap:10px;border-bottom:0;border-left:3px solid transparent}
+  .slot .mini{width:38px;height:38px}
+  .slot .nm{font-size:13px}
+  .slot[aria-selected="true"]{transform:translateX(4px)}
+}
 
 /* "Ver": la muestra al frente, completa y sin velo; lo demás se oculta */
 .close{display:none;position:absolute;top:14px;right:14px;z-index:3;border:0;background:#000;color:#fff;cursor:pointer;padding:10px 14px;font:800 15px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em}
