@@ -300,7 +300,10 @@ window.addEventListener('message', function (e) {
 
 // ── Proyectos de cada programa: debajo de su portada, paso por paso (acentos con el color del programa, --c) ──
 function stepMedia(m, s) {
-  if (m.video) return '<div class="frame' + (m.phone ? ' phone' : '') + '"><video src="' + esc(m.video) + '" poster="' + esc(m.poster || '') + '" muted loop playsinline autoplay controls></video></div>';
+  // controls: true = video para verse completo: arranca al darle play, con sonido.
+  // Sin controls: de ambiente, se reproduce solo y sin sonido (con controles por si quieren oírlo).
+  if (m.video) return '<div class="frame' + (m.phone ? ' phone' : '') + '"><video src="' + esc(m.video) + '" poster="' + esc(m.poster || '') + '" ' +
+    (m.controls ? 'controls playsinline preload="metadata"' : 'muted loop playsinline autoplay controls') + '></video></div>';
   return '<button class="frame zoom' + (m.phone ? ' phone' : '') + '" data-img="' + esc(m.img) + '" data-txt="' + esc(s.t + ' — ' + s.d) + '">' +
     '<img src="' + esc(m.img) + '" alt="' + esc(m.cap || s.t) + '" loading="lazy">' + (m.cap ? '<span class="cap">' + esc(m.cap) + '</span>' : '') + '</button>';
 }
@@ -314,6 +317,7 @@ function projectHtml(p) {
         '<div class="txt"><span class="k">' + esc(s.k) + '</span><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div></li>';
     }).join('') + '</ol></article>';
 }
+var vidObs = null;
 function showProjects(f) {
   var box = $('#pgInfo'); if (!box) return;
   var ps = (f.projects || []).map(function (id) { return byId(PROJECTS, id); }).filter(Boolean);
@@ -321,6 +325,19 @@ function showProjects(f) {
   sel.classList.toggle('has-more', !!ps.length);
   box.innerHTML = ps.length ? '<p class="pg-k cond">Proyectos con ' + esc(f.name) + '</p>' + ps.map(projectHtml).join('') : '';
   box.querySelectorAll('.zoom').forEach(function (z) { z.onclick = function () { openLb([z.dataset.img], z.dataset.txt); }; });
+  // cada video de los proyectos se pausa solo si deja de verse (al subir o bajar) y se reanuda al volver,
+  // solo si lo pausó la página (_auto); si lo pausó el visitante, se queda en pausa
+  if (vidObs) vidObs.disconnect();
+  if (window.IntersectionObserver) {
+    vidObs = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.intersectionRatio < 0.35) { if (!v.paused) { v.pause(); v._auto = true; } }
+        else if (v._auto) { v._auto = false; v.play().catch(function () {}); }
+      });
+    }, { threshold: [0, 0.35, 1] });
+    box.querySelectorAll('video').forEach(function (v) { vidObs.observe(v); });
+  }
 }
 
 // ── Visor de imágenes ───────────────────────────────────────────────────────
