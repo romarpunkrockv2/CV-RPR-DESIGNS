@@ -29,7 +29,6 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .vblur{position:absolute;inset:-60px;background:center/cover no-repeat;filter:blur(40px) brightness(.55) saturate(1.2)}
 .select .bg .vfit>:is(img,video){position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .select .bg .ba{overflow:hidden}
-.select .bg .ba img{object-fit:contain}
 .lfit .lbox.plain iframe{width:100%;height:100%}
 /* página en vivo (visor 3D, juego): completa en un recuadro 16:9 entre la columna de programas y la ficha */
 .select .bg>.lfit{position:absolute;inset:0;overflow:hidden;display:grid;place-items:center;container-type:size;
@@ -42,8 +41,9 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 /* muestra con fondo sólido (juego, visor): sin el velo oscuro, y textos sobre panel oscuro para que se lean */
 .select.solid::after{opacity:0}
 .select.solid .card{background:rgba(4,8,12,.9)}
-.select.solid .side,.select.solid .roster{background:rgba(4,8,12,.82);border:1px solid rgba(255,255,255,.14);padding:12px}
-@media (max-width:900px){.select.solid .roster{padding:8px}}
+/* fondo claro: textos directos sobre el fondo en negro (la ficha conserva su tarjeta oscura) */
+.select.light :is(.scap,.sdesc,.side .credit,.slink,.slot .nm){color:#000;text-shadow:none}
+.select.light .slink{text-decoration-color:#000}
 .select.viewing .bg>.lfit{padding:16px}
 @media (max-width:900px){.select .bg>.lfit{padding:12px}}
 .select .bg img,.select .bg video{object-fit:cover}
@@ -52,9 +52,10 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
   background:linear-gradient(90deg,rgba(0,0,0,.36),transparent 32%,transparent 62%,rgba(0,0,0,.39)),
     linear-gradient(transparent 58%,rgba(0,0,0,.46))
 }
-.ba img{position:absolute;inset:0;width:100%;height:100%;transition:opacity .6s}
-.ba img.after{opacity:0}
-.ba.show-after img.after{opacity:1}
+.ba-l{position:absolute;inset:0;overflow:hidden;transition:opacity .6s}
+.ba-l.after{opacity:0}
+.ba.show-after .ba-l.after{opacity:1}
+.select .bg .ba-l img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .ba-tabs{display:none;position:absolute;top:14px;left:50%;transform:translateX(-50%);gap:4px;background:#000;padding:4px;z-index:1}
 .ba-tabs button{border:0;background:#2A2A33;color:#fff;font:800 13px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:7px 11px;cursor:pointer}
 .ba-tabs button[aria-pressed="true"]{background:var(--c);color:#000}
@@ -109,7 +110,8 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 .slot .mini{width:44px;height:44px}
 .slot .nm{font:800 12px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--w)}
 .slot[aria-selected="true"]{filter:none;opacity:1;transform:translateY(-4px);border-color:var(--c)}
-@media (hover:hover){.slot:hover{opacity:.85}}
+.slot .mini{transition:transform .2s}
+@media (hover:hover){.slot:hover{opacity:.85}.slot:hover .mini{transform:scale(1.18)}}
 /* escritorio: la fila de programas pasa a una columna vertical a la izquierda */
 @media (min-width:901px){
   .select{grid-template-columns:auto 1fr minmax(240px,21%);grid-template-rows:1fr}

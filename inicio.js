@@ -192,8 +192,9 @@ function showSample() {
   var frame = function (src) { return '<iframe src="' + esc(src) + '" title="' + esc(sm.cap) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; };
   $('#sMedia').innerHTML = sm.before
     ? (function (lb) {
-        return '<div class="ba">' + blur(sm.src) + '<img src="' + esc(sm.before) + '" alt="' + esc(lb[0] + ': ' + sm.cap) + '">' +
-          '<img class="after" src="' + esc(sm.src) + '" alt="' + esc(lb[1] + ': ' + sm.cap) + '">' +
+        // cada imagen con su propio difuminado detrás; cambian juntos (la capa "after" encima)
+        return '<div class="ba"><div class="ba-l">' + blur(sm.before) + '<img src="' + esc(sm.before) + '" alt="' + esc(lb[0] + ': ' + sm.cap) + '"></div>' +
+          '<div class="ba-l after">' + blur(sm.src) + '<img src="' + esc(sm.src) + '" alt="' + esc(lb[1] + ': ' + sm.cap) + '"></div>' +
           '<div class="ba-tabs"><button data-v="0">' + esc(lb[0]) + '</button><button data-v="1">' + esc(lb[1]) + '</button></div></div>';
       })(sm.labels || ['Antes', 'Después'])
     : sm.live ? (sm.fit
@@ -232,7 +233,11 @@ function showSample() {
     ba.querySelectorAll('button').forEach(function (b) { b.onclick = function () { clearInterval(baTimer); setBA(+b.dataset.v); }; });
   }
   if (fitObs) { fitObs.disconnect(); fitObs = null; }
-  sel.classList.toggle('solid', !!(sm.fit && sm.fit.bg)); // fondo de color sólido: sin velo y con paneles oscuros
+  sel.classList.toggle('solid', !!(sm.fit && sm.fit.bg)); // fondo de color sólido: sin velo
+  // fondo claro → textos en negro; oscuro → en blanco (luminancia del color de fondo)
+  var hex = sm.fit && sm.fit.bg ? sm.fit.bg.replace('#', '') : '';
+  var lum = hex.length === 6 ? (0.299 * parseInt(hex.substr(0, 2), 16) + 0.587 * parseInt(hex.substr(2, 2), 16) + 0.114 * parseInt(hex.substr(4, 2), 16)) / 255 : 0;
+  sel.classList.toggle('light', lum > 0.6);
   var lbox = $('#sMedia .lbox');
   if (lbox && sm.fit) {
     var ifr = lbox.querySelector('iframe'), fit = sm.fit;
