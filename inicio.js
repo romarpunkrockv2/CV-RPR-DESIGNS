@@ -13,8 +13,10 @@
 // vertical = true en un video vertical: se ve completo, con su portada difuminada rellenando los lados;
 // link = [texto, url] botón en la tarjeta que abre otra página; c = color de la muestra (el sitio adopta el color del contenido);
 // live = url de una página real que se carga al presionar (src = portada, label = texto del botón);
-// fit = true en una página en vivo: se carga a 1440×810 (como en una pantalla normal) y se reduce a escala
-//       para verse completa en un recuadro 16:9, con la portada difuminada alrededor.
+// fit = { w, h, bg, garage, msg } en una página en vivo: se muestra igual que en industriasduenas.com —
+//       se carga a w×h (el tamaño del iframe allá) y se reduce a escala para caber completa;
+//       bg = color de fondo del recuadro (alrededor va la portada difuminada); garage = marco blanco redondeado del visor 3D;
+//       msg = mensaje que se le manda a la página al cargar (ej. el nombre del modelo para el visor).
 // Los archivos van en media/muestras/.
 var FIGHTERS = [
   { id: 'ps', name: 'Photoshop', ab: 'Ps', bg: '#001E36', fg: '#31A8FF', c: '#31A8FF', clase: 'Imagen',
@@ -81,14 +83,14 @@ var FIGHTERS = [
     moves: [['Juegos web', 'Juegos que corren en el navegador y en Android.'],
             ['Sprites y assets', 'Personajes, vehículos, logos y pantallas para el juego.'],
             ['Catálogos y visores 3D', 'Catálogo 2027, catálogo EKANN y las grúas en 3D en el navegador.']],
-    samples: [{ fit: true, desc: 'Kreyn Road, un juego web: la grúa OD7000 esquiva patrullas y hay tabla de récords. Los sprites y assets son míos. Se juega aquí mismo y hay versión para Android.', live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C', link: ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk'] }] },
+    samples: [{ fit: { w: 1650, h: 750, bg: '#F1E32C' }, desc: 'Kreyn Road, un juego web: la grúa OD7000 esquiva patrullas y hay tabla de récords. Los sprites y assets son míos. Se juega aquí mismo y hay versión para Android.', live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C', link: ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk'] }] },
   { id: 'ia', name: 'IA', ab: '✦', bg: '#1B1240', fg: '#B9A6FF', c: '#8B6CFF', clase: 'Copiloto',
     nivel: 'Intermedio',
     sabe: 'Uso la IA como copiloto para programar: le explico qué debe hacer cada pantalla, reviso lo que escribe, lo pruebo y pido correcciones hasta que funciona.',
     moves: [['Visores 3D', 'Las grúas en el navegador, con colores a elegir por pieza.'],
             ['Apps internas', 'La app de producción de KREYN (mira Proyectos).'],
             ['Catálogos web', 'El catálogo EKANN con su panel de precios.']],
-    samples: [{ fit: true, desc: 'Visor 3D de la ALUMAX: eliges el color de cada pieza (pluma, carrocería, cabina…) y giras el modelo. Yo preparé el modelo y el diseño; la IA escribió el código.', live: 'https://industriasduenas.com/3d/alumax.html', src: 'media/visor-alumax.jpg', label: 'Abrir el visor y cambiar colores', cap: 'ALUMAX · visor 3D para elegir colores (en vivo)', c: '#F1E32C' }] },
+    samples: [{ fit: { w: 1600, h: 900, bg: '#111111', garage: true, msg: { type: 'KREYN_MODEL_NAME', nombre: 'ALUMAX' } }, desc: 'Visor 3D de la ALUMAX: eliges el color de cada pieza (pluma, carrocería, cabina…) y giras el modelo. Yo preparé el modelo y el diseño; la IA escribió el código.', live: 'https://industriasduenas.com/3d/alumax.html', src: 'media/visor-alumax.jpg', label: 'Abrir el visor y cambiar colores', cap: 'ALUMAX · visor 3D para elegir colores (en vivo)', c: '#F1E32C' }] },
 ];
 
 // ── Proyectos ───────────────────────────────────────────────────────────────
@@ -163,7 +165,6 @@ function playVideo(v) {
 // La muestra es el fondo y se reproduce sola (video, YouTube o la página en vivo); el sitio toma su color (--c).
 // "Pantalla completa" quita los paneles para verla entera.
 var roster = $('#roster'), cur = -1, baTimer = 0, sel = $('#programas'), fitObs = null;
-var FIT_W = 1440, FIT_H = 810; // tamaño "de pantalla" con el que se carga una página en vivo con fit
 function pick(i) {
   if (i === cur) return;
   cur = i;
@@ -192,7 +193,10 @@ function showSample() {
           '<img class="after" src="' + esc(sm.src) + '" alt="' + esc(lb[1] + ': ' + sm.cap) + '">' +
           '<div class="ba-tabs"><button data-v="0">' + esc(lb[0]) + '</button><button data-v="1">' + esc(lb[1]) + '</button></div></div>';
       })(sm.labels || ['Antes', 'Después'])
-    : sm.live ? (sm.fit ? '<div class="lfit"><div class="vblur" style="background-image:url(' + esc(sm.src) + ')"></div><div class="lbox">' + frame(sm.live) + '</div></div>' : frame(sm.live))
+    : sm.live ? (sm.fit
+        ? '<div class="lfit"><div class="vblur" style="background-image:url(' + esc(sm.src) + ')"></div>' +
+          '<div class="lbox' + (sm.fit.garage ? ' garage' : '') + '" style="--ar:' + sm.fit.w / sm.fit.h + (sm.fit.bg ? ';background:' + esc(sm.fit.bg) : '') + '">' + frame(sm.live) + '</div></div>'
+        : frame(sm.live))
     : sm.youtube ? frame('https://www.youtube-nocookie.com/embed/' + sm.youtube + '?autoplay=1&mute=1&loop=1&playlist=' + sm.youtube + '&rel=0&playsinline=1')
     : sm.video ? (sm.vertical ? '<div class="vfit"><div class="vblur" style="background-image:url(' + esc(sm.src) + ')"></div>' : '') +
         '<video src="' + esc(sm.video) + '" poster="' + esc(sm.src) + '" muted loop playsinline autoplay></video>' + (sm.vertical ? '</div>' : '')
@@ -210,10 +214,12 @@ function showSample() {
   }
   if (fitObs) { fitObs.disconnect(); fitObs = null; }
   var lbox = $('#sMedia .lbox');
-  if (lbox && window.ResizeObserver) {
-    var ifr = lbox.querySelector('iframe');
-    fitObs = new ResizeObserver(function () { ifr.style.transform = 'scale(' + lbox.clientWidth / FIT_W + ')'; });
-    fitObs.observe(lbox);
+  if (lbox) {
+    var ifr = lbox.querySelector('iframe'), fit = sm.fit;
+    ifr.style.width = fit.w + 'px'; ifr.style.height = fit.h + 'px';
+    if (fit.msg) ifr.onload = function () { ifr.contentWindow.postMessage(fit.msg, '*'); };
+    var scaleIt = function () { ifr.style.transform = 'scale(' + lbox.clientWidth / fit.w + ')'; };
+    if (window.ResizeObserver) { fitObs = new ResizeObserver(scaleIt); fitObs.observe(lbox); } else scaleIt();
   }
   $('#sCap').textContent = sm.cap;
   $('#sDesc').textContent = sm.desc || '';
@@ -251,6 +257,15 @@ if (roster) {
   });
   pick(0);
 }
+
+// El juego (Kreyn Road) pide pantalla completa con un mensaje, igual que en industriasduenas.com/play/.
+window.addEventListener('message', function (e) {
+  if (e.data !== 'requestFullscreen') return;
+  var f = document.querySelector('#sMedia iframe');
+  if (!f || e.source !== f.contentWindow) return;
+  var req = f.requestFullscreen || f.webkitRequestFullscreen;
+  if (req) Promise.resolve(req.call(f)).then(function () { e.source.postMessage('fullscreenChanged', '*'); }).catch(function () {});
+});
 
 // ── Proyectos (proyectos.html): pestañas arriba; el proyecto elegido se ve completo, paso por paso ──
 var pjOne = $('#pjOne');

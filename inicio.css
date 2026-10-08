@@ -31,9 +31,11 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 /* página en vivo (visor 3D, juego): completa en un recuadro 16:9 entre la columna de programas y la ficha */
 .select .bg>.lfit{position:absolute;inset:0;overflow:hidden;display:grid;place-items:center;container-type:size;
   padding:24px calc(max(240px,21%) + clamp(32px,5vw,80px)) 24px clamp(190px,15vw,230px)}
-.lfit .lbox{position:relative;z-index:1;width:min(100cqw,100cqh * 16 / 9);aspect-ratio:16/9;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6)}
-/* la página se carga a 1440×810 y inicio.js la reduce a escala (transform) al ancho del recuadro */
-.lfit .lbox iframe{position:absolute;left:0;top:0;width:1440px;height:810px;border:0;background:#000;transform-origin:0 0}
+.lfit .lbox{position:relative;z-index:1;width:min(100cqw,100cqh * var(--ar,1.7778));aspect-ratio:var(--ar,1.7778);overflow:hidden}
+/* la página se carga al tamaño de su iframe en industriasduenas.com (fit.w × fit.h) y inicio.js la reduce a escala */
+.lfit .lbox iframe{position:absolute;left:0;top:0;border:0;background:#000;transform-origin:0 0}
+/* marco del visor 3D, igual que en industriasduenas.com/alumax/ */
+.lfit .lbox.garage{border:3px solid #fff;border-radius:30px;background:#111;box-sizing:border-box}
 .select.viewing .bg>.lfit{padding:16px}
 @media (max-width:900px){.select .bg>.lfit{padding:12px}}
 .select .bg img,.select .bg video{object-fit:cover}
