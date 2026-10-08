@@ -73,6 +73,20 @@ Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
       se ve en B/N tipo fotocopia y a color al pasar el mouse.
 - [ ] **Experiencia (formal):** foto profesional para el CV formal (aún sin espacio en `experiencia.html`).
 
+### Programas (cada programa como página)
+- [ ] **Proyectos de los demás programas:** Photoshop, Illustrator, InDesign, After Effects, Premiere, CapCut y WordPress
+      aún no tienen sección de proyectos debajo de su portada. Para agregar uno: un objeto en `PROJECTS` (`inicio.js`)
+      y su id en `projects` del programa. Hoy solo tienen: Blender (CJ), Código (Catálogo 2027) e IA (Sistema de producción).
+- [ ] **Archivos por programa:** se habló de mostrar debajo de la portada información de habilidades y **archivos**
+      (entregables, formatos) de cada programa; todavía no existe esa sección.
+- [ ] **Revisar los textos** de cada programa (`sabe` = "Lo que sé" y `moves` = "Para qué lo uso" en `FIGHTERS`):
+      los redactó la IA a partir de lo que se platicó; confirmar que te representen. Todos están en nivel `Intermedio`.
+- [ ] **Probar en el navegador** lo que no se pudo verificar en las pruebas automáticas:
+      el video de YouTube (Premiere) arranca con sonido al entrar con un clic; la muestra de CapCut se ve completa
+      (en las pruebas salía estirada); el visor 3D de ALUMAX carga el modelo; la página baja bien a los proyectos.
+- [ ] **Borrar archivos viejos que ya no se usan:** `media/muestras/capcut.mp4` y `capcut.jpg`
+      (los reemplazó `capcut-od20.mp4`/`.jpg`); quitarlos también de GitHub.
+- [ ] (Opcional) WordPress en vivo se muestra a pantalla completa; decidir si va en recuadro escalado como el juego y el visor.
+
 ### Otros
 - [ ] Muestras extra que quieras agregar a la Galería (`galeria.js`).
-- [ ] Revisar el texto de cada programa en Programas (`tag` y `moves` en `FIGHTERS`).

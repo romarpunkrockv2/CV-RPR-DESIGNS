@@ -165,6 +165,7 @@ function playVideo(v) {
 // Si la muestra es un video, junto a la descripción salen los botones de pausa y sonido.
 var roster = $('#roster'), cur = -1, baTimer = 0, sel = $('#programas'), fitObs = null;
 var ctl = null; // controles de la muestra con sonido (video o YouTube): pausa y sonido, abajo al centro
+var autoPaused = false; // la pausó la página al bajar (no el visitante): se reanuda al volver a la portada
 function pick(i) {
   if (i === cur) return;
   cur = i;
@@ -214,7 +215,7 @@ function showSample() {
     pb.textContent = ctl.paused() ? '▶ Reproducir' : '❚❚ Pausa';
     mb.textContent = ctl.muted() ? '🔇 Activar sonido' : '🔊 Silenciar';
   };
-  ctl = null;
+  ctl = null; autoPaused = false;
   if (vd) {
     ctl = { paused: function () { return vd.paused; }, muted: function () { return vd.muted; },
             play: function () { if (vd.paused) vd.play(); else vd.pause(); }, mute: function () { vd.muted = !vd.muted; } };
@@ -275,8 +276,15 @@ if (roster) {
       roster.children[(cur + (/Right|Down/.test(e.key) ? 1 : -1) + FIGHTERS.length) % FIGHTERS.length].focus();
     }
   });
-  // con la portada fuera de la pantalla, la columna flotante queda sobre el fondo oscuro de la página
-  if (window.IntersectionObserver) new IntersectionObserver(function (en) { roster.classList.toggle('on-page', en[0].intersectionRatio < 0.35); }, { threshold: [0, 0.35, 1] }).observe(sel);
+  // portada fuera de la pantalla: la columna flotante queda sobre el fondo oscuro de la página
+  // y el video (o YouTube) de la portada se pausa solo; al volver se reanuda si lo pausó la página
+  if (window.IntersectionObserver) new IntersectionObserver(function (en) {
+    var away = en[0].intersectionRatio < 0.35;
+    roster.classList.toggle('on-page', away);
+    if (!ctl) return;
+    if (away && !ctl.paused()) { ctl.play(); autoPaused = true; }            // ctl.play alterna pausa/reproducir
+    else if (!away && autoPaused) { autoPaused = false; if (ctl.paused()) ctl.play(); }
+  }, { threshold: [0, 0.35, 1] }).observe(sel);
   var hi = FIGHTERS.map(function (f) { return f.id; }).indexOf(location.hash.slice(1));
   pick(hi < 0 ? 0 : hi);
 }
