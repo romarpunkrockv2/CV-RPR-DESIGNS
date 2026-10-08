@@ -10,23 +10,22 @@
 // imagen, video + portada, youtube (id) + portada, o antes y después (before = antes, src = después;
 // labels = letreros de los botones, por defecto Antes/Después; ar = proporción del recuadro, por defecto 16/9).
 // Opcional en cualquier muestra: full = imagen grande que se abre al hacer clic; credit = créditos (salen en la tarjeta);
-// vertical = true en un video vertical: se ve completo, con su portada difuminada rellenando los lados;
 // link = [texto, url] botón en la tarjeta que abre otra página; c = color de la muestra (el sitio adopta el color del contenido);
 // live = url de una página real que se carga al presionar (src = portada, label = texto del botón);
 // fit = { w, h, bg, garage, msg } en una página en vivo: se muestra igual que en industriasduenas.com —
 //       se carga a w×h (el tamaño del iframe allá) y se reduce a escala para caber completa;
-//       bg = color de fondo del recuadro (alrededor va la portada difuminada); garage = marco blanco redondeado del visor 3D;
+//       bg = color sólido de todo el fondo, como en la página original (sin bg: portada difuminada); garage = marco blanco redondeado del visor 3D;
 //       msg = mensaje que se le manda a la página al cargar (ej. el nombre del modelo para el visor).
 // Los archivos van en media/muestras/.
 var FIGHTERS = [
-  { id: 'ps', name: 'Photoshop', ab: 'Ps', bg: '#001E36', fg: '#31A8FF', c: '#31A8FF', clase: 'Imagen',
+  { id: 'ps', name: 'Photoshop', ab: 'Ps', bg: '#001E36', fg: '#31A8FF', c: '#31A8FF',
     nivel: 'Intermedio',
     sabe: 'Manejo capas, máscaras, selecciones y ajustes de color para fotomontaje y retoque. Preparo archivos para web e impresión.',
     moves: [['Fotomontaje', 'Composiciones con varias fotos para campañas y redes.'],
             ['Retoque de producto', 'Limpieza y ajuste de fotos de grúas y accesorios.'],
             ['Piezas para redes', 'Publicaciones, historias y anuncios.']],
     samples: [{ desc: 'La foto original de la OD7000 en la fábrica y el fotomontaje que la lleva a la carretera. Cambia sola entre antes y después.', before: 'media/muestras/ps-od7000-antes.jpg', src: 'media/muestras/ps-od7000-despues.jpg', cap: 'OD7000 · de la fábrica a la carretera', c: '#F1E32C' }] },
-  { id: 'ai', name: 'Illustrator', ab: 'Ai', bg: '#330000', fg: '#FF9A00', c: '#FF9A00', clase: 'Vector',
+  { id: 'ai', name: 'Illustrator', ab: 'Ai', bg: '#330000', fg: '#FF9A00', c: '#FF9A00',
     nivel: 'Intermedio',
     sabe: 'Trabajo con la pluma, formas, tipografía y color para construir logotipos y gráficos vectoriales. Preparo los archivos a escala real para impresión y corte.',
     moves: [['Rotulación de grúas', 'La gráfica completa de cada unidad, lista para imprimir y colocar.'],
@@ -34,7 +33,7 @@ var FIGHTERS = [
             ['Vectorizado', 'Números, nombres y logos listos para corte e impresión.'],
             ['Etiquetas y formatos', 'Material impreso de la marca.']],
     samples: [{ desc: 'La rotulación AGM de una RD30: el diseño en Illustrator y la grúa terminada con la gráfica ya colocada.', before: 'media/muestras/ai-rd30-diseno.jpg', src: 'media/muestras/ai-rd30-real.jpg', labels: ['Diseño', 'Terminada'], ar: '1600/1182', cap: 'RD30 · rotulación AGM, del diseño a la grúa', c: '#2F6BFF' }] },
-  { id: 'id', name: 'InDesign', ab: 'Id', bg: '#49021F', fg: '#FF3366', c: '#FF3366', clase: 'Editorial',
+  { id: 'id', name: 'InDesign', ab: 'Id', bg: '#49021F', fg: '#FF3366', c: '#FF3366',
     nivel: 'Intermedio',
     sabe: 'Maqueto documentos de varias páginas con páginas maestras, estilos de párrafo y retículas. Exporto archivos listos para imprenta y para pantalla.',
     moves: [['Catálogos', 'Catálogos de equipos con fotos, especificaciones y diseño de la marca.'],
@@ -43,26 +42,26 @@ var FIGHTERS = [
     samples: [{ desc: 'Infografía de la RD50 Low Profile para AGM: renders y dibujos técnicos acomodados en una sola pieza con las especificaciones del equipo.', src: 'media/muestras/id-infografia-rd50.jpg', full: 'media/muestras/id-infografia-rd50-grande.jpg', cap: 'Infografía RD50 Low Profile S.R.L. S.P. · AGM', c: '#2F6BFF',
                 credit: 'Renders en Blender: yo · Dibujos técnicos: equipo de Diseño de Industrias Dueñas – KREYN',
                 link: ['Ver el mismo modelo animado en 3D', 'https://industriasduenas.com/agm/'] }] },
-  { id: 'ae', name: 'After Effects', ab: 'Ae', bg: '#00005B', fg: '#9999FF', c: '#9999FF', clase: 'Movimiento',
+  { id: 'ae', name: 'After Effects', ab: 'Ae', bg: '#00005B', fg: '#9999FF', c: '#9999FF',
     nivel: 'Intermedio',
     sabe: 'Animo textos, logotipos y elementos con fotogramas clave y composiciones. Integro elementos en video y aplico efectos para piezas cortas.',
     moves: [['Animación', 'Textos, logotipos y elementos en movimiento.'],
             ['Efectos y composición', 'Integrar elementos en video.']],
     samples: [{ desc: 'Video de humor para los viernes: una grúa KREYN integrada en Fondo de Bikini.', video: 'media/muestras/ae-bob-esponja.mp4', src: 'media/muestras/ae-bob-esponja.jpg', cap: 'Viernes de humor · grúa KREYN en Fondo de Bikini', c: '#FFE135' }] },
-  { id: 'pr', name: 'Premiere Pro', ab: 'Pr', bg: '#00005B', fg: '#EA77FF', c: '#EA77FF', clase: 'Video',
+  { id: 'pr', name: 'Premiere Pro', ab: 'Pr', bg: '#00005B', fg: '#EA77FF', c: '#EA77FF',
     nivel: 'Intermedio',
     sabe: 'Edito video de principio a fin: corte, ritmo, música, corrección de color básica y exportación para cada plataforma.',
     moves: [['Edición', 'Cortes, ritmo, música y color.'],
             ['Video para redes', 'Versiones para cada formato y plataforma.']],
     samples: [{ desc: 'Video del proceso de fabricación de la RD40 RTR, publicado en YouTube.', youtube: 'y9U-Y60E44k', src: 'https://i.ytimg.com/vi/y9U-Y60E44k/maxresdefault.jpg', cap: 'RD40 RTR · proceso de fabricación', c: '#F1E32C' }] },
-  { id: 'cc', name: 'CapCut', ab: 'Cc', bg: '#000000', fg: '#FFFFFF', c: '#E8E8E8', clase: 'Video para redes',
+  { id: 'cc', name: 'CapCut', ab: 'Cc', bg: '#000000', fg: '#FFFFFF', c: '#E8E8E8',
     nivel: 'Intermedio',
     sabe: 'Hago edición completa: corte, ritmo, música, textos, transiciones y color, con subtítulos automáticos y plantillas cuando el video tiene que salir rápido.',
     moves: [['Edición completa', 'Videos de principio a fin, en vertical u horizontal.'],
             ['Reels y TikToks', 'Videos verticales para redes.'],
             ['Subtítulos y textos', 'Videos que se entienden sin sonido.']],
-    samples: [{ desc: 'Video vertical de la OD20 DS para TikTok.', vertical: true, video: 'media/muestras/capcut.mp4', src: 'media/muestras/capcut.jpg', cap: 'OD20 DS · video para TikTok', c: '#F1E32C' }] },
-  { id: 'bl', name: 'Blender', path: 'M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626', bg: '#E87D0D', fg: '#FFFFFF', c: '#E87D0D', clase: '3D',
+    samples: [{ desc: 'Video vertical de la OD20 DS para TikTok.', video: 'media/muestras/capcut.mp4', src: 'media/muestras/capcut.jpg', cap: 'OD20 DS · video para TikTok', c: '#F1E32C' }] },
+  { id: 'bl', name: 'Blender', path: 'M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626', bg: '#E87D0D', fg: '#FFFFFF', c: '#E87D0D',
     nivel: 'Intermedio',
     sabe: 'Armo composiciones 3D para renders, videos y animaciones, y modelo los elementos que la escena necesita. Aplico materiales, animo cámara y objetos, y rendereo con Eevee y Cycles.',
     moves: [['Composiciones 3D', 'Escenas para renders, videos y animaciones.'],
@@ -70,21 +69,21 @@ var FIGHTERS = [
             ['Animación 3D', 'Movimiento de cámara y objetos.'],
             ['Prototipos y propuestas', 'Visualizar un diseño antes de fabricarlo o presentarlo.']],
     samples: [{ desc: 'Animación navideña en 3D para Industrias Dueñas.', video: 'media/muestras/blender-navidad.mp4', src: 'media/muestras/blender-navidad.jpg', cap: 'Animación navideña de Industrias Dueñas', c: '#D62828' }] },
-  { id: 'wp', name: 'WordPress', path: 'M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0', bg: '#21759B', fg: '#FFFFFF', c: '#3BA5D8', clase: 'Web',
+  { id: 'wp', name: 'WordPress', path: 'M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0', bg: '#21759B', fg: '#FFFFFF', c: '#3BA5D8',
     nivel: 'Intermedio',
     sabe: 'Armo y administro sitios: páginas, plantillas, menús y bloques. Integro contenido a la medida, como catálogos y visores 3D.',
     moves: [['Sitios web', 'Diseño completo: portada, líneas de equipos, galería, catálogo y contacto.'],
             ['Bloques a la medida', 'Catálogos y visores 3D integrados en las páginas.'],
             ['Contenido al día', 'Equipos nuevos, fotos y actualizaciones.']],
     samples: [{ desc: 'El sitio industriasduenas.com en vivo. Lo diseñé completo, de la portada a las líneas de equipos y el contacto.', live: 'https://industriasduenas.com/', src: 'media/sitio-web.jpg', label: 'Abrir el sitio', cap: 'industriasduenas.com · diseñado por mí (en vivo)', c: '#F1E32C' }] },
-  { id: 'web', name: 'HTML · CSS · JS', ab: '</>', bg: '#121212', fg: '#C4FF2E', c: '#C4FF2E', clase: 'Código',
+  { id: 'web', name: 'HTML · CSS · JS', ab: '</>', bg: '#121212', fg: '#C4FF2E', c: '#C4FF2E',
     nivel: 'Intermedio',
     sabe: 'Entiendo la estructura de una página, maqueto con CSS y escribo lógica en JavaScript. Con eso armo y ajusto páginas, catálogos y juegos para el navegador.',
     moves: [['Juegos web', 'Juegos que corren en el navegador y en Android.'],
             ['Sprites y assets', 'Personajes, vehículos, logos y pantallas para el juego.'],
             ['Catálogos y visores 3D', 'Catálogo 2027, catálogo EKANN y las grúas en 3D en el navegador.']],
     samples: [{ fit: { w: 1650, h: 750, bg: '#F1E32C' }, desc: 'Kreyn Road, un juego web: la grúa OD7000 esquiva patrullas y hay tabla de récords. Los sprites y assets son míos. Se juega aquí mismo y hay versión para Android.', live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C', link: ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk'] }] },
-  { id: 'ia', name: 'IA', ab: '✦', bg: '#1B1240', fg: '#B9A6FF', c: '#8B6CFF', clase: 'Copiloto',
+  { id: 'ia', name: 'IA', ab: '✦', bg: '#1B1240', fg: '#B9A6FF', c: '#8B6CFF',
     nivel: 'Intermedio',
     sabe: 'Uso la IA como copiloto para programar: le explico qué debe hacer cada pantalla, reviso lo que escribe, lo pruebo y pido correcciones hasta que funciona.',
     moves: [['Visores 3D', 'Las grúas en el navegador, con colores a elegir por pieza.'],
@@ -150,12 +149,14 @@ var sonido = !!(navigator.userActivation && navigator.userActivation.hasBeenActi
 function playVideo(v) {
   if (!v) return;
   v.muted = !sonido;
-  v.play().catch(function () { v.muted = true; v.play().catch(function () {}); });
+  // si el navegador bloquea el sonido, sigue en mudo; si se interrumpió por una pausa, se respeta la pausa
+  v.play().catch(function (e) { if (e && e.name === 'NotAllowedError') { v.muted = true; v.play().catch(function () {}); } });
 }
 ['pointerdown', 'keydown', 'touchend'].forEach(function (ev) {
-  document.addEventListener(ev, function () {
+  document.addEventListener(ev, function (e) {
     if (sonido) return;
     sonido = true;
+    if (e.target.closest && e.target.closest('#sCtl')) return; // el botón de sonido decide por sí mismo
     var v = document.querySelector('#sMedia video'); if (v) v.muted = false; // en Programas: el video de la muestra
   }, true);
 });
@@ -163,7 +164,9 @@ function playVideo(v) {
 
 // ── Programas (programas.html): pantalla de selección ───────────────────────
 // La muestra es el fondo y se reproduce sola (video, YouTube o la página en vivo); el sitio toma su color (--c).
-// "Pantalla completa" quita los paneles para verla entera.
+// Imágenes, videos y YouTube se ven completos (ajustados al máximo de alto o ancho) con la misma imagen difuminada
+// rellenando lo que sobra; las páginas en vivo con fit se escalan a su recuadro.
+// Si la muestra es un video, junto a la descripción salen los botones de pausa y sonido.
 var roster = $('#roster'), cur = -1, baTimer = 0, sel = $('#programas'), fitObs = null;
 function pick(i) {
   if (i === cur) return;
@@ -171,7 +174,6 @@ function pick(i) {
   var f = FIGHTERS[i];
   roster.querySelectorAll('.slot').forEach(function (s, k) { s.setAttribute('aria-selected', k === i); });
   $('#logoBig').innerHTML = logo(f);
-  $('#fClass').textContent = 'Clase · ' + f.clase;
   $('#fName').textContent = f.name;
   var lv = { 'Básico': 3, 'Intermedio': 6, 'Avanzado': 9 }[f.nivel] || 6;
   $('#fLevel').innerHTML = '<span class="lv-t">Nivel</span><span class="lv-bar" aria-hidden="true">' +
@@ -184,26 +186,43 @@ function pick(i) {
 function showSample() {
   var f = FIGHTERS[cur], sm = f.samples[0];
   clearInterval(baTimer);
-  sel.classList.remove('viewing');
   document.body.style.setProperty('--c', f.c); // el color del programa, no el de la muestra
+  var blur = function (img) { return '<div class="vblur" style="background-image:url(' + esc(img) + ')"></div>'; };
+  var full = function (img, inner) { return '<div class="vfit">' + blur(img) + inner + '</div>'; };
   var frame = function (src) { return '<iframe src="' + esc(src) + '" title="' + esc(sm.cap) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; };
   $('#sMedia').innerHTML = sm.before
     ? (function (lb) {
-        return '<div class="ba"><img src="' + esc(sm.before) + '" alt="' + esc(lb[0] + ': ' + sm.cap) + '">' +
+        return '<div class="ba">' + blur(sm.src) + '<img src="' + esc(sm.before) + '" alt="' + esc(lb[0] + ': ' + sm.cap) + '">' +
           '<img class="after" src="' + esc(sm.src) + '" alt="' + esc(lb[1] + ': ' + sm.cap) + '">' +
           '<div class="ba-tabs"><button data-v="0">' + esc(lb[0]) + '</button><button data-v="1">' + esc(lb[1]) + '</button></div></div>';
       })(sm.labels || ['Antes', 'Después'])
     : sm.live ? (sm.fit
-        ? '<div class="lfit"><div class="vblur" style="background-image:url(' + esc(sm.src) + ')"></div>' +
+        ? (sm.fit.bg ? '<div class="lfit" style="background:' + esc(sm.fit.bg) + '">' : '<div class="lfit">' + blur(sm.src)) +
           '<div class="lbox' + (sm.fit.garage ? ' garage' : '') + '" style="--ar:' + sm.fit.w / sm.fit.h + (sm.fit.bg ? ';background:' + esc(sm.fit.bg) : '') + '">' + frame(sm.live) + '</div></div>'
         : frame(sm.live))
-    : sm.youtube ? frame('https://www.youtube-nocookie.com/embed/' + sm.youtube + '?autoplay=1&mute=1&loop=1&playlist=' + sm.youtube + '&rel=0&playsinline=1')
-    : sm.video ? (sm.vertical ? '<div class="vfit"><div class="vblur" style="background-image:url(' + esc(sm.src) + ')"></div>' : '') +
-        '<video src="' + esc(sm.video) + '" poster="' + esc(sm.src) + '" muted loop playsinline autoplay></video>' + (sm.vertical ? '</div>' : '')
-    : '<img src="' + esc(sm.src) + '" alt="' + esc(sm.cap) + '">';
+    : sm.youtube ? '<div class="lfit">' + blur(sm.src) + '<div class="lbox plain">' +
+        frame('https://www.youtube-nocookie.com/embed/' + sm.youtube + '?autoplay=1&mute=1&loop=1&playlist=' + sm.youtube + '&rel=0&playsinline=1') + '</div></div>'
+    : sm.video ? full(sm.src, '<video src="' + esc(sm.video) + '" poster="' + esc(sm.src) + '" muted loop playsinline autoplay></video>')
+    : full(sm.src, '<img src="' + esc(sm.src) + '" alt="' + esc(sm.cap) + '">');
   var cr = $('#sCredit'); cr.hidden = !sm.credit; cr.textContent = sm.credit || '';
   var sl = $('#sLink'); sl.hidden = !sm.link; if (sm.link) { sl.textContent = sm.link[0] + ' ↗'; sl.href = sm.link[1]; }
-  playVideo($('#sMedia video'));
+  var vd = $('#sMedia video');
+  playVideo(vd);
+  $('#sCtl').hidden = !vd;
+  if (vd) {
+    var pb = $('#sPlay'), mb = $('#sMute');
+    var upd = function () {
+      pb.textContent = vd.paused ? '▶ Reproducir' : '❚❚ Pausa';
+      mb.textContent = vd.muted ? '🔇 Activar sonido' : '🔊 Silenciar';
+    };
+    ['play', 'pause', 'volumechange'].forEach(function (ev) { vd.addEventListener(ev, upd); });
+    pb.onclick = function () { if (vd.paused) vd.play(); else vd.pause(); };
+    mb.onclick = function () { vd.muted = !vd.muted; };
+    upd();
+  }
+  // imagen con versión grande (ej. la infografía de InDesign): se abre al hacer clic
+  var im = $('#sMedia .vfit > img');
+  if (im && sm.full) { im.style.cursor = 'zoom-in'; im.onclick = function () { openLb([sm.full], sm.cap + (sm.credit ? ' — ' + sm.credit : '')); }; }
   var ba = $('#sMedia .ba');
   if (ba) {
     // alterna cada 2.5 s; al tocar un botón se queda en el que se eligió
@@ -213,8 +232,9 @@ function showSample() {
     ba.querySelectorAll('button').forEach(function (b) { b.onclick = function () { clearInterval(baTimer); setBA(+b.dataset.v); }; });
   }
   if (fitObs) { fitObs.disconnect(); fitObs = null; }
+  sel.classList.toggle('solid', !!(sm.fit && sm.fit.bg)); // fondo de color sólido: sin velo y con paneles oscuros
   var lbox = $('#sMedia .lbox');
-  if (lbox) {
+  if (lbox && sm.fit) {
     var ifr = lbox.querySelector('iframe'), fit = sm.fit;
     ifr.style.width = fit.w + 'px'; ifr.style.height = fit.h + 'px';
     if (fit.msg) ifr.onload = function () { ifr.contentWindow.postMessage(fit.msg, '*'); };
@@ -233,23 +253,8 @@ if (roster) {
     b.addEventListener('focus', function () { pick(i); });
     roster.appendChild(b);
   });
-  $('#sVer').onclick = function () {
-    var sm = FIGHTERS[cur].samples[0];
-    sel.classList.add('viewing');
-    var vd = $('#sMedia video'); if (vd) vd.controls = true;
-    var im = $('#sMedia > img');
-    if (im && sm.full) { im.style.cursor = 'zoom-in'; im.onclick = function () { openLb([sm.full], sm.cap + (sm.credit ? ' — ' + sm.credit : '')); }; }
-    $('#sClose').focus();
-  };
-  // al volver no se recarga la muestra (el video o el juego siguen donde iban)
-  var closeView = function () {
-    sel.classList.remove('viewing');
-    var vd = $('#sMedia video'); if (vd) vd.controls = false;
-  };
-  $('#sClose').onclick = closeView;
   document.addEventListener('keydown', function (e) {
     if (document.querySelector('dialog[open]') || /INPUT|TEXTAREA/.test(document.activeElement.tagName)) return;
-    if (e.key === 'Escape') closeView();
     if (/^Arrow(Right|Left|Down|Up)$/.test(e.key)) {   // la fila es vertical en escritorio: también ↑ ↓
       e.preventDefault();
       roster.children[(cur + (/Right|Down/.test(e.key) ? 1 : -1) + FIGHTERS.length) % FIGHTERS.length].focus();
