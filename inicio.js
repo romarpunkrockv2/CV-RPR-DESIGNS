@@ -1,10 +1,11 @@
-// inicio.js — datos y lógica de Programas (programas.html) y Proyectos (proyectos.html).
-// Para agregar un programa: un objeto en FIGHTERS. Para un proyecto: un objeto en PROJECTS
-// (cada paso puede llevar media: { img } | { video } | { live }).
+// inicio.js — datos y lógica de Programas (programas.html). Cada programa es como una página: arriba su portada
+// (la muestra) y abajo sus proyectos paso por paso. Para agregar un programa: un objeto en FIGHTERS.
+// Para un proyecto: un objeto en PROJECTS y su id en projects del programa (cada paso puede llevar media: { img } | { video }).
 
 // ── Programas ("peleadores") ────────────────────────────────────────────────
 // nivel = Básico | Intermedio | Avanzado (barra de la ficha); sabe = lo que sé del programa;
-// moves = para qué lo uso ([título, texto]); desc (en la muestra) = qué se está viendo.
+// moves = para qué lo uso ([título, texto]); desc (en la muestra) = qué se está viendo;
+// projects = ids de PROJECTS que se muestran debajo de la portada (con el color del programa).
 // ab = letras del logo; path = logo en SVG (24×24); c = color del programa en el escenario;
 // samples = muestras de trabajos hechos con ese programa (la 1a se ve al elegirlo; ‹ › pasa a las demás):
 // imagen, video + portada, youtube (id) + portada, o antes y después (before = antes, src = después;
@@ -62,6 +63,7 @@ var FIGHTERS = [
             ['Subtítulos y textos', 'Videos que se entienden sin sonido.']],
     samples: [{ desc: 'Video vertical de la OD20 DS para TikTok.', video: 'media/muestras/capcut-od20.mp4', src: 'media/muestras/capcut-od20.jpg', cap: 'OD20 DS · video para TikTok', c: '#F1E32C' }] },
   { id: 'bl', name: 'Blender', path: 'M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626', bg: '#E87D0D', fg: '#FFFFFF', c: '#E87D0D',
+    projects: ['cj'],
     nivel: 'Intermedio',
     sabe: 'Armo composiciones 3D para renders, videos y animaciones, y modelo los elementos que la escena necesita. Aplico materiales, animo cámara y objetos, y rendereo con Eevee y Cycles.',
     moves: [['Composiciones 3D', 'Escenas para renders, videos y animaciones.'],
@@ -77,24 +79,26 @@ var FIGHTERS = [
             ['Contenido al día', 'Equipos nuevos, fotos y actualizaciones.']],
     samples: [{ desc: 'El sitio industriasduenas.com en vivo. Lo diseñé completo, de la portada a las líneas de equipos y el contacto.', live: 'https://industriasduenas.com/', src: 'media/sitio-web.jpg', label: 'Abrir el sitio', cap: 'industriasduenas.com · diseñado por mí (en vivo)', c: '#F1E32C' }] },
   { id: 'web', name: 'HTML · CSS · JS', ab: '</>', bg: '#121212', fg: '#C4FF2E', c: '#C4FF2E',
+    projects: ['catalogo'],
     nivel: 'Intermedio',
     sabe: 'Entiendo la estructura de una página, maqueto con CSS y escribo lógica en JavaScript. Con eso armo y ajusto páginas, catálogos y juegos para el navegador.',
     moves: [['Juegos web', 'Juegos que corren en el navegador y en Android.'],
             ['Sprites y assets', 'Personajes, vehículos, logos y pantallas para el juego.'],
-            ['Catálogos y visores 3D', 'Catálogo 2027, catálogo EKANN y las grúas en 3D en el navegador.']],
+            ['Catálogos y visores 3D', 'El Catálogo 2027 (más abajo) y las grúas en 3D en el navegador.']],
     samples: [{ fit: { w: 1650, h: 750, bg: '#F1E32C' }, desc: 'Kreyn Road, un juego web: la grúa OD7000 esquiva patrullas y hay tabla de récords. Los sprites y assets son míos. Se juega aquí mismo y hay versión para Android.', live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C', link: ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk'] }] },
   { id: 'ia', name: 'IA', ab: '✦', bg: '#1B1240', fg: '#B9A6FF', c: '#8B6CFF',
+    projects: ['pwa'],
     nivel: 'Intermedio',
     sabe: 'Uso la IA como copiloto para programar: le explico qué debe hacer cada pantalla, reviso lo que escribe, lo pruebo y pido correcciones hasta que funciona.',
     moves: [['Visores 3D', 'Las grúas en el navegador, con colores a elegir por pieza.'],
-            ['Apps internas', 'La app de producción de KREYN (mira Proyectos).'],
-            ['Catálogos web', 'El catálogo EKANN con su panel de precios.']],
+            ['Apps internas', 'La app de producción de KREYN (más abajo, paso por paso).'],
+            ['Catálogos web', 'Catálogos interactivos de equipos, como el Catálogo 2027.']],
     samples: [{ fit: { w: 1600, h: 900, bg: '#111111', garage: true, msg: { type: 'KREYN_MODEL_NAME', nombre: 'ALUMAX' } }, desc: 'Visor 3D de la ALUMAX: eliges el color de cada pieza (pluma, carrocería, cabina…) y giras el modelo. Yo preparé el modelo y el diseño; la IA escribió el código.', live: 'https://industriasduenas.com/3d/alumax.html', src: 'media/visor-alumax.jpg', label: 'Abrir el visor y cambiar colores', cap: 'ALUMAX · visor 3D para elegir colores (en vivo)', c: '#F1E32C' }] },
 ];
 
 // ── Proyectos ───────────────────────────────────────────────────────────────
 var PROJECTS = [
-  { id: 'pwa', color: '#F1E32C', kicker: 'KREYN · App interna', title: 'Sistema de producción', tools: ['web', 'ia'],
+  { id: 'pwa', kicker: 'KREYN · App interna', title: 'Sistema de producción', tools: ['web', 'ia'],
     sum: 'La app con la que trabaja la planta: órdenes de producción, inventarios, almacén con lector QR, recursos humanos, cotizaciones y más. Se instala en celulares y computadoras.',
     stats: [['18', 'módulos'], ['13', 'usuarios'], ['10', 'roles con permisos distintos']],
     steps: [
@@ -103,7 +107,7 @@ var PROJECTS = [
       { k: 'Paso 3', t: 'Construir con IA', d: 'Le explico a la IA cómo debe funcionar cada pantalla y cada regla; ella escribe el código y yo lo reviso, lo pruebo y pido correcciones hasta que funciona.', media: { img: 'media/pwa-detalle.jpg', cap: 'Módulo Detalles Producción/Diseño' } },
       { k: 'Paso 4', t: 'Probar en el celular', d: 'Todo se prueba en celular y computadora: cámara, fotos, avisos y permisos por puesto.', media: { img: 'media/pwa-celular.jpg', phone: true } }
     ] },
-  { id: 'cj', color: '#2BB34A', kicker: 'KREYN · Animación para redes', title: 'CJ se vuelve gruero', tools: ['bl'],
+  { id: 'cj', kicker: 'KREYN · Animación para redes', title: 'CJ se vuelve gruero', tools: ['bl'],
     sum: 'Una animación 3D para las redes de KREYN: terminando la historia de GTA San Andreas, CJ deja las pandillas, se vuelve gruero y graba su primer vlog para presentar su nueva grúa KREYN.',
     steps: [
       { k: 'Paso 1', t: 'Animar a CJ', d: 'Con el modelo 3D de CJ y su esqueleto en Blender, lo animo en la línea de tiempo: cómo habla, cómo señala, cómo se mueve junto a la grúa.', media: { img: 'media/gta-1.jpg', cap: 'CJ con su esqueleto en Blender' } },
@@ -112,22 +116,14 @@ var PROJECTS = [
       { k: 'La historia', t: 'De Grove Street a gruero', d: 'La pandilla de Grove Street se separó y CJ tuvo que buscar un trabajo diario: ahora maneja grúa. Presenta su OD7000 de 7,000 libras, presume que el verde es como el de la pandilla y que la gráfica "salió con su cara y todo", enseña la cabina y cierra prometiendo más vlogs de sus primeros servicios.' },
       { k: 'Resultado', t: 'El primer vlog de CJ', d: 'El video terminado, en formato vertical para TikTok, Instagram y Facebook.', media: { video: 'media/cj-gruero.mp4', poster: 'media/cj-gruero.jpg', phone: true, controls: true } }
     ] },
-  { id: 'catalogo', color: '#FFD400', kicker: 'KREYN · Catálogo de equipos', title: 'Catálogo 2027', tools: ['web', 'wp', 'ia'],
+  { id: 'catalogo', kicker: 'KREYN · Catálogo de equipos', title: 'Catálogo 2027', tools: ['web', 'wp', 'ia'],
     sum: 'Un catálogo interactivo de las grúas KREYN que se navega como una presentación: video de portada, categorías y la ficha de cada equipo.',
     steps: [
       { k: 'Paso 1', t: 'Portada en video', d: 'El catálogo abre con video de los equipos trabajando en carretera, con la tipografía de la marca encima.', media: { video: 'https://industriasduenas.com/catalogo27/portada.mp4', poster: 'media/catalogo-portada.jpg' } },
       { k: 'Paso 2', t: 'Navegar por categorías', d: 'Plataformas, rescate lateral, pick up, rescate y underlift: un índice que lleva directo a cada línea.', media: { img: 'media/catalogo-3.jpg' } },
       { k: 'Paso 3', t: 'La ficha de cada equipo', d: 'Foto, características y botones para ver el video, el modelo 3D, la ficha técnica o cotizar por WhatsApp.', media: { img: 'media/catalogo-4.jpg', cap: 'ALUMAX' } }
     ],
-    links: [['Ver el catálogo ↗', 'https://industriasduenas.com/catalogo27/']] },
-  { id: 'ekann', color: '#FF9100', kicker: 'EKANN · Accesorios', title: 'Catálogo y panel EKANN', tools: ['web', 'ps', 'ia'],
-    sum: 'El catálogo de accesorios de EKANN con filtros por marca y categoría, y un panel donde se editan productos, promociones y precios.',
-    stats: [['270', 'productos'], ['16', 'marcas']],
-    steps: [
-      { k: 'Paso 1', t: 'Catálogo con filtros', d: 'Barra de marcas con sus logotipos, categorías con contador, buscador y cotización directa.', media: { img: 'media/ekann-catalogo.jpg' } },
-      { k: 'Paso 2', t: 'Panel de administración', d: 'Editor de productos y promociones, y una hoja de precios tipo Excel con dólar y costos, con acceso según el puesto de cada usuario.' }
-    ],
-    links: [['Ver el catálogo ↗', 'https://industriasduenas.com/ekann/catalogo-accesorios.html']] }
+    links: [['Ver el catálogo ↗', 'https://industriasduenas.com/catalogo27/']] }
 ];
 
 
@@ -157,7 +153,7 @@ function playVideo(v) {
     if (sonido) return;
     sonido = true;
     if (e.target.closest && e.target.closest('#sCtl')) return; // el botón de sonido decide por sí mismo
-    var v = document.querySelector('#sMedia video'); if (v) v.muted = false; // en Programas: el video de la muestra
+    if (ctl && ctl.muted()) ctl.mute(); // en Programas: el video (o YouTube) de la muestra
   }, true);
 });
 
@@ -168,6 +164,7 @@ function playVideo(v) {
 // rellenando lo que sobra; las páginas en vivo con fit se escalan a su recuadro.
 // Si la muestra es un video, junto a la descripción salen los botones de pausa y sonido.
 var roster = $('#roster'), cur = -1, baTimer = 0, sel = $('#programas'), fitObs = null;
+var ctl = null; // controles de la muestra con sonido (video o YouTube): pausa y sonido, abajo al centro
 function pick(i) {
   if (i === cur) return;
   cur = i;
@@ -182,6 +179,8 @@ function pick(i) {
   $('#fTag').textContent = f.sabe;
   $('#fMoves').innerHTML = f.moves.map(function (m) { return '<li><b>' + esc(m[0]) + '</b><span>' + esc(m[1]) + '</span></li>'; }).join('');
   showSample();
+  showProjects(f);
+  history.replaceState(null, '', '#' + f.id); // programas.html#bl abre Blender
 }
 function showSample() {
   var f = FIGHTERS[cur], sm = f.samples[0];
@@ -202,25 +201,36 @@ function showSample() {
           '<div class="lbox' + (sm.fit.garage ? ' garage' : '') + '" style="--ar:' + sm.fit.w / sm.fit.h + (sm.fit.bg ? ';background:' + esc(sm.fit.bg) : '') + '">' + frame(sm.live) + '</div></div>'
         : frame(sm.live))
     : sm.youtube ? '<div class="lfit">' + blur(sm.src) + '<div class="lbox plain">' +
-        frame('https://www.youtube-nocookie.com/embed/' + sm.youtube + '?autoplay=1&mute=1&loop=1&playlist=' + sm.youtube + '&rel=0&playsinline=1') + '</div></div>'
+        frame('https://www.youtube-nocookie.com/embed/' + sm.youtube + '?autoplay=1&mute=' + (sonido ? 0 : 1) + '&loop=1&playlist=' + sm.youtube + '&rel=0&playsinline=1&enablejsapi=1') + '</div></div>'
     : sm.video ? full(sm.src, '<video src="' + esc(sm.video) + '" poster="' + esc(sm.src) + '" muted loop playsinline autoplay></video>')
     : full(sm.src, '<img src="' + esc(sm.src) + '" alt="' + esc(sm.cap) + '">');
   var cr = $('#sCredit'); cr.hidden = !sm.credit; cr.textContent = sm.credit || '';
   var sl = $('#sLink'); sl.hidden = !sm.link; if (sm.link) { sl.textContent = sm.link[0] + ' ↗'; sl.href = sm.link[1]; }
-  var vd = $('#sMedia video');
+  var vd = $('#sMedia video'), yt = sm.youtube && $('#sMedia iframe');
   playVideo(vd);
-  $('#sCtl').hidden = !vd;
+  var pb = $('#sPlay'), mb = $('#sMute');
+  var upd = function () {
+    if (!ctl) return;
+    pb.textContent = ctl.paused() ? '▶ Reproducir' : '❚❚ Pausa';
+    mb.textContent = ctl.muted() ? '🔇 Activar sonido' : '🔊 Silenciar';
+  };
+  ctl = null;
   if (vd) {
-    var pb = $('#sPlay'), mb = $('#sMute');
-    var upd = function () {
-      pb.textContent = vd.paused ? '▶ Reproducir' : '❚❚ Pausa';
-      mb.textContent = vd.muted ? '🔇 Activar sonido' : '🔊 Silenciar';
-    };
+    ctl = { paused: function () { return vd.paused; }, muted: function () { return vd.muted; },
+            play: function () { if (vd.paused) vd.play(); else vd.pause(); }, mute: function () { vd.muted = !vd.muted; } };
     ['play', 'pause', 'volumechange'].forEach(function (ev) { vd.addEventListener(ev, upd); });
-    pb.onclick = function () { if (vd.paused) vd.play(); else vd.pause(); };
-    mb.onclick = function () { vd.muted = !vd.muted; };
-    upd();
+  } else if (yt) {
+    // YouTube: se controla con mensajes a su reproductor (enablejsapi=1)
+    var st = { p: false, m: !sonido };
+    var cmd = function (f) { yt.contentWindow.postMessage(JSON.stringify({ event: 'command', func: f, args: [] }), '*'); };
+    ctl = { paused: function () { return st.p; }, muted: function () { return st.m; },
+            play: function () { cmd(st.p ? 'playVideo' : 'pauseVideo'); st.p = !st.p; upd(); },
+            mute: function () { cmd(st.m ? 'unMute' : 'mute'); st.m = !st.m; upd(); } };
   }
+  $('#sCtl').hidden = !ctl;
+  pb.onclick = function () { ctl.play(); };
+  mb.onclick = function () { ctl.mute(); };
+  upd();
   // imagen con versión grande (ej. la infografía de InDesign): se abre al hacer clic
   var im = $('#sMedia .vfit > img');
   if (im && sm.full) { im.style.cursor = 'zoom-in'; im.onclick = function () { openLb([sm.full], sm.cap + (sm.credit ? ' — ' + sm.credit : '')); }; }
@@ -254,7 +264,7 @@ if (roster) {
     var b = document.createElement('button');
     b.className = 'slot'; b.setAttribute('role', 'option'); b.setAttribute('aria-selected', 'false'); b.setAttribute('aria-label', f.name);
     b.innerHTML = '<span class="mini">' + logo(f) + '</span><span class="nm">' + esc(f.id === 'web' ? 'Código' : f.name.split(' ')[0]) + '</span>';
-    b.addEventListener('click', function () { pick(i); });
+    b.addEventListener('click', function () { pick(i); if (scrollY > 0) scrollTo({ top: 0, behavior: 'smooth' }); }); // la columna flota: al elegir, sube a la portada
     b.addEventListener('focus', function () { pick(i); });
     roster.appendChild(b);
   });
@@ -265,7 +275,10 @@ if (roster) {
       roster.children[(cur + (/Right|Down/.test(e.key) ? 1 : -1) + FIGHTERS.length) % FIGHTERS.length].focus();
     }
   });
-  pick(0);
+  // con la portada fuera de la pantalla, la columna flotante queda sobre el fondo oscuro de la página
+  if (window.IntersectionObserver) new IntersectionObserver(function (en) { roster.classList.toggle('on-page', en[0].intersectionRatio < 0.35); }, { threshold: [0, 0.35, 1] }).observe(sel);
+  var hi = FIGHTERS.map(function (f) { return f.id; }).indexOf(location.hash.slice(1));
+  pick(hi < 0 ? 0 : hi);
 }
 
 // El juego (Kreyn Road) pide pantalla completa con un mensaje, igual que en industriasduenas.com/play/.
@@ -277,37 +290,28 @@ window.addEventListener('message', function (e) {
   if (req) Promise.resolve(req.call(f)).then(function () { e.source.postMessage('fullscreenChanged', '*'); }).catch(function () {});
 });
 
-// ── Proyectos (proyectos.html): pestañas arriba; el proyecto elegido se ve completo, paso por paso ──
-var pjOne = $('#pjOne');
+// ── Proyectos de cada programa: debajo de su portada, paso por paso (acentos con el color del programa, --c) ──
 function stepMedia(m, s) {
   if (m.video) return '<div class="frame' + (m.phone ? ' phone' : '') + '"><video src="' + esc(m.video) + '" poster="' + esc(m.poster || '') + '" muted loop playsinline autoplay controls></video></div>';
   return '<button class="frame zoom' + (m.phone ? ' phone' : '') + '" data-img="' + esc(m.img) + '" data-txt="' + esc(s.t + ' — ' + s.d) + '">' +
     '<img src="' + esc(m.img) + '" alt="' + esc(m.cap || s.t) + '" loading="lazy">' + (m.cap ? '<span class="cap">' + esc(m.cap) + '</span>' : '') + '</button>';
 }
-function showProject(id) {
-  var p = byId(PROJECTS, id) || PROJECTS[0];
-  document.body.style.setProperty('--c', p.color);
-  $('#pjTabs').querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.id === p.id); });
-  pjOne.innerHTML =
-    '<header class="pj-head"><p class="kicker cond">' + esc(p.kicker) + '</p><h1>' + esc(p.title) + '</h1><p class="pj-sum">' + esc(p.sum) + '</p>' +
+function projectHtml(p) {
+  return '<article class="pj-one"><header class="pj-head"><p class="kicker cond">' + esc(p.kicker) + '</p><h2>' + esc(p.title) + '</h2><p class="pj-sum">' + esc(p.sum) + '</p>' +
       '<div class="pj-meta"><div class="pj-tools">' + p.tools.map(function (t) { var f = byId(FIGHTERS, t); return '<span title="' + esc(f.name) + '">' + logo(f) + '</span>'; }).join('') + '</div>' +
       '<div class="pj-stats">' + (p.stats || []).map(function (x) { return '<div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div></div>' +
       '<div class="pj-links">' + (p.links || []).map(function (l) { return '<a href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + esc(l[0]) + '</a>'; }).join('') + '</div></header>' +
     '<ol class="pj-steps">' + p.steps.map(function (s) {
       return '<li class="pj-st' + (s.media ? '' : ' solo') + '">' + (s.media ? stepMedia(s.media, s) : '') +
         '<div class="txt"><span class="k">' + esc(s.k) + '</span><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div></li>';
-    }).join('') + '</ol>';
-  pjOne.querySelectorAll('.zoom').forEach(function (z) { z.onclick = function () { openLb([z.dataset.img], z.dataset.txt); }; });
+    }).join('') + '</ol></article>';
 }
-if (pjOne) {
-  $('#pjTabs').innerHTML = PROJECTS.map(function (p) {
-    return '<button role="tab" style="--pc:' + p.color + '" data-id="' + p.id + '">' + esc(p.title) + '</button>';
-  }).join('');
-  $('#pjTabs').onclick = function (e) {
-    var b = e.target.closest('button'); if (!b) return;
-    history.replaceState(null, '', '#' + b.dataset.id); showProject(b.dataset.id); scrollTo(0, 0);
-  };
-  showProject(location.hash.slice(1));
+function showProjects(f) {
+  var box = $('#pgInfo'); if (!box) return;
+  var ps = (f.projects || []).map(function (id) { return byId(PROJECTS, id); }).filter(Boolean);
+  box.hidden = !ps.length; $('#sMore').hidden = !ps.length;
+  box.innerHTML = ps.length ? '<p class="pg-k cond">Proyectos con ' + esc(f.name) + '</p>' + ps.map(projectHtml).join('') : '';
+  box.querySelectorAll('.zoom').forEach(function (z) { z.onclick = function () { openLb([z.dataset.img], z.dataset.txt); }; });
 }
 
 // ── Visor de imágenes ───────────────────────────────────────────────────────

@@ -13,13 +13,13 @@ que lo llama con el número de `?v=` actualizado.
 | Página | Archivo | Qué tiene |
 |---|---|---|
 | Inicio | `index.html` | Sobre mí: logo, descripción personal y un párrafo por hobby con su imagen |
-| Programas | `programas.html` | Selector tipo videojuego: una muestra por programa (de fondo, se reproduce sola) |
-| Proyectos | `proyectos.html` | Cada proyecto completo, paso por paso |
+| Programas | `programas.html` | Cada programa es como una página: portada (selector tipo videojuego con su muestra de fondo) y, debajo, sus proyectos paso por paso. `programas.html#bl` abre Blender |
 | Galería | `galeria.html` | Trabajos extra y el archivo de la carrera (UDN 2014–2017) |
 | Experiencia | `experiencia.html` | CV formal: perfil profesional, experiencia, formación, habilidades |
 | Contacto | `contacto.html` | Datos de contacto |
 
-`sobre-mi.html`, `habilidades.html` y `trabajo.html` solo redirigen a las páginas nuevas (para enlaces viejos).
+`sobre-mi.html`, `habilidades.html`, `trabajo.html` y `proyectos.html` solo redirigen a las páginas nuevas (para enlaces viejos;
+`proyectos.html#cj` abre Blender, `#catalogo` Código, `#pwa` IA).
 
 ## Regla de diseño: cada página con un estilo único
 
@@ -30,7 +30,6 @@ de estilos que me gustan. No se repite la estética entre páginas ni se usa un 
 |---|---|
 | Inicio | Fanzine punk fotocopiado: hojas rotas con cinta, fotos B/N (color al pasar el mouse), negro + papel + rojo |
 | Programas | Pantalla de selección de videojuego de peleas |
-| Proyectos | Por definir: hoy comparte la base oscura de Programas |
 | Galería | Por definir: hoy comparte la base oscura de Programas |
 | Experiencia | CV formal / editorial |
 | Contacto | Por definir: hoy usa el grunge base |
@@ -38,10 +37,13 @@ de estilos que me gustan. No se repite la estética entre páginas ni se usa un 
 ## Dónde se edita cada cosa
 
 - **Programas y sus muestras:** `inicio.js` → `FIGHTERS` (una muestra por programa en `samples`).
-- **Proyectos:** `inicio.js` → `PROJECTS`.
+- **Proyectos:** `inicio.js` → `PROJECTS`, y su id en `projects` del programa donde se muestran (Blender: CJ · Código: Catálogo 2027 · IA: Sistema de producción).
+  Los acentos toman el color del programa. Los demás programas aún no tienen proyectos (pendiente).
 - **Galería:** `galeria.js` → `PIEZAS`.
 - **Estilos:** `inicio.css` (Inicio, Programas, Proyectos, Galería) · `experiencia.css` · `style.css` (Contacto y base).
-- **Regla:** cada trabajo aparece **una sola vez** en todo el sitio (Programas, Proyectos o Galería, no en dos).
+- **Regla:** cada trabajo aparece **una sola vez** en todo el sitio (Programas o Galería, no en dos).
+- **Muestras de Programas:** se ven completas (ajustadas al máximo de alto o ancho) con la misma imagen difuminada detrás;
+  páginas en vivo con `fit` (juego, visor 3D) se cargan al tamaño de su iframe en industriasduenas.com y se escalan.
 
 ## Pendiente
 
@@ -61,7 +63,7 @@ Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
 
 
 ### Estilos únicos por página
-- [ ] Darle a Proyectos, Galería y Contacto su propio estilo (hoy se parecen a otras páginas).
+- [ ] Darle a Galería y Contacto su propio estilo (hoy se parecen a otras páginas).
 
 ### Descripción de Inicio
 - [x] Descripción personal (`.yo-intro` en `index.html`): texto tuyo. No mencionar el puesto actual: eso va en Experiencia.
