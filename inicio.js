@@ -310,6 +310,7 @@ function showProjects(f) {
   var box = $('#pgInfo'); if (!box) return;
   var ps = (f.projects || []).map(function (id) { return byId(PROJECTS, id); }).filter(Boolean);
   box.hidden = !ps.length; $('#sMore').hidden = !ps.length;
+  sel.classList.toggle('has-more', !!ps.length);
   box.innerHTML = ps.length ? '<p class="pg-k cond">Proyectos con ' + esc(f.name) + '</p>' + ps.map(projectHtml).join('') : '';
   box.querySelectorAll('.zoom').forEach(function (z) { z.onclick = function () { openLb([z.dataset.img], z.dataset.txt); }; });
 }
