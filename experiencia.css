@@ -13,8 +13,8 @@ body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;backgr
 
 .cv{max-width:920px;padding-top:64px;padding-bottom:96px}
 .cv-head{display:grid;grid-template-columns:auto 1fr auto;gap:24px 28px;align-items:end;border-bottom:2px solid var(--ink2);padding-bottom:28px}
-/* foto del CV (media/romar-cv.webp): vertical 4:5, a la izquierda del nombre */
-.cv-foto{display:block;width:132px;height:auto;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--rule);border-radius:2px}
+/* foto del CV (media/romar-cv.webp): cuadrada 1:1, a la izquierda del nombre */
+.cv-foto{display:block;width:140px;height:auto;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--rule);border-radius:2px}
 .cv-head h1{font-size:clamp(38px,6vw,60px);font-weight:500;letter-spacing:-.01em}
 .cv-head .role{margin:10px 0 0;color:var(--soft);font-size:18px}
 .cv-head .contact{text-align:right;font-size:14px;color:var(--soft);line-height:1.8}
@@ -60,7 +60,7 @@ body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;backgr
   nav,footer,.print{display:none!important}
   body.formal{background:#fff;font-size:11pt;padding:0}
   .cv{padding:14mm 16mm;max-width:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-  .cv-foto{width:28mm}
+  .cv-foto{width:30mm}
   /* más compacto en papel: nombre en 2 renglones, títulos y texto un poco más chicos */
   body.formal{line-height:1.5}
   .cv-head{padding-bottom:16px;gap:16px 22px}

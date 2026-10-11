@@ -23,7 +23,7 @@ que lo llama con el número de `?v=` actualizado.
 |---|---|---|
 | Inicio | `index.html` | Sobre mí: logo, descripción personal y un párrafo por hobby con su imagen |
 | Habilidades (antes Programas; el archivo sigue siendo `programas.html`) | `programas.html` | Cada programa es como una página: portada (selector tipo videojuego con su muestra de fondo) y, debajo, sus proyectos paso por paso. `programas.html#bl` abre Blender |
-| Galería | `galeria.html` | Trabajos extra y el archivo de la carrera (UDN 2014–2017) |
+| Galería | `galeria.html` | Carrusel: el proyecto al centro (sus imágenes cambian solas, con puntos) y su descripción abajo |
 | Experiencia | `experiencia.html` | CV formal: perfil profesional, experiencia, formación, habilidades |
 | Contacto | `contacto.html` | Datos de contacto |
 
@@ -48,7 +48,7 @@ de estilos que me gustan. No se repite la estética entre páginas ni se usa un 
 - **Programas y sus muestras:** `inicio.js` → `FIGHTERS` (una muestra por programa en `samples`).
 - **Proyectos:** `inicio.js` → `PROJECTS`, y su id en `projects` del programa donde se muestran (Blender: CJ · Código: Catálogo 2027 · IA: Sistema de producción).
   Los acentos toman el color del programa. Los demás programas aún no tienen proyectos (pendiente).
-- **Galería:** `galeria.js` → `PIEZAS`.
+- **Galería:** `galeria.js` → `PIEZAS` (i = imágenes o video + poster; k = etiqueta opcional). Videos en `media/muestras/gal-*`.
 - **Menú:** en celular (≤720 px) es de hamburguesa: botón `.menu-btn` + enlaces en `.menu` dentro del `<nav>` de cada página;
   lo abre y cierra `nav.js` (incluido al final de cada página) y sus estilos van en `style.css`. Si agregas una página, copia el `<nav>` completo.
 - **Estilos:** `inicio.css` (Inicio, Programas, Proyectos, Galería) · `experiencia.css` · `style.css` (Contacto y base).
@@ -94,6 +94,10 @@ Tecnología y Aprender por mi cuenta van **sin imagen**, en dos hojas de solo te
       También `media/fondo.jpg`: era la textura encima del video de Inicio, que se quitó (el video ahora va a color, sin efectos).
       Y `media/sobre-mi/portafolio.svg`: la sección "Este portafolio" se quitó; Inicio ahora cierra con botones a las demás páginas (`.yo-pags`).
 - [ ] (Opcional) WordPress en vivo se muestra a pantalla completa; decidir si va en recuadro escalado como el juego y el visor.
+
+### Galería
+- [ ] Revisar las descripciones de los proyectos nuevos (Whatsername, Mitsubishi, caballos): las redactó la IA; confirmar para quién fueron.
+- [ ] Borrar `udn-noticias.webp` y `resident-evil.webp` (ya no van en la Galería).
 
 ### Otros
 - [ ] Muestras extra que quieras agregar a la Galería (`galeria.js`).
