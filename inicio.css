@@ -272,7 +272,9 @@ body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--
 /* divisor: borde de papel negro rasgado (media/borde-roto.webp) al pie del video, en vez de un corte recto al negro */
 .yo-hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;aspect-ratio:1600/131;pointer-events:none;
   background:url("media/borde-roto.webp") center bottom/100% 100% no-repeat}
-.zine nav{background:var(--bg);border-bottom:2px solid var(--paper)}
+/* menú fijo arriba todo el tiempo (fixed en vez de sticky: no depende del overflow del body); el body deja su espacio */
+.zine nav{position:fixed;left:0;right:0;top:0;background:var(--bg);border-bottom:2px solid var(--paper)}
+body.zine{padding-top:calc(var(--nav-h) + env(safe-area-inset-top,0px))}
 .zine nav a{color:var(--paper)}
 .zine nav a[aria-current="page"]{color:var(--acc)}
 @media (hover:hover){.zine nav a:hover{color:var(--acc)}}
@@ -298,11 +300,18 @@ body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--
 .ransom span:nth-child(8){background:var(--acc);transform:rotate(6deg) translateY(-4px);font-size:clamp(44px,5.6vw,70px)}
 
 /* HOJA: cada sección es UNA sola hoja de papel rota con la foto pegada adentro y el texto al lado.
-   La sombra va en el contenedor (.yo-sobre/.yo-row usan filter) porque clip-path se come el box-shadow. */
+   La sombra va en el contenedor (.yo-head/.yo-row usan drop-shadow) para que siga la forma rasgada del papel. */
 .yo-head,.yo-row{filter:drop-shadow(0 10px 22px rgba(0,0,0,.55)) drop-shadow(0 2px 4px rgba(0,0,0,.35))}
 .hoja{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(22px,3.5vw,48px);align-items:center;
-  background:var(--paper);color:var(--ink);padding:clamp(34px,4vw,54px) clamp(24px,4vw,56px);clip-path:polygon(0.0% 1.0%,5.6% 1.2%,11.1% 2.0%,16.7% 1.0%,22.2% 1.1%,27.8% 1.3%,33.3% 0.4%,38.9% 1.1%,44.4% 1.4%,50.0% 1.7%,55.6% 0.2%,61.1% 0.7%,66.7% 0.2%,72.2% 1.8%,77.8% 1.5%,83.3% 0.1%,88.9% 2.2%,94.4% 2.1%,98.6% 0.0%,98.6% 5.6%,99.7% 11.1%,100.0% 16.7%,98.8% 22.2%,99.9% 27.8%,99.6% 33.3%,99.5% 38.9%,99.9% 44.4%,99.0% 50.0%,99.0% 55.6%,98.1% 61.1%,98.9% 66.7%,98.6% 72.2%,98.9% 77.8%,98.5% 83.3%,99.0% 88.9%,99.4% 94.4%,100.0% 97.8%,94.4% 97.8%,88.9% 98.2%,83.3% 98.4%,77.8% 99.3%,72.2% 99.5%,66.7% 99.4%,61.1% 99.8%,55.6% 98.3%,50.0% 99.1%,44.4% 98.1%,38.9% 99.1%,33.3% 97.9%,27.8% 98.1%,22.2% 100.0%,16.7% 99.5%,11.1% 98.0%,5.6% 99.0%,2.2% 100.0%,0.9% 94.4%,0.2% 88.9%,1.4% 83.3%,1.7% 77.8%,0.6% 72.2%,0.2% 66.7%,0.7% 61.1%,2.1% 55.6%,1.7% 50.0%,0.3% 44.4%,0.5% 38.9%,0.2% 33.3%,0.1% 27.8%,1.8% 22.2%,0.4% 16.7%,1.2% 11.1%,1.0% 5.6%)}
-.hoja::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.22;mix-blend-mode:multiply;pointer-events:none}
+  color:var(--ink);padding:clamp(52px,5vw,70px) clamp(26px,4vw,58px) clamp(50px,5vw,66px);
+  container-type:inline-size}
+/* papel blanco rasgado en 3 piezas (media/papel-blanco-*.webp): la orilla de arriba y la de abajo se escalan con el ancho
+   de la hoja (sin deformarse) y el centro liso se estira a lo alto, empezando y terminando debajo de las orillas para que no
+   haya costura. 6.5cqw ≈ 46 px de 702 de la imagen: más abajo que lo rasgado y antes de que termine la orilla (60 px). */
+.hoja::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  url("media/papel-blanco-arriba.webp") top/100% auto no-repeat,
+  url("media/papel-blanco-abajo.webp") bottom/100% auto no-repeat,
+  url("media/papel-blanco-centro.webp") 0 6.5cqw/100% calc(100% - 13cqw) no-repeat}
 .foto{margin:0;position:relative;transform:rotate(-2deg)}
 .foto img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;clip-path:polygon(0.0% 2.5%,4.2% 2.5%,8.3% 0.1%,12.5% 0.2%,16.7% 2.2%,20.8% 1.9%,25.0% 1.7%,29.2% 0.8%,33.3% 1.6%,37.5% 1.6%,41.7% 1.5%,45.8% 0.4%,50.0% 1.1%,54.2% 1.0%,58.3% 1.9%,62.5% 2.6%,66.7% 2.5%,70.8% 1.4%,75.0% 1.2%,79.2% 0.7%,83.3% 0.1%,87.5% 0.1%,91.7% 1.2%,95.8% 0.8%,99.0% 0.0%,97.7% 4.2%,98.6% 8.3%,98.5% 12.5%,99.4% 16.7%,99.9% 20.8%,99.2% 25.0%,99.6% 29.2%,98.7% 33.3%,97.4% 37.5%,98.2% 41.7%,99.5% 45.8%,97.7% 50.0%,97.9% 54.2%,98.1% 58.3%,97.6% 62.5%,98.0% 66.7%,97.9% 70.8%,99.1% 75.0%,97.4% 79.2%,97.5% 83.3%,99.6% 87.5%,98.0% 91.7%,98.1% 95.8%,100.0% 98.8%,95.8% 98.6%,91.7% 98.7%,87.5% 97.6%,83.3% 98.7%,79.2% 97.8%,75.0% 99.1%,70.8% 97.7%,66.7% 97.7%,62.5% 98.8%,58.3% 98.5%,54.2% 97.6%,50.0% 98.1%,45.8% 98.7%,41.7% 99.4%,37.5% 99.2%,33.3% 98.2%,29.2% 99.6%,25.0% 97.6%,20.8% 99.3%,16.7% 97.6%,12.5% 99.2%,8.3% 97.5%,4.2% 98.2%,1.3% 100.0%,1.3% 95.8%,1.7% 91.7%,1.5% 87.5%,0.8% 83.3%,0.5% 79.2%,1.3% 75.0%,2.4% 70.8%,1.6% 66.7%,0.2% 62.5%,2.1% 58.3%,1.9% 54.2%,2.4% 50.0%,0.5% 45.8%,1.9% 41.7%,0.2% 37.5%,1.7% 33.3%,0.7% 29.2%,0.6% 25.0%,2.3% 20.8%,0.3% 16.7%,1.4% 12.5%,2.2% 8.3%,0.6% 4.2%);
   filter:grayscale(1) contrast(1.6) brightness(1.05);transition:filter .4s}
@@ -313,7 +322,7 @@ body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--
 .yo-foto::before{content:"";position:absolute;z-index:1;top:-14px;left:50%;width:120px;height:32px;margin-left:-60px;background:rgba(200,200,200,.6);transform:rotate(-5deg)}
 .yo-foto img{filter:none}
 .yo-foto figcaption{font:400 22px/1 "Permanent Marker",cursive;color:var(--ink);text-align:right;padding:12px 8px 0;transform:rotate(-3deg)}
-.yo-intro::before{content:"";position:absolute;right:-20px;top:-30px;width:60%;height:calc(100% + 60px);pointer-events:none;
+.yo-intro::before{content:"";position:absolute;right:0;top:-10px;width:60%;height:calc(100% + 20px);pointer-events:none;
   background:radial-gradient(rgba(22,20,18,.2) 1.6px,transparent 1.9px) 0 0/8px 8px;-webkit-mask:linear-gradient(225deg,#000,transparent 60%);mask:linear-gradient(225deg,#000,transparent 60%)}
 .yo-intro p{margin:0;font-size:18px;line-height:1.75;position:relative}
 .yo-intro p+p{margin-top:16px}
@@ -325,7 +334,7 @@ body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--
 /* aficiones: una hoja por afición, la foto alterna de lado */
 .yo-row{margin:0 0 64px}
 .yo-row:nth-of-type(odd) .hoja{transform:rotate(.8deg)}
-.yo-row:nth-of-type(even) .hoja{transform:rotate(-.8deg);grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);clip-path:polygon(0.0% 0.6%,5.6% 1.5%,11.1% 1.5%,16.7% 1.9%,22.2% 0.4%,27.8% 0.5%,33.3% 0.3%,38.9% 0.5%,44.4% 1.6%,50.0% 0.3%,55.6% 1.2%,61.1% 0.5%,66.7% 0.6%,72.2% 0.9%,77.8% 1.8%,83.3% 1.3%,88.9% 0.0%,94.4% 0.6%,99.7% 0.0%,98.1% 5.6%,98.2% 11.1%,98.2% 16.7%,98.2% 22.2%,98.4% 27.8%,97.9% 33.3%,98.3% 38.9%,99.4% 44.4%,98.1% 50.0%,98.9% 55.6%,98.3% 61.1%,98.8% 66.7%,99.1% 72.2%,99.2% 77.8%,99.1% 83.3%,99.3% 88.9%,99.7% 94.4%,100.0% 98.2%,94.4% 98.2%,88.9% 97.8%,83.3% 98.5%,77.8% 98.8%,72.2% 98.4%,66.7% 99.7%,61.1% 98.5%,55.6% 99.0%,50.0% 99.6%,44.4% 99.6%,38.9% 98.9%,33.3% 99.4%,27.8% 99.0%,22.2% 98.7%,16.7% 99.1%,11.1% 99.7%,5.6% 98.9%,0.5% 100.0%,0.5% 94.4%,0.4% 88.9%,0.8% 83.3%,0.2% 77.8%,1.4% 72.2%,2.1% 66.7%,0.9% 61.1%,1.6% 55.6%,2.1% 50.0%,0.1% 44.4%,0.3% 38.9%,1.8% 33.3%,1.8% 27.8%,1.4% 22.2%,0.4% 16.7%,0.9% 11.1%,1.9% 5.6%)}
+.yo-row:nth-of-type(even) .hoja{transform:rotate(-.8deg);grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
 .yo-row:nth-of-type(even) .foto{order:2;transform:rotate(2deg)}
 .yo-row:nth-of-type(even) .foto img{clip-path:polygon(0.0% 0.6%,4.2% 0.3%,8.3% 1.0%,12.5% 0.4%,16.7% 0.2%,20.8% 1.0%,25.0% 2.4%,29.2% 2.1%,33.3% 2.0%,37.5% 0.6%,41.7% 1.4%,45.8% 0.7%,50.0% 0.4%,54.2% 0.3%,58.3% 0.6%,62.5% 2.4%,66.7% 2.2%,70.8% 2.1%,75.0% 2.1%,79.2% 0.5%,83.3% 0.8%,87.5% 1.6%,91.7% 1.9%,95.8% 2.2%,97.7% 0.0%,99.8% 4.2%,98.4% 8.3%,98.3% 12.5%,98.7% 16.7%,99.5% 20.8%,98.8% 25.0%,99.8% 29.2%,97.6% 33.3%,97.7% 37.5%,98.6% 41.7%,99.2% 45.8%,97.6% 50.0%,98.5% 54.2%,97.7% 58.3%,97.8% 62.5%,98.7% 66.7%,98.9% 70.8%,98.4% 75.0%,98.9% 79.2%,99.6% 83.3%,99.2% 87.5%,97.9% 91.7%,99.9% 95.8%,100.0% 99.9%,95.8% 98.4%,91.7% 99.3%,87.5% 98.6%,83.3% 98.8%,79.2% 99.1%,75.0% 97.4%,70.8% 99.5%,66.7% 98.9%,62.5% 99.5%,58.3% 98.4%,54.2% 99.3%,50.0% 99.1%,45.8% 98.1%,41.7% 99.2%,37.5% 98.5%,33.3% 97.6%,29.2% 99.7%,25.0% 99.8%,20.8% 99.4%,16.7% 98.0%,12.5% 98.4%,8.3% 99.4%,4.2% 99.1%,0.5% 100.0%,1.2% 95.8%,0.1% 91.7%,1.8% 87.5%,2.3% 83.3%,2.5% 79.2%,1.9% 75.0%,2.5% 70.8%,0.0% 66.7%,0.8% 62.5%,2.5% 58.3%,2.0% 54.2%,1.1% 50.0%,2.5% 45.8%,1.6% 41.7%,2.1% 37.5%,0.8% 33.3%,0.5% 29.2%,1.2% 25.0%,0.4% 20.8%,1.0% 16.7%,2.5% 12.5%,0.9% 8.3%,0.0% 4.2%)}
 /* títulos de cada afición sobre un pedazo de papel negro rasgado (media/papel-roto.webp) */
@@ -340,6 +349,19 @@ body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--
 .yo-go a{background:var(--ink);color:var(--paper);text-decoration:none;padding:12px 18px;transform:rotate(-1deg);box-shadow:4px 4px 0 var(--acc);transition:transform .12s,box-shadow .12s}
 .yo-go a+a{transform:rotate(1deg)}
 @media (hover:hover){.yo-go a:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--acc)}}
+
+/* final: botones a las demás páginas, cada uno en un pedazo de papel negro rasgado (como los títulos de las aficiones) */
+.yo-fin{margin-top:24px}
+.yo-pags{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 40px;max-width:1100px;margin:0 auto}
+@media (max-width:700px){.yo-pags{grid-template-columns:1fr;gap:26px}}
+.yo-pags a{display:flex;flex-direction:column;gap:8px;min-height:160px;justify-content:center;padding:36px 44px 42px;
+  background:url("media/papel-roto.webp") center/100% 100% no-repeat;color:var(--paper);text-decoration:none;
+  transform:rotate(-1.5deg);transition:transform .15s}
+.yo-pags a:nth-child(even){transform:rotate(1.5deg)}
+.yo-pags b{font:400 clamp(28px,2.6vw,36px)/1 "Rubik Dirt",sans-serif;text-transform:uppercase;font-weight:400;white-space:nowrap}
+.yo-pags b::after{content:" →";color:var(--acc)}
+.yo-pags span{font-size:15px;line-height:1.45;color:#D6D3CC}
+@media (hover:hover){.yo-pags a:hover{transform:rotate(0) scale(1.04)}.yo-pags a:hover b{color:var(--acc)}}
 
 /* celular: las letras recortadas se achican para que cada palabra quepa en un renglón */
 @media (max-width:600px){

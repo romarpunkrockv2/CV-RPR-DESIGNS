@@ -61,7 +61,6 @@ Ahora son dibujos provisionales en `media/sobre-mi/`. Reemplazar por fotos reale
 | Deportes | `deportes.svg` | Tu skate, una cancha, jersey o un partido de tus equipos |
 | Tecnología | `tecnologia.svg` | Tus dispositivos, tu escritorio, algo que armaste |
 | Aprender por mi cuenta | `aprender.svg` | Algo que aprendiste a hacer solo / un proyecto propio |
-| Este portafolio | `portafolio.svg` | Una foto tuya trabajando o un collage de trabajos |
 
 Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
 
@@ -91,6 +90,7 @@ Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
 - [ ] **Borrar archivos viejos que ya no se usan:** `media/muestras/capcut.mp4` y `capcut.jpg`
       (los reemplazó `capcut-od20.mp4`/`.jpg`); quitarlos también de GitHub.
       También `media/fondo.jpg`: era la textura encima del video de Inicio, que se quitó (el video ahora va a color, sin efectos).
+      Y `media/sobre-mi/portafolio.svg`: la sección "Este portafolio" se quitó; Inicio ahora cierra con botones a las demás páginas (`.yo-pags`).
 - [ ] (Opcional) WordPress en vivo se muestra a pantalla completa; decidir si va en recuadro escalado como el juego y el visor.
 
 ### Otros
