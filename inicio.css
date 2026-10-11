@@ -345,7 +345,7 @@ body.zine{--nav-off:calc(var(--nav-h) + env(safe-area-inset-top,0px));padding-to
 .yo-row:nth-of-type(even) .foto{order:2;transform:rotate(2deg)}
 /* títulos de cada afición sobre un pedazo de papel negro rasgado (media/papel-roto.webp) */
 .yo-row h3{display:inline-block;font-size:clamp(32px,3.6vw,46px);margin:0 0 18px;text-transform:uppercase;
-  background:url("media/papel-roto.webp") center/100% 100% no-repeat;color:var(--paper);padding:18px 34px 16px;transform:rotate(-2deg)}
+  background:url("media/papel-roto.webp") center/100% 100% no-repeat;color:var(--paper);padding:10px 34px 24px;line-height:1;transform:rotate(-2deg)} /* Boxpot se asienta bajo: más aire abajo que arriba para que el texto quede centrado en el papel */
 .yo-row:nth-of-type(even) h3{transform:rotate(1.5deg)}
 .yo-row p{margin:0;font-size:19px;line-height:1.7}
 .yo-row p+p{margin-top:14px}
@@ -358,6 +358,9 @@ body.zine{--nav-off:calc(var(--nav-h) + env(safe-area-inset-top,0px));padding-to
 .yo-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,44px);align-items:stretch}
 .yo-row .hoja.solo{grid-template-columns:1fr;align-items:start;transform:rotate(.8deg)}
 .yo-row .hoja.solo+.hoja.solo{transform:rotate(-1deg)}
+/* columnas más angostas: títulos un poco más chicos para que "Aprender por mi cuenta" quepa en un renglón */
+.yo-duo h3{font-size:clamp(26px,2.4vw,34px);white-space:nowrap}
+@media (max-width:520px){.yo-duo h3{white-space:normal;text-wrap:balance}} /* en celular sí baja a 2 renglones, repartidos parejo */
 @media (max-width:900px){.yo-duo{grid-template-columns:1fr;gap:48px}}
 
 .yo-go{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px!important}
