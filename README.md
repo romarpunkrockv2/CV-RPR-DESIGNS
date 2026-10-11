@@ -1,7 +1,11 @@
 # RPR Designs · portafolio
 
 Marca del sitio: logo `media/rpr-designs.png` (menú, Inicio y favicon). El nombre completo
-(Rubén Omar Núñez Plascencia) va **solo** en Experiencia.
+(Rubén Omar Núñez Plascencia) va en Experiencia y en la bienvenida de Inicio.
+
+**Bienvenida de Inicio** (`index.html` + `intro.js`, estilos en `inicio.css` → BIENVENIDA): video en B/N con velo negro al 60 %,
+logo, "Portafolio" + nombre y botón Entrar. Al entrar, el velo se va y el video pasa a color a la vez, el logo vuela al menú
+mientras el menú baja y aparece Sobre mí. Solo sale al entrar directo al sitio; si vienes de otra página del portafolio se salta.
 
 Sitio publicado en GitHub Pages: <https://romarpunkrockv2.github.io/CV-RPR-DESIGNS/>
 Se sube arrastrando los archivos (o carpetas) en GitHub → *Add file → Upload files*.

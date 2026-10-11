@@ -7,10 +7,24 @@
 <link rel="icon" href="media/rpr-designs-sm.png?v=2">
 <meta name="description" content="RPR Designs, portafolio de diseño gráfico: música, videojuegos, cine y tecnología, y el trabajo que sale de ahí.">
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261011">
-<link rel="stylesheet" href="inicio.css?v=20261011h">
+<link rel="stylesheet" href="style.css?v=20261011b">
+<link rel="stylesheet" href="inicio.css?v=20261011j">
+<!-- Bienvenida (ver intro.js): se muestra al entrar directo al sitio; si vienes de otra página del portafolio, se salta -->
+<script>try{var r=document.referrer;if(!r||new URL(r).origin!==location.origin||location.protocol==='file:')document.documentElement.classList.add('intro')}catch(e){document.documentElement.classList.add('intro')}</script>
 </head>
 <body class="zine">
+<!-- Bienvenida: velo negro sobre el video en B/N, logo, nombre y botón Entrar -->
+<div class="intro-pant" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-nombre">
+  <div class="intro-velo"></div>
+  <div class="intro-in">
+    <img class="intro-logo" src="media/rpr-designs.png?v=2" alt="RPR Designs">
+    <div class="intro-txt">
+      <p class="intro-k">Portafolio</p>
+      <h2 class="intro-nombre" id="intro-nombre">Rubén Omar Núñez Plascencia</h2>
+      <button class="intro-btn" type="button" autofocus>Entrar</button>
+    </div>
+  </div>
+</div>
 <nav><div class="wrap"><a class="me" href="index.html"><img src="media/rpr-designs-sm.png?v=2" alt="RPR Designs" width="40" height="38"></a><button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span><span></span></button><div class="menu" id="menu"><a href="index.html" aria-current="page">Inicio</a><a href="programas.html">Programas</a><a href="galeria.html">Galería</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></div></nav>
 
 <!-- Portada: el video (original a color, en loop sin sonido) ocupa la pantalla con Sobre mí encima.
@@ -78,5 +92,6 @@
   </section>
 </main>
 <script src="nav.js?v=20261011"></script>
+<script src="intro.js?v=20261011"></script>
 </body>
 </html>
