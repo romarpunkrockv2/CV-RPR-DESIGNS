@@ -50,7 +50,7 @@ var H = 500, MAXW = 900, VIS = 4;
 function medidas() {
   var W = innerWidth, mob = W <= 700;
   H = mob ? Math.min(innerHeight * .5, 440) : Math.max(320, Math.min(innerHeight * .6, 640));
-  MAXW = mob ? W * .84 : Math.min(W * .6, 1100);
+  MAXW = mob ? W * .72 : Math.min(W * .6, 1100); // deja lugar a los lados para las flechas de la imagen
   VIS = mob ? 2 : 4;
   cf.style.setProperty('--H', H + 'px');
 }
@@ -83,7 +83,7 @@ function layout() {
     el.style.width = c.w + 'px'; el.style.height = c.h + 'px';
     el.style.marginLeft = -c.w / 2 + 'px'; el.style.marginTop = -c.h / 2 + 'px';
     el.style.setProperty('--br', 1 - c.a * .18);
-    el.style.transform = 'translateX(' + (x[o] || 0) + 'px) translateZ(' + (-c.a * 120) + 'px) rotateY(' + (-s * 30 * Math.min(c.a, 1)) + 'deg) scale(' + c.sc + ')';
+    el.style.transform = 'perspective(' + (innerWidth <= 700 ? 600 : 900) + 'px) translateX(' + (x[o] || 0) + 'px) translateZ(' + (-c.a * 120) + 'px) rotateY(' + (-s * 42 * Math.min(c.a, 1)) + 'deg) scale(' + c.sc + ')';
   });
 }
 var raf = 0;
