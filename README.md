@@ -3,6 +3,11 @@
 Marca del sitio: logo `media/rpr-designs.png` (menú, Inicio y favicon). El nombre completo
 (Rubén Omar Núñez Plascencia) va en Experiencia y en la bienvenida de Inicio.
 
+**Fuentes de Inicio** (carpeta `fonts/`, sin Google Fonts): **Boxpot** (`boxpot1.ttf`, Nick Polifroni) para títulos y
+**Subway Haze** (`Subway_Haze_1.1.ttf`, BACH) para el texto. Se usan tal cual (no convertir ni modificar) y van con su
+licencia (`np-readme.pdf`, `Subway_Haze_1.1.txt`). En `inicio.css`: `--f-tit` y `--f-txt`.
+Permiso: el autor de Boxpot (Nick Polifroni) confirmó por correo el 11/10/2026 que se puede usar en el sitio.
+
 **Bienvenida de Inicio** (`index.html` + `intro.js`, estilos en `inicio.css` → BIENVENIDA): video en B/N con velo negro al 60 %,
 logo, "Portafolio" + nombre y botón Entrar. Al entrar, el velo se va y el video pasa a color a la vez, el logo vuela al menú
 mientras el menú baja y aparece Sobre mí. Sale al entrar directo al sitio y al recargar; se salta al llegar desde otra página del portafolio o con atrás/adelante.

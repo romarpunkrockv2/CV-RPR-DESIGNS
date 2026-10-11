@@ -4,6 +4,8 @@
   --bg:#0B0B0B;--ink:#ECECEC;--paper:#161616;--mute:#9C9C9C;--acid:#95D600;--line:#ECECEC;color-scheme:dark;
   --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+/* Boxpot (fonts/, Nick Polifroni, con permiso del autor): títulos de Inicio y menú de Inicio y Contacto */
+@font-face{font-family:"Boxpot";src:url("fonts/boxpot1.ttf") format("truetype");font-display:swap}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scrollbar-gutter:stable} /* reserva el espacio del scroll: la barra no se mueve entre páginas con y sin scroll */
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Special Elite","Courier New",monospace;position:relative;padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -102,6 +104,7 @@ footer{border-top:3px solid var(--ink);padding:18px 0;color:var(--mute);font-siz
 /* correo: la letra se ajusta al ancho de la pantalla para que quepa en un solo renglón */
 .big{display:inline-block;font:400 clamp(18px,5vw,54px)/1 "Rubik Dirt",sans-serif;text-decoration:none;background:var(--acid);color:#0B0B0B;padding:12px 18px;transform:rotate(-1deg);overflow-wrap:anywhere}
 @media (hover:hover){.big:hover{background:var(--ink)}}
+.grunge nav a{font-family:"Boxpot","Impact",sans-serif;font-size:19px;letter-spacing:.02em} /* botones del menú de Contacto en Boxpot */
 .links{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px}
 
 @media (max-width:720px){.about{grid-template-columns:1fr}.torn{padding:26px 20px}

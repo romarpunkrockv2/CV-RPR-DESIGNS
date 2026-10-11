@@ -258,10 +258,14 @@ dialog#lb::backdrop{background:rgba(0,0,0,.9)}
 /* ══ INICIO / SOBRE MÍ (index.html): FANZINE PUNK fotocopiado ══
    Una sola paleta: negro + papel blanco + verde del logo (#B5D452). Hojas rotas, cinta, letras recortadas tipo nota de rescate,
    fotos en fotocopia de alto contraste (color al pasar el mouse), puntos de medio tono, títulos en bloque negro.
-   Usa la base de style.css (grano, nav, Rubik Dirt / Special Elite) + Permanent Marker para lo escrito a mano. */
+   Fuentes propias (fonts/, sin Google Fonts para que carguen rápido): Boxpot para títulos (--f-tit) y Subway Haze para el texto (--f-txt). */
+@font-face{font-family:"Subway Haze";src:url("fonts/Subway_Haze_1.1.ttf") format("truetype");font-display:swap}
 body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--acc);--mute:#8A857A;
   --dots:radial-gradient(rgba(255,255,255,.07) 1.4px,transparent 1.6px) 0 0/9px 9px;
-  background:var(--bg);color:var(--paper);overflow-x:hidden}
+  --f-tit:"Boxpot","Impact",sans-serif;--f-txt:"Subway Haze",Georgia,"Times New Roman",serif;
+  background:var(--bg);color:var(--paper);overflow-x:hidden;font-family:var(--f-txt)}
+.zine :is(h1,h2,h3),.zine nav a.me{font-family:var(--f-tit)}
+.zine nav a{font-family:var(--f-tit);font-size:19px;letter-spacing:.02em} /* botones del menú en Boxpot (como Contacto) */
 /* PORTADA: el video (original a color, sin textura ni filtros) llena la pantalla bajo el menú, como una diapositiva
    de presentación, con Sobre mí encima. Al bajar, el resto del contenido queda sobre el fondo negro del body. */
 .yo-hero{position:relative;overflow:hidden;display:flex;align-items:center;
@@ -290,16 +294,16 @@ body.zine{--nav-off:calc(var(--nav-h) + env(safe-area-inset-top,0px));padding-to
 
 /* letras recortadas de revista: cada una con su papel, letra y giro */
 .ransom{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:0}
-.ransom span{display:inline-block;padding:4px 9px 6px;font:400 clamp(36px,4.6vw,56px)/1 "Rubik Dirt",sans-serif;
+.ransom span{display:inline-block;padding:4px 9px 6px;font:400 clamp(36px,4.6vw,56px)/1 var(--f-tit);
   background:var(--paper);color:var(--ink);box-shadow:3px 4px 0 rgba(0,0,0,.6)}
 .yo-head>.ransom span{font-size:clamp(46px,6.4vw,84px)}
 .yo-head>.ransom span:nth-child(4),.yo-head>.ransom span:nth-child(8){font-size:clamp(54px,7.4vw,98px)}
 .ransom .sp{width:14px;padding:0;background:none;box-shadow:none}
-.ransom span:nth-child(2){background:var(--ink);color:var(--paper);outline:2px solid var(--paper);font-family:"Special Elite",monospace;transform:rotate(5deg)}
-.ransom span:nth-child(3){background:var(--acc);font-family:"Permanent Marker",cursive;transform:rotate(-6deg) translateY(4px)}
+.ransom span:nth-child(2){background:var(--ink);color:var(--paper);outline:2px solid var(--paper);font-family:var(--f-txt);transform:rotate(5deg)}
+.ransom span:nth-child(3){background:var(--acc);font-family:var(--f-tit);transform:rotate(-6deg) translateY(4px)}
 .ransom span:nth-child(4){transform:rotate(3deg) translateY(-5px);font-size:clamp(42px,5.4vw,66px)}
 .ransom span:nth-child(5){background:var(--ink);color:var(--acc);outline:2px solid var(--acc);transform:rotate(-4deg)}
-.ransom span:nth-child(7){font-family:"Special Elite",monospace;transform:rotate(-7deg) translateY(3px)}
+.ransom span:nth-child(7){font-family:var(--f-txt);transform:rotate(-7deg) translateY(3px)}
 .ransom span:nth-child(8){background:var(--acc);transform:rotate(6deg) translateY(-4px);font-size:clamp(44px,5.6vw,70px)}
 
 /* HOJA: cada sección es UNA sola hoja de papel rota con la foto pegada adentro y el texto al lado.
@@ -324,12 +328,12 @@ body.zine{--nav-off:calc(var(--nav-h) + env(safe-area-inset-top,0px));padding-to
 .yo-sobre{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);transform:rotate(-.5deg)}
 .yo-foto::before{content:"";position:absolute;z-index:1;top:-14px;left:50%;width:120px;height:32px;margin-left:-60px;background:rgba(200,200,200,.6);transform:rotate(-5deg)}
 .yo-foto img{filter:none}
-.yo-foto figcaption{font:400 22px/1 "Permanent Marker",cursive;color:var(--ink);text-align:right;padding:12px 8px 0;transform:rotate(-3deg)}
+.yo-foto figcaption{font:400 24px/1 var(--f-tit);color:var(--ink);text-align:right;padding:12px 8px 0;transform:rotate(-3deg)}
 .yo-intro::before{content:"";position:absolute;right:0;top:-10px;width:60%;height:calc(100% + 20px);pointer-events:none;
   background:radial-gradient(rgba(22,20,18,.2) 1.6px,transparent 1.9px) 0 0/8px 8px;-webkit-mask:linear-gradient(225deg,#000,transparent 60%);mask:linear-gradient(225deg,#000,transparent 60%)}
-.yo-intro p{margin:0;font-size:18px;line-height:1.75;position:relative}
+.yo-intro p{margin:0;font-size:19.5px;line-height:1.75;position:relative}
 .yo-intro p+p{margin-top:16px}
-.yo-intro .lead{font-size:clamp(19px,1.6vw,21px);line-height:1.6}
+.yo-intro .lead{font-size:clamp(20px,1.7vw,23px);line-height:1.6}
 
 /* separador antes de las aficiones */
 .ransom.yo-sep{justify-content:center;margin:10px 0 64px}
@@ -340,10 +344,10 @@ body.zine{--nav-off:calc(var(--nav-h) + env(safe-area-inset-top,0px));padding-to
 .yo-row:nth-of-type(even) .hoja{transform:rotate(-.8deg);grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
 .yo-row:nth-of-type(even) .foto{order:2;transform:rotate(2deg)}
 /* títulos de cada afición sobre un pedazo de papel negro rasgado (media/papel-roto.webp) */
-.yo-row h3{display:inline-block;font-size:clamp(28px,3.2vw,40px);margin:0 0 18px;text-transform:uppercase;
+.yo-row h3{display:inline-block;font-size:clamp(32px,3.6vw,46px);margin:0 0 18px;text-transform:uppercase;
   background:url("media/papel-roto.webp") center/100% 100% no-repeat;color:var(--paper);padding:18px 34px 16px;transform:rotate(-2deg)}
 .yo-row:nth-of-type(even) h3{transform:rotate(1.5deg)}
-.yo-row p{margin:0;font-size:17.5px;line-height:1.7}
+.yo-row p{margin:0;font-size:19px;line-height:1.7}
 .yo-row p+p{margin-top:14px}
 /* miniaturas de las aficiones: la imagen tal cual (a color, sin el recorte rasgado), en su proporción original,
    con sombra de foto pegada; la de Sobre mí (.yo-foto) conserva su recorte */
@@ -376,11 +380,12 @@ html.intro .intro-pant{display:block;position:fixed;inset:0;z-index:30}
 .intro-logo{width:clamp(150px,24vw,260px);height:auto;transform-origin:0 0;transition:transform .9s cubic-bezier(.7,0,.2,1) .1s,opacity .15s;
   filter:drop-shadow(0 12px 30px rgba(0,0,0,.6))}
 .intro-txt{display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity .35s,transform .35s}
-.intro-k{margin:0;font:400 clamp(14px,1.4vw,18px)/1 "Special Elite",monospace;letter-spacing:.5em;text-transform:uppercase;color:var(--acc);padding-left:.5em}
-.intro-nombre{margin:0;font:400 clamp(30px,5vw,64px)/1.05 "Rubik Dirt",sans-serif;text-transform:uppercase;color:var(--paper);max-width:16ch;
+.intro-k{margin:0;font:400 clamp(14px,1.4vw,18px)/1 var(--f-txt);letter-spacing:.5em;text-transform:uppercase;color:var(--acc);padding-left:.5em}
+.intro-nombre{margin:0;font:400 clamp(24px,9vw,80px)/1.05 var(--f-tit);text-transform:uppercase;color:var(--paper);
   text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.intro-nombre span{display:block;white-space:nowrap} /* nombres en un renglón y apellidos en el otro (la letra se ajusta para que quepan) */
 .intro-btn{margin-top:14px;border:2px solid var(--paper);background:var(--acc);color:var(--ink);cursor:pointer;
-  font:400 clamp(20px,2vw,26px)/1 "Rubik Dirt",sans-serif;text-transform:uppercase;letter-spacing:.06em;padding:16px 34px 14px;
+  font:400 clamp(20px,2vw,26px)/1 var(--f-tit);text-transform:uppercase;letter-spacing:.06em;padding:16px 34px 14px;
   box-shadow:6px 6px 0 var(--paper);transform:rotate(-1.5deg);transition:transform .12s,box-shadow .12s}
 @media (hover:hover){.intro-btn:hover{transform:rotate(-1.5deg) translate(3px,3px);box-shadow:3px 3px 0 var(--paper)}}
 .intro-btn:active{transform:rotate(-1.5deg) translate(4px,4px);box-shadow:2px 2px 0 var(--paper)}
@@ -405,6 +410,12 @@ html.intro.go .yo-head>.yo-sobre{transition-delay:.34s}
 html.intro.listo .intro-logo{opacity:0}
 html.intro.listo .zine nav .me img{opacity:1}
 
+/* pie de Inicio: © y créditos de las tipografías, chico y gris */
+.zine .yo-pie{border-top:1px solid #2C2A26;padding:20px 0 calc(22px + env(safe-area-inset-bottom,0px));color:var(--mute);font-size:14px;line-height:1.5;text-align:center}
+.zine .yo-pie .wrap{max-width:1320px;padding:0 clamp(16px,3vw,40px)}
+.zine .yo-pie a{color:inherit;text-underline-offset:3px}
+@media (hover:hover){.zine .yo-pie a:hover{color:var(--acc)}}
+
 /* final: botones a las demás páginas, cada uno en un pedazo de papel negro rasgado (como los títulos de las aficiones) */
 .yo-fin{margin-top:24px}
 .yo-pags{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 40px;max-width:1100px;margin:0 auto}
@@ -413,9 +424,9 @@ html.intro.listo .zine nav .me img{opacity:1}
   background:url("media/papel-roto.webp") center/100% 100% no-repeat;color:var(--paper);text-decoration:none;
   transform:rotate(-1.5deg);transition:transform .15s}
 .yo-pags a:nth-child(even){transform:rotate(1.5deg)}
-.yo-pags b{font:400 clamp(28px,2.6vw,36px)/1 "Rubik Dirt",sans-serif;text-transform:uppercase;font-weight:400;white-space:nowrap}
+.yo-pags b{font:400 clamp(32px,3vw,42px)/1 var(--f-tit);text-transform:uppercase;font-weight:400;white-space:nowrap}
 .yo-pags b::after{content:" →";color:var(--acc)}
-.yo-pags span{font-size:15px;line-height:1.45;color:#D6D3CC}
+.yo-pags span{font-size:16.5px;line-height:1.45;color:#D6D3CC}
 @media (hover:hover){.yo-pags a:hover{transform:rotate(0) scale(1.04)}.yo-pags a:hover b{color:var(--acc)}}
 
 /* celular: las letras recortadas se achican para que cada palabra quepa en un renglón */

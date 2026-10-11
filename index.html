@@ -6,9 +6,11 @@
 <title>RPR Designs — Diseño, video, 3D y web</title>
 <link rel="icon" href="media/rpr-designs-sm.png?v=2">
 <meta name="description" content="RPR Designs, portafolio de diseño gráfico: música, videojuegos, cine y tecnología, y el trabajo que sale de ahí.">
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261011b">
-<link rel="stylesheet" href="inicio.css?v=20261011o">
+<!-- fuentes propias (fonts/): se piden desde el inicio para que no tarden -->
+<link rel="preload" href="fonts/boxpot1.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Subway_Haze_1.1.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="style.css?v=20261011c">
+<link rel="stylesheet" href="inicio.css?v=20261011t">
 <!-- Bienvenida (ver intro.js): sale al entrar directo al sitio y al recargar; se salta al llegar desde otra página del portafolio o con atrás/adelante -->
 <script>try{var r=document.referrer,n=performance.getEntriesByType('navigation')[0],t=n?n.type:'navigate';if(t==='reload'||(t==='navigate'&&(!r||new URL(r).origin!==location.origin||location.protocol==='file:')))document.documentElement.classList.add('intro')}catch(e){document.documentElement.classList.add('intro')}</script>
 </head>
@@ -20,7 +22,7 @@
     <img class="intro-logo" src="media/rpr-designs.png?v=2" alt="RPR Designs">
     <div class="intro-txt">
       <p class="intro-k">Portafolio</p>
-      <h2 class="intro-nombre" id="intro-nombre">Rubén Omar Núñez Plascencia</h2>
+      <h2 class="intro-nombre" id="intro-nombre"><span>Rubén Omar</span> <span>Núñez Plascencia</span></h2>
       <button class="intro-btn" type="button" autofocus>Entrar</button>
     </div>
   </div>
@@ -88,6 +90,7 @@
     </div>
   </section>
 </main>
+<footer class="yo-pie"><div class="wrap">© 2026 RPR Designs · Tipografías: <a href="https://www.nickpolifroni.com" target="_blank" rel="noopener">Boxpot de Nick Polifroni</a> y Subway Haze de BACH</div></footer>
 <script src="nav.js?v=20261011"></script>
 <script src="intro.js?v=20261011"></script>
 </body>
