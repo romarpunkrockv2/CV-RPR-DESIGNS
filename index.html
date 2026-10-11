@@ -8,9 +8,9 @@
 <meta name="description" content="RPR Designs, portafolio de diseño gráfico: música, videojuegos, cine y tecnología, y el trabajo que sale de ahí.">
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=20261011b">
-<link rel="stylesheet" href="inicio.css?v=20261011j">
-<!-- Bienvenida (ver intro.js): se muestra al entrar directo al sitio; si vienes de otra página del portafolio, se salta -->
-<script>try{var r=document.referrer;if(!r||new URL(r).origin!==location.origin||location.protocol==='file:')document.documentElement.classList.add('intro')}catch(e){document.documentElement.classList.add('intro')}</script>
+<link rel="stylesheet" href="inicio.css?v=20261011k">
+<!-- Bienvenida (ver intro.js): sale al entrar directo al sitio y al recargar; se salta al llegar desde otra página del portafolio o con atrás/adelante -->
+<script>try{var r=document.referrer,n=performance.getEntriesByType('navigation')[0],t=n?n.type:'navigate';if(t==='reload'||(t==='navigate'&&(!r||new URL(r).origin!==location.origin||location.protocol==='file:')))document.documentElement.classList.add('intro')}catch(e){document.documentElement.classList.add('intro')}</script>
 </head>
 <body class="zine">
 <!-- Bienvenida: velo negro sobre el video en B/N, logo, nombre y botón Entrar -->
@@ -49,36 +49,33 @@
 <main class="yo">
   <h2 class="ransom yo-sep" aria-label="Aficiones"><span>A</span><span>F</span><span>I</span><span>C</span><span>I</span><span>O</span><span>N</span><span>E</span><span>S</span></h2>
 
-  <!-- Cada párrafo con su imagen. Las imágenes son provisionales: ver README.md -->
+  <!-- Cada afición con su miniatura (media/sobre-mi/*.webp), tal cual, sin marco -->
   <section class="yo-row"><div class="hoja">
-    <figure class="foto"><img src="media/sobre-mi/musica.svg" alt="Música" loading="lazy"></figure>
+    <figure class="foto"><img src="media/sobre-mi/musica.webp" alt="Portada de American Idiot de Green Day" loading="lazy"></figure>
     <div class="texto"><h3>Música</h3><p>La música es una de mis mayores aficiones, especialmente el punk rock y sus diferentes variantes, y disfruto descubrir bandas, conciertos y nuevas propuestas. Mi banda favorita es Green Day.</p>
       <p>El punk también me hizo conocer el straight edge, un movimiento que nació en la escena hardcore punk de los ochenta y que propone una vida sin tabaco, alcohol ni drogas. Aunque no me considero straight edge como tal, sí tengo el hábito de no fumar, no tomar y no consumir drogas, y de mantener una P.M.A. (actitud mental positiva).</p></div>
   </div></section>
   <section class="yo-row"><div class="hoja">
-    <figure class="foto"><img src="media/sobre-mi/videojuegos.svg" alt="Videojuegos" loading="lazy"></figure>
+    <figure class="foto"><img src="media/sobre-mi/videojuegos.webp" alt="Arte de Metro" loading="lazy"></figure>
     <div class="texto"><h3>Videojuegos</h3><p>También soy un apasionado de los videojuegos y de todo lo relacionado con la cultura que los rodea. Me interesa tanto jugarlos como explorar cómo están hechos, su dirección artística, diseño de escenarios y todos los elementos que hay detrás de ellos.</p>
       <p>Me gustan sobre todo los shooters, el terror, el survival horror y la acción. Mis sagas favoritas son <em>Halo</em>, <em>Metro</em>, <em>Resident Evil</em> y <em>Silent Hill</em>, y también disfruto mucho <em>Fortnite</em>.</p></div>
   </div></section>
   <section class="yo-row"><div class="hoja">
-    <figure class="foto"><img src="media/sobre-mi/cine.svg" alt="Cine" loading="lazy"></figure>
+    <figure class="foto"><img src="media/sobre-mi/cine.webp" alt="Póster de Regreso al futuro" loading="lazy"></figure>
     <div class="texto"><h3>Cine</h3><p>El cine es otra de las cosas que más disfruto. Me gustan sobre todo las películas de terror, suspenso y ciencia ficción, y fijarme en cómo están contadas: la fotografía, la música, la edición y la dirección de arte, detalles que también me inspiran en mi trabajo como diseñador.</p>
       <p>Mi trilogía favorita es <em>Volver al futuro</em> (<em>Back to the Future</em>).</p></div>
   </div></section>
   <section class="yo-row"><div class="hoja">
-    <figure class="foto"><img src="media/sobre-mi/deportes.svg" alt="Deportes" loading="lazy"></figure>
+    <figure class="foto"><img src="media/sobre-mi/deportes.webp" alt="Yo en patineta" loading="lazy"></figure>
     <div class="texto"><h3>Deportes</h3><p>Practiqué skateboard y futbol, y de vez en cuando disfruto ver deportes, principalmente futbol, NHL, NFL y MLB.</p>
       <p>Soy fanático de las Chivas, los Boston Bruins, los New England Patriots, los Boston Red Sox y los Boston Celtics.</p></div>
   </div></section>
-  <section class="yo-row"><div class="hoja">
-    <figure class="foto"><img src="media/sobre-mi/tecnologia.svg" alt="Tecnología" loading="lazy"></figure>
-    <div class="texto"><h3>Tecnología</h3><p>La tecnología es otra de mis grandes curiosidades. Me gusta mantenerme actualizado con las novedades, como la inteligencia artificial y los programas nuevos, probar dispositivos recientes y estar al tanto de las innovaciones que van surgiendo.</p>
-      <p>Más que por la novedad, lo hago porque me gusta probar nuevas formas de trabajar: buscar herramientas que me ayuden a optimizar mis procesos, ahorrar tiempo y obtener mejores resultados en cada proyecto.</p></div>
-  </div></section>
-  <section class="yo-row"><div class="hoja">
-    <figure class="foto"><img src="media/sobre-mi/aprender.svg" alt="Aprender por mi cuenta" loading="lazy"></figure>
-    <div class="texto"><h3>Aprender por mi cuenta</h3><p>En general, disfruto mucho aprender por mi cuenta y meterme en temas que despiertan mi curiosidad. Me gusta pasar de una afición a otra, experimentar y convertir algunas de esas ideas en proyectos propios.</p></div>
-  </div></section>
+  <!-- Tecnología y Aprender por mi cuenta: solo texto, lado a lado en la misma fila -->
+  <section class="yo-row yo-duo">
+    <div class="hoja solo"><div class="texto"><h3>Tecnología</h3><p>La tecnología es otra de mis grandes curiosidades. Me gusta mantenerme actualizado con las novedades, como la inteligencia artificial y los programas nuevos, probar dispositivos recientes y estar al tanto de las innovaciones que van surgiendo.</p>
+      <p>Más que por la novedad, lo hago porque me gusta probar nuevas formas de trabajar: buscar herramientas que me ayuden a optimizar mis procesos, ahorrar tiempo y obtener mejores resultados en cada proyecto.</p></div></div>
+    <div class="hoja solo"><div class="texto"><h3>Aprender por mi cuenta</h3><p>En general, disfruto mucho aprender por mi cuenta y meterme en temas que despiertan mi curiosidad. Me gusta pasar de una afición a otra, experimentar y convertir algunas de esas ideas en proyectos propios.</p></div></div>
+  </section>
 
   <!-- Al final: botones a las demás páginas, para no tener que subir al menú -->
   <section class="yo-fin">

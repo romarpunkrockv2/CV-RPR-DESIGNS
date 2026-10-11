@@ -5,7 +5,7 @@ Marca del sitio: logo `media/rpr-designs.png` (menú, Inicio y favicon). El nomb
 
 **Bienvenida de Inicio** (`index.html` + `intro.js`, estilos en `inicio.css` → BIENVENIDA): video en B/N con velo negro al 60 %,
 logo, "Portafolio" + nombre y botón Entrar. Al entrar, el velo se va y el video pasa a color a la vez, el logo vuela al menú
-mientras el menú baja y aparece Sobre mí. Solo sale al entrar directo al sitio; si vienes de otra página del portafolio se salta.
+mientras el menú baja y aparece Sobre mí. Sale al entrar directo al sitio y al recargar; se salta al llegar desde otra página del portafolio o con atrás/adelante.
 
 Sitio publicado en GitHub Pages: <https://romarpunkrockv2.github.io/CV-RPR-DESIGNS/>
 Se sube arrastrando los archivos (o carpetas) en GitHub → *Add file → Upload files*.
@@ -54,19 +54,12 @@ de estilos que me gustan. No se repite la estética entre páginas ni se usa un 
 ## Pendiente
 
 ### Imágenes de Inicio (Sobre mí)
-Ahora son dibujos provisionales en `media/sobre-mi/`. Reemplazar por fotos reales
-(misma carpeta; si cambia el nombre o la extensión, actualizar el `src` en `index.html`):
-
-| Párrafo | Archivo provisional | Idea de imagen |
-|---|---|---|
-| Música | `musica.svg` | Concierto, tus discos, guitarra, una banda que te guste |
-| Videojuegos | `videojuegos.svg` | Tu consola o setup, un juego favorito, arte conceptual |
-| Cine | `cine.svg` | Una película favorita, póster, tu colección o una sala de cine |
-| Deportes | `deportes.svg` | Tu skate, una cancha, jersey o un partido de tus equipos |
-| Tecnología | `tecnologia.svg` | Tus dispositivos, tu escritorio, algo que armaste |
-| Aprender por mi cuenta | `aprender.svg` | Algo que aprendiste a hacer solo / un proyecto propio |
-
-Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
+Miniaturas en `media/sobre-mi/` (`.webp`), tal cual (a color, en su proporción, sin recorte rasgado):
+Música = `musica.webp` (portada de American Idiot) · Videojuegos = `videojuegos.webp` (Metro) ·
+Cine = `cine.webp` (Regreso al futuro) · Deportes = `deportes.webp` (patineta).
+Tecnología y Aprender por mi cuenta van **sin imagen**, en dos hojas de solo texto lado a lado (`.yo-duo`).
+- [ ] `musica.webp` viene de una imagen de 225 × 225 px y se ve algo suave: si consigues la portada más grande (600 px o más), reemplázala.
+- [ ] Borrar los dibujos provisionales que ya no se usan: `media/sobre-mi/*.svg`.
 
 
 ### Estilos únicos por página
