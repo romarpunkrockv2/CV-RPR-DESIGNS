@@ -8,26 +8,31 @@
 <meta name="description" content="RPR Designs, portafolio de diseño gráfico: música, videojuegos, cine y tecnología, y el trabajo que sale de ahí.">
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik+Dirt&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=20261008">
-<link rel="stylesheet" href="inicio.css?v=20261011">
+<link rel="stylesheet" href="inicio.css?v=20261011b">
 </head>
 <body class="zine">
-<!-- Fondo: video original a color en loop sin sonido (media/fondo.mp4), sin textura ni filtros -->
-<video class="bg-video" src="media/fondo.mp4?v=20261011" poster="media/fondo-video.jpg?v=20261011" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 <nav><div class="wrap"><a class="me" href="index.html"><img src="media/rpr-designs-sm.png?v=2" alt="RPR Designs" width="40" height="38"></a><a href="index.html" aria-current="page">Inicio</a><a href="programas.html">Programas</a><a href="galeria.html">Galería</a><a href="experiencia.html">Experiencia</a><a href="contacto.html">Contacto</a></div></nav>
 
-<main class="yo">
+<!-- Portada: el video (original a color, en loop sin sonido) ocupa la pantalla con Sobre mí encima.
+     Al bajar, el resto del contenido va sobre el fondo negro. -->
+<section class="yo-hero">
+  <video class="hero-video" src="media/fondo.mp4?v=20261011" poster="media/fondo-video.jpg?v=20261011" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="yo-hero-in">
   <header class="yo-head">
     <h1 class="ransom" aria-label="Sobre mí"><span>S</span><span>O</span><span>B</span><span>R</span><span>E</span><span class="sp"></span><span>M</span><span>Í</span></h1>
     <!-- Una sola hoja rota con tu foto (media/romar-warpedtour.jpeg) y tu descripción -->
     <div class="hoja yo-sobre">
-      <figure class="foto yo-foto"><img src="media/romar-warpedtour.jpeg" alt="Yo en el Warped Tour, Ciudad de México"><figcaption>Warped Tour, CDMX</figcaption></figure>
+      <figure class="foto yo-foto"><img src="media/romar-warpedtour.jpeg?v=20261011" alt="Yo en el Warped Tour, Ciudad de México"><figcaption>Warped Tour, CDMX</figcaption></figure>
       <div class="texto yo-intro">
       <p class="lead">Me considero una persona curiosa, creativa e independiente. Me gusta aprender, entender cómo funcionan las cosas y no quedarme con la primera respuesta cuando algo realmente me interesa. Se me facilita aprender por mi cuenta; soy bastante autodidacta y disfruto investigar, experimentar y aprender haciendo.</p>
       <p>Me interesan mucho el diseño, la música, los videojuegos y la tecnología, pero también me gusta crear mis propios proyectos y explorar cosas nuevas. Soy bastante directo y tengo gustos muy definidos; cuando algo no me convence, prefiero seguir buscando hasta encontrar algo que realmente me guste. También me gusta mejorar constantemente y aprender nuevas habilidades, aunque a veces puedo ser demasiado detallista o darle muchas vueltas a las cosas.</p>
       </div>
     </div>
   </header>
+  </div>
+</section>
 
+<main class="yo">
   <h2 class="ransom yo-sep" aria-label="Aficiones"><span>A</span><span>F</span><span>I</span><span>C</span><span>I</span><span>O</span><span>N</span><span>E</span><span>S</span></h2>
 
   <!-- Cada párrafo con su imagen. Las imágenes son provisionales: ver README.md -->
