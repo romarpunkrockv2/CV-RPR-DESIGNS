@@ -1,6 +1,6 @@
 // galeria.js — Galería en carrusel (coverflow) a todo el ancho: el proyecto elegido al centro y los demás a los lados,
 // más chicos e inclinados. Cada trabajo se ve tal cual, en su propia proporción (sin marco ni fondo).
-// Todo corre solo: los videos se reproducen (el del centro con sonido) y las imágenes de un proyecto cambian solas.
+// Solo corre lo del centro: su video se reproduce con sonido y, si tiene varias imágenes, cambian solas.
 // Debajo: puntos (uno por imagen), reproducir/pausa y sonido. Flechas de afuera = otro proyecto;
 // flechas en los extremos de la imagen del centro = otra imagen del mismo proyecto.
 // Cada pieza: t = título, d = descripción, k = etiqueta corta (opcional), y una de:
@@ -90,14 +90,13 @@ var raf = 0;
 function relayout() { cancelAnimationFrame(raf); raf = requestAnimationFrame(layout); }
 addEventListener('resize', function () { medidas(); relayout(); });
 
-// ── videos: todos corren; el del centro con sonido, los de los lados mudos ──
+// ── videos: solo se reproduce el del centro (con sonido); los de los lados quedan quietos ──
 function videos() {
   cards.forEach(function (el, k) {
     var v = el.querySelector('video'); if (!v) return;
     var a = Math.abs(desfase(k));
     if (a === 0) return;
-    v.muted = true;
-    if (a <= 2) v.play().catch(noop); else v.pause(); // los lejanos se quedan en su portada
+    v.muted = true; v.pause(); // solo se reproduce el del centro
   });
   var v = vCentro(); if (!v) return;
   v.muted = !sonido || PIEZAS[cur].mudo;

@@ -249,6 +249,8 @@ dialog#lb::backdrop{background:rgba(0,0,0,.9)}
    Cada trabajo se ve tal cual, en su proporción, sin marco. galeria.js pone a cada tarjeta su ancho, alto y posición.
    Un solo color de acento en toda la Galería (el verde del sitio). */
 body.galeria{--c:var(--p1)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap} /* solo para lectores de pantalla */
+.galeria .gal{padding-top:8px}
 .cf{--H:500px;position:relative;width:100vw;margin:22px calc(50% - 50vw) 0;height:calc(var(--H) + 60px);perspective:1600px;overflow:hidden}
 .cf-stage{position:absolute;inset:0;transform-style:preserve-3d}
 .cf-card{position:absolute;left:50%;top:calc(var(--H) / 2 + 30px);cursor:pointer;filter:brightness(var(--br,1));
