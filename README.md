@@ -22,7 +22,7 @@ que lo llama con el número de `?v=` actualizado.
 | Página | Archivo | Qué tiene |
 |---|---|---|
 | Inicio | `index.html` | Sobre mí: logo, descripción personal y un párrafo por hobby con su imagen |
-| Programas | `programas.html` | Cada programa es como una página: portada (selector tipo videojuego con su muestra de fondo) y, debajo, sus proyectos paso por paso. `programas.html#bl` abre Blender |
+| Habilidades (antes Programas; el archivo sigue siendo `programas.html`) | `programas.html` | Cada programa es como una página: portada (selector tipo videojuego con su muestra de fondo) y, debajo, sus proyectos paso por paso. `programas.html#bl` abre Blender |
 | Galería | `galeria.html` | Trabajos extra y el archivo de la carrera (UDN 2014–2017) |
 | Experiencia | `experiencia.html` | CV formal: perfil profesional, experiencia, formación, habilidades |
 | Contacto | `contacto.html` | Datos de contacto |
@@ -76,7 +76,7 @@ Tecnología y Aprender por mi cuenta van **sin imagen**, en dos hojas de solo te
 ### Fotos tuyas
 - [x] **Inicio (informal):** `media/romar-warpedtour.jpeg` (Warped Tour CDMX, horizontal 4:3). Polaroid `.yo-foto` en `index.html`;
       se ve en B/N tipo fotocopia y a color al pasar el mouse.
-- [ ] **Experiencia (formal):** foto profesional para el CV formal (aún sin espacio en `experiencia.html`).
+- [x] **Experiencia (formal):** `media/romar-cv.webp` (4:5) a la izquierda del nombre en `experiencia.html` (`.cv-foto`); también sale en el PDF.
 
 ### Programas (cada programa como página)
 - [ ] **Proyectos de los demás programas:** Photoshop, Illustrator, InDesign, After Effects, Premiere, CapCut y WordPress
@@ -85,7 +85,7 @@ Tecnología y Aprender por mi cuenta van **sin imagen**, en dos hojas de solo te
 - [ ] **Archivos por programa:** se habló de mostrar debajo de la portada información de habilidades y **archivos**
       (entregables, formatos) de cada programa; todavía no existe esa sección.
 - [ ] **Revisar los textos** de cada programa (`sabe` = "Lo que sé" y `moves` = "Para qué lo uso" en `FIGHTERS`):
-      los redactó la IA a partir de lo que se platicó; confirmar que te representen. Todos están en nivel `Intermedio`.
+      los redactó la IA a partir de lo que se platicó; confirmar que te representen. Todos están en nivel `Intermedio`, salvo Código, IA y WordPress, que van sin nivel (sin `nivel`, no sale la barra).
 - [ ] **Probar en el navegador** lo que no se pudo verificar en las pruebas automáticas:
       el video de YouTube (Premiere) arranca con sonido al entrar con un clic; la muestra de CapCut se ve completa
       (en las pruebas salía estirada); el visor 3D de ALUMAX carga el modelo; la página baja bien a los proyectos.

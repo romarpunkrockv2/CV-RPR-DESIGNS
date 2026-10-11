@@ -3,7 +3,7 @@
 // Para un proyecto: un objeto en PROJECTS y su id en projects del programa (cada paso puede llevar media: { img } | { video }).
 
 // ── Programas ("peleadores") ────────────────────────────────────────────────
-// nivel = Básico | Intermedio | Avanzado (barra de la ficha); sabe = lo que sé del programa;
+// nivel = Básico | Intermedio | Avanzado (barra de la ficha; sin nivel no hay barra); sabe = lo que sé del programa;
 // moves = para qué lo uso ([título, texto]); desc (en la muestra) = qué se está viendo;
 // projects = ids de PROJECTS que se muestran debajo de la portada (con el color del programa).
 // ab = letras del logo; path = logo en SVG (24×24); c = color del programa en el escenario;
@@ -72,7 +72,6 @@ var FIGHTERS = [
             ['Prototipos y propuestas', 'Visualizar un diseño antes de fabricarlo o presentarlo.']],
     samples: [{ desc: 'Animación navideña en 3D para Industrias Dueñas.', video: 'media/muestras/blender-navidad.mp4', src: 'media/muestras/blender-navidad.jpg', cap: 'Animación navideña de Industrias Dueñas', c: '#D62828' }] },
   { id: 'wp', name: 'WordPress', path: 'M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0', bg: '#21759B', fg: '#FFFFFF', c: '#3BA5D8',
-    nivel: 'Intermedio',
     sabe: 'Armo y administro sitios: páginas, plantillas, menús y bloques. Integro contenido a la medida, como catálogos y visores 3D.',
     moves: [['Sitios web', 'Diseño completo: portada, líneas de equipos, galería, catálogo y contacto.'],
             ['Bloques a la medida', 'Catálogos y visores 3D integrados en las páginas.'],
@@ -80,7 +79,6 @@ var FIGHTERS = [
     samples: [{ desc: 'El sitio industriasduenas.com en vivo. Lo diseñé completo, de la portada a las líneas de equipos y el contacto.', live: 'https://industriasduenas.com/', src: 'media/sitio-web.jpg', label: 'Abrir el sitio', cap: 'industriasduenas.com · diseñado por mí (en vivo)', c: '#F1E32C' }] },
   { id: 'web', name: 'HTML · CSS · JS', ab: '</>', bg: '#121212', fg: '#C4FF2E', c: '#C4FF2E',
     projects: ['catalogo'],
-    nivel: 'Intermedio',
     sabe: 'Entiendo la estructura de una página, maqueto con CSS y escribo lógica en JavaScript. Con eso armo y ajusto páginas, catálogos y juegos para el navegador.',
     moves: [['Juegos web', 'Juegos que corren en el navegador y en Android.'],
             ['Sprites y assets', 'Personajes, vehículos, logos y pantallas para el juego.'],
@@ -88,7 +86,6 @@ var FIGHTERS = [
     samples: [{ fit: { w: 1650, h: 750, bg: '#F1E32C' }, desc: 'Kreyn Road, un juego web: la grúa OD7000 esquiva patrullas y hay tabla de récords. Los sprites y assets son míos. Se juega aquí mismo y hay versión para Android.', live: 'https://industriasduenas.com/game/', src: 'media/juego-inicio.jpg', label: 'Jugar Kreyn Road', cap: 'Kreyn Road · sprites y assets propios (en vivo)', c: '#F1E32C', link: ['Descargar para Android (APK)', 'https://industriasduenas.com/game/kreyn-road.apk'] }] },
   { id: 'ia', name: 'IA', ab: '✦', bg: '#1B1240', fg: '#B9A6FF', c: '#8B6CFF',
     projects: ['pwa'],
-    nivel: 'Intermedio',
     sabe: 'Uso la IA como copiloto para programar: le explico qué debe hacer cada pantalla, reviso lo que escribe, lo pruebo y pido correcciones hasta que funciona.',
     moves: [['Visores 3D', 'Las grúas en el navegador, con colores a elegir por pieza.'],
             ['Apps internas', 'La app de producción de KREYN (más abajo, paso por paso).'],
@@ -174,7 +171,8 @@ function pick(i) {
   $('#logoBig').innerHTML = logo(f);
   $('#fName').textContent = f.name;
   var lv = { 'Básico': 3, 'Intermedio': 6, 'Avanzado': 9 }[f.nivel] || 6;
-  $('#fLevel').innerHTML = '<span class="lv-t">Nivel</span><span class="lv-bar" aria-hidden="true">' +
+  $('#fLevel').hidden = !f.nivel; // sin nivel (Código, IA, WordPress): no se muestra la barra
+  $('#fLevel').innerHTML = !f.nivel ? '' : '<span class="lv-t">Nivel</span><span class="lv-bar" aria-hidden="true">' +
     Array.apply(null, Array(10)).map(function (_, k) { return '<i' + (k < lv ? ' class="on"' : '') + '></i>'; }).join('') +
     '</span><span class="lv-n">' + esc(f.nivel) + '</span>';
   $('#fTag').textContent = f.sabe;

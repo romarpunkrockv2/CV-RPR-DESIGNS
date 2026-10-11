@@ -12,7 +12,9 @@ body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;backgr
 .formal footer{border-top:1px solid var(--rule);color:var(--soft)}
 
 .cv{max-width:920px;padding-top:64px;padding-bottom:96px}
-.cv-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;border-bottom:2px solid var(--ink2);padding-bottom:28px}
+.cv-head{display:grid;grid-template-columns:auto 1fr auto;gap:24px 28px;align-items:end;border-bottom:2px solid var(--ink2);padding-bottom:28px}
+/* foto del CV (media/romar-cv.webp): vertical 4:5, a la izquierda del nombre */
+.cv-foto{display:block;width:132px;height:auto;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--rule);border-radius:2px}
 .cv-head h1{font-size:clamp(38px,6vw,60px);font-weight:500;letter-spacing:-.01em}
 .cv-head .role{margin:10px 0 0;color:var(--soft);font-size:18px}
 .cv-head .contact{text-align:right;font-size:14px;color:var(--soft);line-height:1.8}
@@ -47,13 +49,32 @@ body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;backgr
 @media (max-width:720px){
   .cv{padding-top:40px}
   .cv-head{grid-template-columns:1fr}
+  .cv-foto{width:120px}
   .cv-head .contact{text-align:left}
   .job{grid-template-columns:1fr;gap:4px}
 }
+/* PDF: sin márgenes de página, el navegador no tiene dónde poner su encabezado y pie (fecha, título "Experiencia — RPR Designs"
+   y enlace); el margen lo da .cv, repetido en cada hoja (box-decoration-break:clone) */
+@page{size:letter;margin:0}
 @media print{
   nav,footer,.print{display:none!important}
-  body.formal{background:#fff;font-size:11pt}
-  .cv{padding:0;max-width:none}
+  body.formal{background:#fff;font-size:11pt;padding:0}
+  .cv{padding:14mm 16mm;max-width:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .cv-foto{width:28mm}
+  /* más compacto en papel: nombre en 2 renglones, títulos y texto un poco más chicos */
+  body.formal{line-height:1.5}
+  .cv-head{padding-bottom:16px;gap:16px 22px}
+  .cv-head h1{font-size:30pt}
+  .summary{font-size:13pt;margin-top:12px}
+  .perfil p{margin:6px 0}
+  .job h3{font-size:14pt}
+  .job ul{margin-top:6px}
+  .job li{margin:2px 0}
+  .skills{margin-top:10px}
+  .skills li{margin-bottom:4px}
+  /* un título de sección nunca se queda solo al final de la hoja; el trabajo actual (largo) sí puede partirse */
+  .block>h2{break-after:avoid}
+  .job.current{break-inside:auto}
   .block{margin-top:22px;break-inside:auto}
   .job{break-inside:avoid;padding:10px 0}
   .job.current h3::after{border:1px solid #141414}

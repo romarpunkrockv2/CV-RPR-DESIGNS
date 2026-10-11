@@ -104,7 +104,11 @@ footer{border-top:3px solid var(--ink);padding:18px 0;color:var(--mute);font-siz
 /* correo: la letra se ajusta al ancho de la pantalla para que quepa en un solo renglón */
 .big{display:inline-block;font:400 clamp(18px,5vw,54px)/1 "Rubik Dirt",sans-serif;text-decoration:none;background:var(--acid);color:#0B0B0B;padding:12px 18px;transform:rotate(-1deg);overflow-wrap:anywhere}
 @media (hover:hover){.big:hover{background:var(--ink)}}
-.grunge nav a{font-family:"Boxpot","Impact",sans-serif;font-size:19px;letter-spacing:.02em} /* botones del menú de Contacto en Boxpot */
+.grunge nav a{font-family:"Boxpot","Impact",sans-serif;font-size:19px;letter-spacing:.14em} /* botones del menú de Contacto en Boxpot, con aire entre letras */
+/* menú en escritorio (todas las páginas): los botones se reparten a lo ancho de la barra, después del logo; cada página conserva su letra y colores */
+@media (min-width:721px){
+  nav .menu{flex:1;justify-content:space-between;margin-left:clamp(40px,8vw,140px)}
+}
 .links{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px}
 
 @media (max-width:720px){.about{grid-template-columns:1fr}.torn{padding:26px 20px}
