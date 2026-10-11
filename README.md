@@ -40,6 +40,8 @@ de estilos que me gustan. No se repite la estética entre páginas ni se usa un 
 - **Proyectos:** `inicio.js` → `PROJECTS`, y su id en `projects` del programa donde se muestran (Blender: CJ · Código: Catálogo 2027 · IA: Sistema de producción).
   Los acentos toman el color del programa. Los demás programas aún no tienen proyectos (pendiente).
 - **Galería:** `galeria.js` → `PIEZAS`.
+- **Menú:** en celular (≤720 px) es de hamburguesa: botón `.menu-btn` + enlaces en `.menu` dentro del `<nav>` de cada página;
+  lo abre y cierra `nav.js` (incluido al final de cada página) y sus estilos van en `style.css`. Si agregas una página, copia el `<nav>` completo.
 - **Estilos:** `inicio.css` (Inicio, Programas, Proyectos, Galería) · `experiencia.css` · `style.css` (Contacto y base).
 - **Regla:** cada trabajo aparece **una sola vez** en todo el sitio (Programas o Galería, no en dos).
 - **Muestras de Programas:** se ven completas (ajustadas al máximo de alto o ancho) con la misma imagen difuminada detrás;
@@ -55,6 +57,8 @@ Ahora son dibujos provisionales en `media/sobre-mi/`. Reemplazar por fotos reale
 |---|---|---|
 | Música | `musica.svg` | Concierto, tus discos, guitarra, una banda que te guste |
 | Videojuegos | `videojuegos.svg` | Tu consola o setup, un juego favorito, arte conceptual |
+| Cine | `cine.svg` | Una película favorita, póster, tu colección o una sala de cine |
+| Deportes | `deportes.svg` | Tu skate, una cancha, jersey o un partido de tus equipos |
 | Tecnología | `tecnologia.svg` | Tus dispositivos, tu escritorio, algo que armaste |
 | Aprender por mi cuenta | `aprender.svg` | Algo que aprendiste a hacer solo / un proyecto propio |
 | Este portafolio | `portafolio.svg` | Una foto tuya trabajando o un collage de trabajos |

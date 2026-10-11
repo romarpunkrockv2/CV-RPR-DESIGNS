@@ -30,6 +30,28 @@ nav a.me{flex:none}
 nav a.me img{display:block;height:34px;width:auto}
 nav a[aria-current="page"]{color:var(--acid);text-decoration:underline wavy}
 @media (hover:hover){nav a:hover{color:var(--acid)}}
+/* enlaces en .menu; en escritorio van en línea y el botón ☰ (.menu-btn, ver nav.js) no se ve */
+nav .menu{display:flex;gap:22px;align-items:center}
+.menu-btn{display:none}
+/* celular: botón ☰ a la derecha y los enlaces en un panel que baja debajo del nav (mismo fondo y raya que el nav de cada página) */
+@media (max-width:720px){
+  nav .wrap{overflow:visible;background:inherit}
+  .menu-btn{display:block;position:relative;flex:none;width:44px;height:44px;margin-right:-10px;padding:0;
+    background:none;border:0;color:inherit;cursor:pointer}
+  /* 3 rayas centradas; al abrir, la de arriba y la de abajo giran sobre el centro y forman una ✕ */
+  .menu-btn span{position:absolute;left:10px;right:10px;top:50%;height:2px;margin-top:-1px;background:currentColor;transition:transform .2s,opacity .2s}
+  .menu-btn span:nth-child(1){transform:translateY(-7px)}
+  .menu-btn span:nth-child(3){transform:translateY(7px)}
+  nav.open .menu-btn span:nth-child(1){transform:rotate(45deg)}
+  nav.open .menu-btn span:nth-child(2){opacity:0}
+  nav.open .menu-btn span:nth-child(3){transform:rotate(-45deg)}
+  nav .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;
+    padding:4px clamp(16px,3vw,40px) 10px;background:inherit;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-bottom:2px solid currentColor;max-height:calc(100svh - var(--nav-h));overflow-y:auto}
+  nav.open .menu{display:flex}
+  nav .menu a,.arcade nav .menu a,.formal nav .menu a,.zine nav .menu a{font-size:19px;padding:15px 0;border-top:1px solid rgba(128,128,128,.3)}
+  nav .menu a:first-child{border-top:0}
+}
 footer{border-top:3px solid var(--ink);padding:18px 0;color:var(--mute);font-size:14px}
 
 /* ── Grunge ── */
@@ -81,5 +103,7 @@ footer{border-top:3px solid var(--ink);padding:18px 0;color:var(--mute);font-siz
 @media (hover:hover){.big:hover{background:var(--ink)}}
 .links{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px}
 
-@media (max-width:720px){.about{grid-template-columns:1fr}.torn{padding:26px 20px}}
+@media (max-width:720px){.about{grid-template-columns:1fr}.torn{padding:26px 20px}
+  /* correo en un solo renglón: la letra se ajusta al ancho del celular en vez de partirse */
+  .big{font-size:5vw;padding:12px 14px;word-break:normal;overflow-wrap:anywhere}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}

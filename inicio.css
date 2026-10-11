@@ -198,18 +198,38 @@ dialog#lb::backdrop{background:rgba(0,0,0,.9)}
 
 
 @media (max-width:900px){
-  /* celular: arriba la muestra de fondo con el logo encima → botones → fila de programas → ficha */
+  /* celular: arriba la muestra despejada con el logo montado en su borde inferior → título, descripción y botones
+     sobre fondo oscuro (ya no encima de la muestra) → fila de programas → ficha */
   .view{height:auto;min-height:0}
   .select{display:flex;flex-direction:column;gap:14px;padding:0 14px 24px}
   .panel{display:contents}
-  .select .bg{bottom:auto;height:58svh}
-  .select::after{bottom:auto;height:58svh;background:linear-gradient(transparent 45%,var(--bg))}
-  .side{padding-top:22px}
+  .select .bg{bottom:auto;height:50svh}
+  .select::after{bottom:auto;height:50svh;background:linear-gradient(transparent 70%,var(--bg))}
+  .side{padding-top:calc(50svh - 40px)}
   .plogo{width:72px}
   .roster{order:1}.card{order:2}
   .side{gap:10px}
   .roster{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
-  .slot{width:auto}.slot .mini{width:36px;height:36px}.slot .nm{font-size:10px}
+  .slot{width:auto}.slot .mini{width:36px;height:36px}
+  .slot .nm{font-size:11.5px;line-height:1.1;text-align:center;overflow-wrap:anywhere}
+  /* textos más grandes para leerse en celular */
+  .scap{font-size:22px}
+  .sdesc{font-size:15px;max-width:none}
+  .side .credit{font-size:13.5px;max-width:none}
+  .slink{font-size:15px}
+  .ver{font-size:14px;padding:9px 12px}
+  .card h2{font-size:20px}
+  .card .tagline{font-size:15px}
+  .lv-t,.lv-n{font-size:13px}
+  .sub-t{font-size:12.5px}
+  .moves b{font-size:15px}
+  .moves span{font-size:14px}
+  .moves li{padding:7px 9px}
+  /* el texto ya no va sobre la muestra: en blanco aunque la muestra sea clara */
+  .select.light :is(.scap,.sdesc,.side .credit,.slink,.slot .nm){color:var(--w)}
+  .select.light .slink{text-decoration-color:var(--c)}
+  /* menú abierto: panel opaco para que la muestra de atrás no estorbe */
+  .arcade nav .menu{background:var(--bg)}
   .select.viewing{min-height:70svh}
   .select.viewing .bg{height:70svh}
   .select.viewing :is(.side,.card,.roster){display:none}
@@ -248,7 +268,10 @@ body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--
   min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h))}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media (prefers-reduced-motion:reduce){.hero-video{display:none}}
-.yo-hero-in{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:48px clamp(16px,3vw,40px)}
+.yo-hero-in{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:48px clamp(16px,3vw,40px) calc(48px + 8.2vw)}
+/* divisor: borde de papel negro rasgado (media/borde-roto.webp) al pie del video, en vez de un corte recto al negro */
+.yo-hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;aspect-ratio:1600/131;pointer-events:none;
+  background:url("media/borde-roto.webp") center bottom/100% 100% no-repeat}
 .zine nav{background:var(--bg);border-bottom:2px solid var(--paper)}
 .zine nav a{color:var(--paper)}
 .zine nav a[aria-current="page"]{color:var(--acc)}
@@ -305,10 +328,12 @@ body.zine{--bg:#0E0D0B;--paper:#FFFFFF;--ink:#161412;--acc:#B5D452;--acid:var(--
 .yo-row:nth-of-type(even) .hoja{transform:rotate(-.8deg);grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);clip-path:polygon(0.0% 0.6%,5.6% 1.5%,11.1% 1.5%,16.7% 1.9%,22.2% 0.4%,27.8% 0.5%,33.3% 0.3%,38.9% 0.5%,44.4% 1.6%,50.0% 0.3%,55.6% 1.2%,61.1% 0.5%,66.7% 0.6%,72.2% 0.9%,77.8% 1.8%,83.3% 1.3%,88.9% 0.0%,94.4% 0.6%,99.7% 0.0%,98.1% 5.6%,98.2% 11.1%,98.2% 16.7%,98.2% 22.2%,98.4% 27.8%,97.9% 33.3%,98.3% 38.9%,99.4% 44.4%,98.1% 50.0%,98.9% 55.6%,98.3% 61.1%,98.8% 66.7%,99.1% 72.2%,99.2% 77.8%,99.1% 83.3%,99.3% 88.9%,99.7% 94.4%,100.0% 98.2%,94.4% 98.2%,88.9% 97.8%,83.3% 98.5%,77.8% 98.8%,72.2% 98.4%,66.7% 99.7%,61.1% 98.5%,55.6% 99.0%,50.0% 99.6%,44.4% 99.6%,38.9% 98.9%,33.3% 99.4%,27.8% 99.0%,22.2% 98.7%,16.7% 99.1%,11.1% 99.7%,5.6% 98.9%,0.5% 100.0%,0.5% 94.4%,0.4% 88.9%,0.8% 83.3%,0.2% 77.8%,1.4% 72.2%,2.1% 66.7%,0.9% 61.1%,1.6% 55.6%,2.1% 50.0%,0.1% 44.4%,0.3% 38.9%,1.8% 33.3%,1.8% 27.8%,1.4% 22.2%,0.4% 16.7%,0.9% 11.1%,1.9% 5.6%)}
 .yo-row:nth-of-type(even) .foto{order:2;transform:rotate(2deg)}
 .yo-row:nth-of-type(even) .foto img{clip-path:polygon(0.0% 0.6%,4.2% 0.3%,8.3% 1.0%,12.5% 0.4%,16.7% 0.2%,20.8% 1.0%,25.0% 2.4%,29.2% 2.1%,33.3% 2.0%,37.5% 0.6%,41.7% 1.4%,45.8% 0.7%,50.0% 0.4%,54.2% 0.3%,58.3% 0.6%,62.5% 2.4%,66.7% 2.2%,70.8% 2.1%,75.0% 2.1%,79.2% 0.5%,83.3% 0.8%,87.5% 1.6%,91.7% 1.9%,95.8% 2.2%,97.7% 0.0%,99.8% 4.2%,98.4% 8.3%,98.3% 12.5%,98.7% 16.7%,99.5% 20.8%,98.8% 25.0%,99.8% 29.2%,97.6% 33.3%,97.7% 37.5%,98.6% 41.7%,99.2% 45.8%,97.6% 50.0%,98.5% 54.2%,97.7% 58.3%,97.8% 62.5%,98.7% 66.7%,98.9% 70.8%,98.4% 75.0%,98.9% 79.2%,99.6% 83.3%,99.2% 87.5%,97.9% 91.7%,99.9% 95.8%,100.0% 99.9%,95.8% 98.4%,91.7% 99.3%,87.5% 98.6%,83.3% 98.8%,79.2% 99.1%,75.0% 97.4%,70.8% 99.5%,66.7% 98.9%,62.5% 99.5%,58.3% 98.4%,54.2% 99.3%,50.0% 99.1%,45.8% 98.1%,41.7% 99.2%,37.5% 98.5%,33.3% 97.6%,29.2% 99.7%,25.0% 99.8%,20.8% 99.4%,16.7% 98.0%,12.5% 98.4%,8.3% 99.4%,4.2% 99.1%,0.5% 100.0%,1.2% 95.8%,0.1% 91.7%,1.8% 87.5%,2.3% 83.3%,2.5% 79.2%,1.9% 75.0%,2.5% 70.8%,0.0% 66.7%,0.8% 62.5%,2.5% 58.3%,2.0% 54.2%,1.1% 50.0%,2.5% 45.8%,1.6% 41.7%,2.1% 37.5%,0.8% 33.3%,0.5% 29.2%,1.2% 25.0%,0.4% 20.8%,1.0% 16.7%,2.5% 12.5%,0.9% 8.3%,0.0% 4.2%)}
+/* títulos de cada afición sobre un pedazo de papel negro rasgado (media/papel-roto.webp) */
 .yo-row h3{display:inline-block;font-size:clamp(28px,3.2vw,40px);margin:0 0 18px;text-transform:uppercase;
-  background:var(--ink);color:var(--paper);padding:8px 14px 6px;transform:rotate(-2deg);box-shadow:5px 5px 0 var(--acc)}
+  background:url("media/papel-roto.webp") center/100% 100% no-repeat;color:var(--paper);padding:18px 34px 16px;transform:rotate(-2deg)}
 .yo-row:nth-of-type(even) h3{transform:rotate(1.5deg)}
 .yo-row p{margin:0;font-size:17.5px;line-height:1.7}
+.yo-row p+p{margin-top:14px}
 @media (hover:hover){.yo-row:hover .foto img{filter:none}}
 
 .yo-go{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px!important}
