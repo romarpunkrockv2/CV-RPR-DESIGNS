@@ -86,6 +86,7 @@ Tamaño recomendado: horizontal 4:3, unos 1200 × 900 px, en `.jpg` o `.webp`.
       (en las pruebas salía estirada); el visor 3D de ALUMAX carga el modelo; la página baja bien a los proyectos.
 - [ ] **Borrar archivos viejos que ya no se usan:** `media/muestras/capcut.mp4` y `capcut.jpg`
       (los reemplazó `capcut-od20.mp4`/`.jpg`); quitarlos también de GitHub.
+      También `media/fondo.jpg`: era la textura encima del video de Inicio, que se quitó (el video ahora va a color, sin efectos).
 - [ ] (Opcional) WordPress en vivo se muestra a pantalla completa; decidir si va en recuadro escalado como el juego y el visor.
 
 ### Otros
