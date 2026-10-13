@@ -8,6 +8,7 @@
 var PIEZAS = [
   { k: 'Trabajo · Industrias Dueñas', t: '21 aniversario de Industrias Dueñas', d: 'Video para redes editado en CapCut.', video: 'media/muestras/capcut-aniversario.mp4', poster: 'media/muestras/capcut-aniversario.jpg' },
   { t: 'Whatsername · Green Day', d: 'Video para la canción de Green Day que mezcla animación 3D con edición en CapCut: la portada de American Idiot se rasga al ritmo de la música.', video: 'media/muestras/gal-whatsername.mp4', poster: 'media/muestras/gal-whatsername.jpg' },
+  { t: 'Wake the Dead · Comeback Kid', d: 'Video para la canción de Comeback Kid sobre despertar a los muertos en vida: animación 3D en Blender y edición en CapCut.', video: 'media/muestras/gal-wakethedead.mp4', poster: 'media/muestras/gal-wakethedead.jpg' },
   { t: 'Mitsubishi Motors · logo 3D', d: 'Animación del logotipo de Mitsubishi Motors, modelada, animada y renderizada en Blender.', video: 'media/muestras/gal-mitsubishi.mp4', poster: 'media/muestras/gal-mitsubishi.jpg', mudo: true },
   { t: 'Competencia de caballos', d: 'Edición de video de una competencia de caballos bailadores, con gráficos de los lugares y premios.', video: 'media/muestras/gal-caballos.mp4', poster: 'media/muestras/gal-caballos.jpg' },
   { k: 'Escuela · UDN', t: 'Atlético Tapatío', d: 'Identidad de un equipo de fútbol: uniforme, logo y nombre.', i: ['atletico-jugador.webp', 'atletico-escudo.webp', 'atletico-equipo.webp'] },

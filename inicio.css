@@ -98,7 +98,7 @@ body.arcade{--bg:#07070A;--bg2:#101016;--w:#F4F4F0;--dim:#8D8D96;--p1:#C4FF2E;--
 /* nivel (barra tipo videojuego), subtítulos de la ficha y descripción de la muestra */
 .level{display:flex;align-items:center;gap:8px;padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.14)}
 .lv-t,.lv-n{font:800 12px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em}
-.lv-t{color:#C2C2CA}.lv-n{color:var(--c)}
+.lv-t{color:#C2C2CA}.lv-n{color:var(--c);white-space:nowrap}
 .level[hidden]{display:none} /* Código, IA y WordPress van sin nivel */
 .lv-bar{flex:1;display:flex;gap:2px}
 .lv-bar i{flex:1;height:9px;background:rgba(255,255,255,.14);transform:skewX(-18deg)}

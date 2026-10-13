@@ -3,7 +3,7 @@
 // Para un proyecto: un objeto en PROJECTS y su id en projects del programa (cada paso puede llevar media: { img } | { video }).
 
 // ── Programas ("peleadores") ────────────────────────────────────────────────
-// nivel = Básico | Intermedio | Avanzado (barra de la ficha; sin nivel no hay barra); sabe = lo que sé del programa;
+// nivel = Básico | Intermedio | Intermedio-avanzado | Avanzado (barra de la ficha; sin nivel no hay barra); sabe = lo que sé del programa;
 // moves = para qué lo uso ([título, texto]); desc (en la muestra) = qué se está viendo;
 // projects = ids de PROJECTS que se muestran debajo de la portada (con el color del programa).
 // ab = letras del logo; path = logo en SVG (24×24); c = color del programa en el escenario;
@@ -20,14 +20,14 @@
 // Los archivos van en media/muestras/.
 var FIGHTERS = [
   { id: 'ps', name: 'Photoshop', ab: 'Ps', bg: '#001E36', fg: '#31A8FF', c: '#31A8FF',
-    nivel: 'Intermedio',
+    nivel: 'Intermedio-avanzado',
     sabe: 'Manejo capas, máscaras, selecciones y ajustes de color para fotomontaje y retoque. Preparo archivos para web e impresión.',
     moves: [['Fotomontaje', 'Composiciones con varias fotos para campañas y redes.'],
             ['Retoque de producto', 'Limpieza y ajuste de fotos de grúas y accesorios.'],
             ['Piezas para redes', 'Publicaciones, historias y anuncios.']],
     samples: [{ desc: 'La foto original de la OD7000 en la fábrica y el fotomontaje que la lleva a la carretera. Cambia sola entre antes y después.', before: 'media/muestras/ps-od7000-antes.jpg', src: 'media/muestras/ps-od7000-despues.jpg', cap: 'OD7000 · de la fábrica a la carretera', c: '#F1E32C' }] },
   { id: 'ai', name: 'Illustrator', ab: 'Ai', bg: '#330000', fg: '#FF9A00', c: '#FF9A00',
-    nivel: 'Intermedio',
+    nivel: 'Intermedio-avanzado',
     sabe: 'Trabajo con la pluma, formas, tipografía y color para construir logotipos y gráficos vectoriales. Preparo los archivos a escala real para impresión y corte.',
     moves: [['Rotulación de grúas', 'La gráfica completa de cada unidad, lista para imprimir y colocar.'],
             ['Logotipos', 'Diseño de marcas y escudos.'],
@@ -35,7 +35,7 @@ var FIGHTERS = [
             ['Etiquetas y formatos', 'Material impreso de la marca.']],
     samples: [{ desc: 'La rotulación AGM de una RD30: el diseño en Illustrator y la grúa terminada con la gráfica ya colocada.', before: 'media/muestras/ai-rd30-diseno.jpg', src: 'media/muestras/ai-rd30-real.jpg', labels: ['Diseño', 'Terminada'], ar: '1600/1182', cap: 'RD30 · rotulación AGM, del diseño a la grúa', c: '#2F6BFF' }] },
   { id: 'id', name: 'InDesign', ab: 'Id', bg: '#49021F', fg: '#FF3366', c: '#FF3366',
-    nivel: 'Intermedio',
+    nivel: 'Intermedio-avanzado',
     sabe: 'Maqueto documentos de varias páginas con páginas maestras, estilos de párrafo y retículas. Exporto archivos listos para imprenta y para pantalla.',
     moves: [['Catálogos', 'Catálogos de equipos con fotos, especificaciones y diseño de la marca.'],
             ['Revistas', 'Maquetación editorial, como la revista de Bird Attack Records.'],
@@ -44,19 +44,19 @@ var FIGHTERS = [
                 credit: 'Renders en Blender: yo · Dibujos técnicos: equipo de Diseño de Industrias Dueñas – KREYN',
                 link: ['Ver el mismo modelo animado en 3D', 'https://industriasduenas.com/agm/'] }] },
   { id: 'ae', name: 'After Effects', ab: 'Ae', bg: '#00005B', fg: '#9999FF', c: '#9999FF',
-    nivel: 'Intermedio',
+    nivel: 'Intermedio-avanzado',
     sabe: 'Animo textos, logotipos y elementos con fotogramas clave y composiciones. Integro elementos en video y aplico efectos para piezas cortas.',
     moves: [['Animación', 'Textos, logotipos y elementos en movimiento.'],
             ['Efectos y composición', 'Integrar elementos en video.']],
     samples: [{ desc: 'Video de humor para los viernes: una grúa KREYN integrada en Fondo de Bikini.', video: 'media/muestras/ae-bob-esponja.mp4', src: 'media/muestras/ae-bob-esponja.jpg', cap: 'Viernes de humor · grúa KREYN en Fondo de Bikini', c: '#FFE135' }] },
   { id: 'pr', name: 'Premiere Pro', ab: 'Pr', bg: '#00005B', fg: '#EA77FF', c: '#EA77FF',
-    nivel: 'Intermedio',
+    nivel: 'Intermedio-avanzado',
     sabe: 'Edito video de principio a fin: corte, ritmo, música, corrección de color básica y exportación para cada plataforma.',
     moves: [['Edición', 'Cortes, ritmo, música y color.'],
             ['Video para redes', 'Versiones para cada formato y plataforma.']],
     samples: [{ desc: 'Video del proceso de fabricación de la RD40 RTR, publicado en YouTube.', youtube: 'y9U-Y60E44k', src: 'https://i.ytimg.com/vi/y9U-Y60E44k/maxresdefault.jpg', cap: 'RD40 RTR · proceso de fabricación', c: '#F1E32C' }] },
   { id: 'cc', name: 'CapCut', ab: 'Cc', bg: '#000000', fg: '#FFFFFF', c: '#E8E8E8',
-    nivel: 'Intermedio',
+    nivel: 'Intermedio-avanzado',
     sabe: 'Hago edición completa: corte, ritmo, música, textos, transiciones y color, con subtítulos automáticos y plantillas cuando el video tiene que salir rápido.',
     moves: [['Edición completa', 'Videos de principio a fin, en vertical u horizontal.'],
             ['Reels y TikToks', 'Videos verticales para redes.'],
@@ -64,7 +64,7 @@ var FIGHTERS = [
     samples: [{ desc: 'Video vertical de la OD20 DS para TikTok.', video: 'media/muestras/capcut-od20.mp4', src: 'media/muestras/capcut-od20.jpg', cap: 'OD20 DS · video para TikTok', c: '#F1E32C' }] },
   { id: 'bl', name: 'Blender', path: 'M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626', bg: '#E87D0D', fg: '#FFFFFF', c: '#E87D0D',
     projects: ['cj'],
-    nivel: 'Intermedio',
+    nivel: 'Intermedio-avanzado',
     sabe: 'Armo composiciones 3D para renders, videos y animaciones, y modelo los elementos que la escena necesita. Aplico materiales, animo cámara y objetos, y rendereo con Eevee y Cycles.',
     moves: [['Composiciones 3D', 'Escenas para renders, videos y animaciones.'],
             ['Modelado de elementos', 'Objetos y piezas puntuales para completar una escena.'],
@@ -170,7 +170,7 @@ function pick(i) {
   roster.querySelectorAll('.slot').forEach(function (s, k) { s.setAttribute('aria-selected', k === i); });
   $('#logoBig').innerHTML = logo(f);
   $('#fName').textContent = f.name;
-  var lv = { 'Básico': 3, 'Intermedio': 6, 'Avanzado': 9 }[f.nivel] || 6;
+  var lv = { 'Básico': 3, 'Intermedio': 6, 'Intermedio-avanzado': 8, 'Avanzado': 9 }[f.nivel] || 6;
   $('#fLevel').hidden = !f.nivel; // sin nivel (Código, IA, WordPress): no se muestra la barra
   $('#fLevel').innerHTML = !f.nivel ? '' : '<span class="lv-t">Nivel</span><span class="lv-bar" aria-hidden="true">' +
     Array.apply(null, Array(10)).map(function (_, k) { return '<i' + (k < lv ? ' class="on"' : '') + '></i>'; }).join('') +
