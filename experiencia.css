@@ -19,6 +19,9 @@ body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;backgr
 .cv-head .role{margin:10px 0 0;color:var(--soft);font-size:18px}
 .cv-head .contact{text-align:right;font-size:14px;color:var(--soft);line-height:1.8}
 .cv-head .contact a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--rule)}
+/* botón al portafolio: solo sale en el PDF (en la web ya estás en el sitio) */
+.cv-head .contact a.web-btn{display:none;margin-top:8px;background:var(--ink2);color:#fff;border:0;padding:6px 12px;border-radius:2px;
+  font:600 9.5pt/1.2 "Inter",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .summary{font:400 20px/1.6 "Fraunces",Georgia,serif;margin:32px 0 8px;max-width:62ch}
 .print{margin-top:18px;background:none;border:1px solid var(--ink2);color:var(--ink2);font:500 14px/1 "Inter",sans-serif;padding:11px 18px;cursor:pointer;border-radius:2px}
 @media (hover:hover){.print:hover{background:var(--ink2);color:var(--paper2)}}
@@ -79,4 +82,5 @@ body.formal{--paper2:#F5F2EA;--ink2:#141414;--soft:#5E5A52;--rule:#D9D3C5;backgr
   .job{break-inside:avoid;padding:10px 0}
   .job.current h3::after{border:1px solid #141414}
   a{text-decoration:none}
+  .cv-head .contact a.web-btn{display:inline-block}
 }
